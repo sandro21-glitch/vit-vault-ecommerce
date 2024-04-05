@@ -8,6 +8,13 @@
   --rex-bold-font: "ALK Rex Bold", sans-serif;
   --max-width: 1222px;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
   background: var(--clr-white);
   font-family: var(--rex-bold-font);
@@ -78,15 +85,6 @@ h5 {
     justify-content: space-between;
     align-items: center;
   }
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #cacaca;
-  margin: 0 0 0.5rem 0;
-}
-.transitions {
-  transition: all ease-in 0.3s;
 }
 
 .section {
