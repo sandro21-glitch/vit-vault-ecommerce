@@ -1,9 +1,13 @@
-
+import GeneralHeader from "../features/header/GeneralHeader";
+import TopBar from "../features/header/TopBar";
 
 const Header = () => {
   return (
-    <header>Header</header>
-  )
-}
+    <header>
+      <TopBar />
+      <GeneralHeader />
+    </header>
+  );
+};
 
-export default Header
+export default Header;
