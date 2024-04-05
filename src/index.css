@@ -6,10 +6,10 @@
   --clr-white: #fff;
   --very-light-blue: rgb(119, 212, 252);
   --rex-bold-font: "ALK Rex Bold", sans-serif;
+  --max-width: 1222px;
 }
 body {
   background: var(--clr-white);
-  color: #4f4f4f;
   font-family: var(--rex-bold-font);
   font-size: 0.875rem;
   line-height: 1.5;
@@ -95,6 +95,6 @@ hr {
 
 .section-center {
   width: 90vw;
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
 }
