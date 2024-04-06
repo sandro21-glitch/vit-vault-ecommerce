@@ -5,7 +5,7 @@
   --clr-grey-1: #102a42;
   --clr-white: #fff;
   --very-light-blue: rgb(119, 212, 252);
-  --rex-bold-font: "ALK Rex Bold", sans-serif;
+  --main-font: "BPG Arial Caps", sans-serif;
   --max-width: 1222px;
 }
 *,
@@ -17,7 +17,7 @@
 }
 body {
   background: var(--clr-white);
-  font-family: var(--rex-bold-font);
+  font-family: var(--main-font);
   font-size: 0.875rem;
   line-height: 1.5;
 }
