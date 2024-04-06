@@ -1,6 +1,6 @@
 const UserAuth = () => {
   return (
-    <li className="text-[#3f3f3f] font-semibold text-[13px]">
+    <li className="text-[#808080] font-bold text-[13px] cursor-pointer">
       შესვლა / რეგისტრაცია
     </li>
   );
