@@ -1,4 +1,5 @@
 import GeneralHeader from "../features/header/GeneralHeader";
+import MainNavbar from "../features/header/MainNavbar";
 import TopBar from "../features/header/TopBar";
 
 const Header = () => {
@@ -6,6 +7,7 @@ const Header = () => {
     <header>
       <TopBar />
       <GeneralHeader />
+      <MainNavbar />
     </header>
   );
 };
