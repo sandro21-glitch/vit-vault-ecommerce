@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "alk-rex-bold": "^1.0.0",
+    "archyedt-bold": "^1.0.0",
+    "bpg-arial-caps": "^1.0.1",
     "firebase": "^10.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
