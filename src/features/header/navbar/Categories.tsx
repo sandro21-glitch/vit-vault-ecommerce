@@ -6,7 +6,7 @@ const Categories = () => {
     <div className="h-full mr-[15px]">
       <div className="relative min-w-[270px] max-w-[320px] h-full bg-secondaryGreen flex items-center justify-between">
         <div className="flex items-center gap-1 pl-5 text-white text-[15px] font-bold">
-          <GiHamburgerMenu />
+          <GiHamburgerMenu className="text-[20px]" />
           <span>კატეგორიები</span>
         </div>
         <span className="pr-3 text-white">
