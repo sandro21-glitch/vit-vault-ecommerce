@@ -3,9 +3,9 @@ import { IoIosArrowForward } from "react-icons/io";
 const CategoryList = () => {
   return (
     <div className="absolute left-0 top-full w-full">
-      <ul className="border border-t-transparent">
+      <ul className="border-l border-b border-r ">
         <li className="border border-b text-[13px] cursor-pointer font-medium flex justify-between items-center px-3 py-1">
-          <Link to="">საკვები დანამატები</Link>
+          <Link to="/">საკვები დანამატები</Link>
           <IoIosArrowForward />
         </li>
       </ul>
