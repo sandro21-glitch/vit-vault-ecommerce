@@ -46,7 +46,9 @@ h4 {
 h5 {
   font-size: 0.875rem;
 }
-
+p {
+  color: #808080;
+}
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 3rem;
