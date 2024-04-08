@@ -30,7 +30,7 @@ const Header = () => {
         isOpen={isOpen}
         setOpen={setOpen}
       />
-      <MainNavbar isMobileNav={isMobileNav} />
+      <MainNavbar isMobileNav={isMobileNav} isOpen={isOpen} setOpen={setOpen} />
     </header>
   );
 };
