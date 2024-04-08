@@ -2,7 +2,7 @@ import SliderContent from "./SliderContent";
 
 const HomeSlider = () => {
   return (
-    <article className="max-w-[900px] float-right w-full  mx-auto select-none">
+    <article className="xl:max-w-[900px] w-full xl:float-right mx-auto select-none">
       <SliderContent />
     </article>
   );
