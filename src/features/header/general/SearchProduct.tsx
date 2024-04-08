@@ -10,7 +10,7 @@ const SearchProduct = () => {
         name="search"
         id="search"
         placeholder="მოძებნე პროდუქცია"
-        className="min-w-[290px] w-full border-2 outline-none p-5 h-[46px]"
+        className="min-w-[290px] w-full xl:border-2 border-b outline-none p-5 h-[65px] xl:h-[46px]"
       />
       <button
         type="submit"
