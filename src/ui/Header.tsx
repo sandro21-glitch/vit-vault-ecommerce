@@ -4,16 +4,17 @@ import MainNavbar from "../features/header/MainNavbar";
 import TopBar from "../features/header/TopBar";
 
 const Header = () => {
-  const [isMobileNav, setIsMobileNav] = useState<boolean>(window.innerWidth < 1280);
+  const [isMobileNav, setIsMobileNav] = useState<boolean>(
+    window.innerWidth < 1280
+  );
   const [isOpen, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileNav(window.innerWidth < 1280);
     };
-
     handleResize();
-
+    
     window.addEventListener("resize", handleResize);
 
     return () => {
