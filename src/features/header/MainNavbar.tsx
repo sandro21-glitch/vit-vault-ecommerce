@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
-import Categories from "./navbar/Categories";
-import NavList from "./navbar/NavList";
+import DesktopNav from "./navbar/desktop/DesktopNav";
+import MobileNav from "./navbar/mobile/MobileNav";
 
-const MainNavbar = () => {
+type MainNavTypes = {
+  isMobileNav: boolean;
+};
+
+const MainNavbar = ({ isMobileNav }: MainNavTypes) => {
   return (
-    <nav className="border border-b-gray-200 h-[52px]">
-      <div className="section-center section-x flex items-center h-full">
-        <Categories />
-        <NavList />
-        <li className="list-none cursor-pointer text-[14px] font-semibold text-primaryGreen">
-          <Link to="/">ფასდაკლებები</Link>
-        </li>
-      </div>
+    <nav
+      className={`${isMobileNav ? "" : "border border-b-gray-200 h-[52px]"} `}
+    >
+      {isMobileNav ? <MobileNav /> : <DesktopNav />}
     </nav>
   );
 };
