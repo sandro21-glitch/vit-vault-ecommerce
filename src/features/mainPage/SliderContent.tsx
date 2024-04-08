@@ -18,12 +18,15 @@ const SliderContent = () => {
         const { id, image, name, para, path } = item;
         return (
           <div>
-            <div className="flex items-center gap-2 w-full" key={id}>
-              <div className=" w-1/2 p-[50px]">
+            <div
+              className="flex items-center gap-2 w-full justify-center flex-col lg:flex-row"
+              key={id}
+            >
+              <div className=" xl:w-1/2 w-full py-[40px] lg:p-[50px] flex flex-col items-center lg:block">
                 <h2 className="font-semibold leading-[3rem] mb-[20px]">
                   {name}
                 </h2>
-                <p className="mb-[20px]">{para}</p>
+                <p className="mb-[20px] text-center lg:text-left">{para}</p>
                 <button
                   className="button relative overflow-hidden bg-secondaryGreen w-[6rem] h-[2rem] p-5
            text-white rounded-full flex items-center justify-center font-sans font-semibold transition-width duration-300 hover:w-[7rem]"
@@ -31,7 +34,7 @@ const SliderContent = () => {
                   <Link to={path}>ნახვა</Link>
                 </button>
               </div>
-              <div className="w-1/2">
+              <div className="xl:w-1/2 w-full flex flex-col items-center lg:block">
                 <img src={image} alt="slider-image" />
               </div>
             </div>
