@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 
 const SearchProduct = () => {
   return (
-    <li className="flex-1">
+    <div className="flex-1">
     <form className="relative">
       <input
         type="text"
@@ -19,7 +19,7 @@ const SearchProduct = () => {
         <CiSearch size={25} />
       </button>
     </form>
-  </li>
+  </div>
   )
 }
 
