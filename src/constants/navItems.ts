@@ -8,25 +8,30 @@ export const navItems = [
     id: 1,
     name: "მთავარი",
     icon: homeIcon,
+    color: '#5CB85C',
   },
   {
     id: 2,
     name: "მიტანის სერვისი",
     icon: deliveryIcon,
+    color: null,
   },
   {
     id: 3,
     name: "ბლოგი",
     icon: blogIcon,
+    color: null,
   },
   {
     id: 4,
     name: "ჩვენს შესახებ",
     icon: peopleIcon,
+    color: null,
   },
   {
     id: 5,
     name: "კონტაქტი",
     icon: contactIcon,
+    color: null,
   },
 ];
