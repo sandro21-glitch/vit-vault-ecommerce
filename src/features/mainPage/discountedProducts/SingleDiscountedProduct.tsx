@@ -19,7 +19,7 @@ const SingleDiscountedProduct = ({
       <h6 className="mb-5">{name}</h6>
       <p className="mb-2">{price}</p>
       <button className="invisible group-hover:visible mb-5 bg-secondaryGreen text-white font-semibold text-[11px] py-[8px] px-[12px]">
-        კალათაში დამატება
+        <span>კალათაში დამატება</span>
       </button>
     </li>
   );
