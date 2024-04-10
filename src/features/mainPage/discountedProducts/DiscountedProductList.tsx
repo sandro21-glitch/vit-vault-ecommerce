@@ -43,6 +43,12 @@ const tempList = [
     image: "https://vitamini.ge/storage/products/11822/123.jpg",
     price: "210.00₾",
   },
+  {
+    id: "1111414111",
+    name: "Kevin Levrone - Gold Whey",
+    image: "https://vitamini.ge/storage/products/11822/123.jpg",
+    price: "210.00₾",
+  },
 ];
 
 const DiscountedProductList = () => {
