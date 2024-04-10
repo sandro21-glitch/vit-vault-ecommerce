@@ -3,7 +3,7 @@ import { popularCategory } from "../../../constants/popularCategories";
 import SinglePopularCategory from "./SinglePopularCategory";
 const PopularCategories = () => {
   return (
-    <article>
+    <article className="mb-[8vh]">
       <HeaderText text="პოპულარული კატეგორიები" />
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
         {popularCategory.map((item) => {
