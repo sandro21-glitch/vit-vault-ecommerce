@@ -1,3 +1,4 @@
+import DiscountedProducts from "../features/mainPage/discountedProducts/DiscountedProducts";
 import PopularCategories from "../features/mainPage/popularCategory/PopularCategories";
 import HomeSlider from "../features/mainPage/sliderPage/HomeSlider";
 
@@ -6,6 +7,7 @@ const MainPage = () => {
     <section className="section-center section-x">
       <HomeSlider />
       <PopularCategories />
+      <DiscountedProducts />
     </section>
   );
 };
