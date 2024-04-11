@@ -1,60 +1,13 @@
+import { useAppSelector } from "../../../hooks/hooks";
 import SingleDiscountedProduct from "./SingleDiscountedProduct";
 
-const tempList = [
-  {
-    id: "1",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "11",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "1111",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "11111",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "241",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "11fff4111",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "11d2ff4111",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-  {
-    id: "11d24111",
-    name: "Kevin Levrone - Gold Whey",
-    image: "https://vitamini.ge/storage/products/11822/123.jpg",
-    price: "210.00₾",
-  },
-];
-
 const DiscountedProductList = () => {
+  const { productData } = useAppSelector((store) => store.product);
+  const discountedProducts = productData?.filter((data) => data.discount !== 0);
+
   return (
-    <ul className="grid grid-cols-4 w-full gap-2">
-      {tempList.map((product) => {
+    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-2">
+      {discountedProducts?.map((product) => {
         return <SingleDiscountedProduct key={product.id} product={product} />;
       })}
     </ul>
