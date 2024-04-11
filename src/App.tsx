@@ -5,6 +5,7 @@ import Footer from "./pages/Footer";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchDataFromFirebase } from "./features/slices/productsSlice";
+import Spinner from "./ui/Spinner";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const App = () => {
   }, [dispatch]);
 
   if (error) return <p>Error</p>;
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <Spinner />;
 
   return (
     <BrowserRouter>
