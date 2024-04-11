@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchProduct from "../../general/SearchProduct";
 import MobileNavList from "./MobileNavList";
 import NavTabs from "./NavTabs";
+import MobileCategories from "./MobileCategories";
 
 type MobileNavTypes = {
   isOpen: boolean;
@@ -19,7 +20,7 @@ const MobileNav = ({ isOpen }: MobileNavTypes) => {
       <div className="overflow-hidden">
         <SearchProduct />
         <NavTabs setActiveTab={setActiveTab} activeTab={activeTab} />
-        {activeTab === "menu" ? <MobileNavList /> : <p>Categories</p>}
+        {activeTab === "menu" ? <MobileNavList /> : <MobileCategories />}
       </div>
     </div>
   );
