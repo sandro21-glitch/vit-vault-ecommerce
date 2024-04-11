@@ -1,4 +1,4 @@
-import DesktopNav from "./navbar/desktop/DesktopNav";
+import DesktopNav from "./navbar/desktop/nav/DesktopNav";
 import MobileNav from "./navbar/mobile/MobileNav";
 
 type MainNavTypes = {
