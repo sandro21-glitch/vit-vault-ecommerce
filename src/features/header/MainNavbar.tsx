@@ -1,5 +1,5 @@
 import DesktopNav from "./navbar/desktop/nav/DesktopNav";
-import MobileNav from "./navbar/mobile/MobileNav";
+import MobileNav from "./navbar/mobile/nav/MobileNav";
 
 type MainNavTypes = {
   isMobileNav: boolean;
