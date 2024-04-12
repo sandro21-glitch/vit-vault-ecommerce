@@ -12,14 +12,14 @@ const SinglePopularCategory = ({ item }: SinglePopCategoryTypes) => {
 
   const handleCheckCategory = (category: string) => {
     const isSameCategory = productData?.filter(
-      (cat) => cat.category === category
+      (cat) => cat.category.toLowerCase() === category.toLowerCase()
     );
     if (isSameCategory) return isSameCategory?.length;
   };
 
   return (
-    <li className="group cursor-pointer">
-      <div className="shadow-mainShadow bg-white overflow-hidden rounded-full">
+    <li className="group cursor-pointer rounded-full">
+      <div className="shadow-mainShadow bg-white overflow-hidden rounded-full mb-4">
         <img
           src={item.image}
           alt={item.name}
