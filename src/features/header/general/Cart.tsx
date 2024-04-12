@@ -1,10 +1,14 @@
 import { MdOutlineShoppingBag } from "react-icons/md";
+import CartOItemCount from "./cart/CartOItemCount";
+import CartModal from "./cart/CartModal";
 
 const Cart = () => {
   return (
-    <li className="flex items-center">
+    <li className="flex items-center cursor-pointer relative font-sans group">
       <MdOutlineShoppingBag size={30} />
-      <span>69₾</span>
+      <span className="ml-3">0.00₾</span>
+      <CartOItemCount />
+      <CartModal />
     </li>
   );
 };
