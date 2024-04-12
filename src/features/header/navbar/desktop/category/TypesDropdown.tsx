@@ -6,9 +6,9 @@ type TypesDropdownProps = {
 const TypesDropdown = ({ categoryTypes }: TypesDropdownProps) => {
   return (
     <div className="absolute z-[9999] hidden group-hover:block right-0 top-0 translate-x-full bg-white shadow-mainShadow">
-      {categoryTypes?.map((type) => {
+      {categoryTypes?.map((type,index) => {
         return (
-          <div className="flex flex-col w-[10rem] h-auto p-3 hover:bg-veryLightGray">
+          <div key={index} className="flex flex-col w-[10rem] h-auto p-3 hover:bg-veryLightGray">
             <Link to={"products/category/type"}>
               <p className="font-medium">{type}</p>
             </Link>
