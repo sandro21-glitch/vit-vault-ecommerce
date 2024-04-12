@@ -20,7 +20,6 @@ body {
   font-family: var(--main-font);
   font-size: 0.875rem;
   line-height: 1.5;
-  oveflow-x: hidden!important;
 }
 
 h1,
