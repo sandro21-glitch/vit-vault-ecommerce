@@ -11,7 +11,7 @@ export interface Product {
   quantity: null | string;
   weight: null | string;
   desc: string;
-  characteristics: string[];
-  use: string;
+  characteristics: string[] | null;
+  use: string | null;
   images: string[];
 }
