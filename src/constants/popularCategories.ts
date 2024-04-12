@@ -1,42 +1,51 @@
+import joint from "/category/joint-pain-svgrepo-com.svg";
+import supplements from "/category/pills-medicine-svgrepo-com.svg";
+import vitamins from "/category/vitamins-vitamin-svgrepo-com.svg";
+import omega from "/category/medicine-pills-tablets-svgrepo-com.svg";
+import accessories from "/category/dumbbell-gym-svgrepo-com.svg";
+import vegan from "/category/organic-nutrition-svgrepo-com.svg";
+import healthy from "/category/healthy-food-versus-junk-food-svgrepo-com.svg";
+import women from "/category/women-svgrepo-com.svg";
+
 export const popularCategory = [
   {
     id: 1,
-    name: "სახსრების ჯანმრთელობა",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "საკვები დანამატები",
+    image: supplements,
   },
   {
     id: 2,
-    name: "ჯანსაღი საკვები",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "ვიტამინები და მინერალები",
+    image: vitamins,
   },
   {
     id: 3,
-    name: "ვეგანური",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "ომეგა 3",
+    image: omega,
   },
   {
     id: 4,
-    name: "გულის ჯანმრთელობა",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "აქსესუარები",
+    image: accessories,
   },
   {
     id: 5,
-    name: "ფამფი",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "ქალებისთვის",
+    image: women,
   },
   {
     id: 6,
-    name: "სექსუალური ჯანმრთელობა",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "ვეგანური",
+    image: vegan,
   },
   {
     id: 7,
-    name: "გონებრივი შესაძლებლობების გაუმჯობესება",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "სახსრების ჯანმრთელობა",
+    image: joint,
   },
   {
     id: 8,
-    name: "კანი, თმა, ფრჩხილები",
-    image: "https://vitamini.ge/storage/products/categories/16/fix2.jpg",
+    name: "ჯანსაღი საკვები",
+    image: healthy,
   },
 ];
