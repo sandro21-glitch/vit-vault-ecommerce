@@ -10,7 +10,7 @@ const CategoryList = () => {
     )
   );
   return (
-    <div className="absolute z-[9999] left-0 top-full w-full">
+    <div className="absolute z-[9999] left-0 top-full w-full bg-white">
       <ul className="border-l border-b border-r ">
         {uniqueCategories.map((category, index) => {
           return <SingleCategory key={index} category={category} />;
