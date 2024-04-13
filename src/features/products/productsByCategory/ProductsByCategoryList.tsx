@@ -11,7 +11,7 @@ const ProductsByCategoryList = () => {
   );
 
   return (
-    <ul className="grid grid-cols-4 gap-5 w-full max-w-[75%] mt-20">
+    <ul className="grid grid-cols-4 gap-5 mt-10">
       {selectedCategory?.map((categoryItem) => {
         return (
           <SingleProductByCategory
