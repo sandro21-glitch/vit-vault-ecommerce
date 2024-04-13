@@ -17,18 +17,24 @@ const SingleMobileCategoryList = ({ list }: SingleMobileCategory) => {
 
   return (
     <li className="font-semibold border-b cursor-pointer">
-      <div className={`flex justify-between items-center h-[3rem] ${isTypeOpen ? 'border-b' :'border-none'}`}>
+      <div
+        className={`flex justify-between items-center h-[3rem] ${
+          isTypeOpen ? "border-b" : "border-none"
+        }`}
+      >
         <span className="pl-5">{list}</span>
         {categoryTypes && categoryTypes.length > 0 && (
           <button
             onClick={() => setIsTypesOpen(!isTypeOpen)}
-            className={`h-full w-[3.5rem] ${
+            className={`h-full min-w-[3.5rem] ${
               isTypeOpen ? "bg-secondaryGreen" : "bg-transparent"
             } flex justify-center items-center border-b border-t-transparent border-b-transparent border`}
           >
             <IoMdArrowDropright
               size={25}
-              className={`${isTypeOpen ? "rotate-90" : ""} transition-all ease-in duration-300`}
+              className={`${
+                isTypeOpen ? "rotate-90" : ""
+              } transition-all ease-in duration-300`}
             />
           </button>
         )}
