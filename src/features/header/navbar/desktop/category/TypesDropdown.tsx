@@ -5,7 +5,7 @@ type TypesDropdownProps = {
 };
 const TypesDropdown = ({ categoryTypes }: TypesDropdownProps) => {
   return (
-    <div className="absolute z-[9999] hidden group-hover:block right-0 top-0 translate-x-full bg-white shadow-mainShadow">
+    <div className="absolute z-[9999] hidden group-hover/navItem:block right-0 top-0 translate-x-full bg-white shadow-mainShadow">
       {categoryTypes?.map((type, index) => {
         return (
           <div
