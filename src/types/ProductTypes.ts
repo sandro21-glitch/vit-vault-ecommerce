@@ -5,7 +5,7 @@ export interface Product {
   name: string;
   price: number;
   discount: number;
-  portion: number;
+  portion: number | null;
   property: null | string;
   inStock: boolean;
   quantity: null | string;
