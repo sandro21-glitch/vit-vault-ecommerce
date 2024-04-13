@@ -1,9 +1,9 @@
-
-
 const ProductsFilter = () => {
   return (
-    <div>ProductsFilter</div>
-  )
-}
+    <div className="w-full max-w-[25%] h-auto">
+      testtttffffffffffffffffffffff
+    </div>
+  );
+};
 
-export default ProductsFilter
+export default ProductsFilter;
