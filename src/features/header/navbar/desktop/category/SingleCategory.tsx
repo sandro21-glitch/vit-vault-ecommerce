@@ -13,8 +13,9 @@ const SingleCategory = ({ category }: SingleCategoryTypes) => {
     ?.filter((data) => data.category === category)
     .flatMap((data) => data.type ?? [])
     .filter((value, index, self) => self.indexOf(value) === index);
+    
   return (
-    <li className="relative group border border-b text-[13px] cursor-pointer font-semibold flex justify-between items-center ">
+    <li className="relative group/navItem border border-b text-[13px] cursor-pointer font-semibold flex justify-between items-center ">
       <Link
         className="px-3 py-2"
         to={`/product/${category.replace(/ /g, "-")}`}
