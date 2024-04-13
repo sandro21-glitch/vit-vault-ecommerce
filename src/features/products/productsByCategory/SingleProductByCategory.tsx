@@ -25,7 +25,7 @@ const SingleProductByCategory = ({
         className="h-[200px] w-auto object-cover mt-10"
       />
       <h6 className="text-[14px]">{name}</h6>
-      <p>{CheckDiscount({ price, discount })}</p>
+      <div>{CheckDiscount({ price, discount })}</div>
     </li>
   );
 };
