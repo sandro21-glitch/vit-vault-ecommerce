@@ -7,7 +7,7 @@ const ProductByCategory = () => {
   const { category } = useParams();
 
   const selectedCategory = productData?.filter(
-    (product) => product.category === category
+    (product) => product.category === category?.replace(/-/g, " ")
   );
 
   return (
