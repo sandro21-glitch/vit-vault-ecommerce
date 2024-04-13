@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/hooks";
+import CheckDiscount from "../../../ui/CheckDiscount";
 
 const ProductByCategory = () => {
   const { productData } = useAppSelector((store) => store.product);
@@ -12,17 +13,25 @@ const ProductByCategory = () => {
   return (
     <section className="section-x section-center">
       <article className="flex">
-        <div className="w-full max-w-[30%] h-auto">
+        <div className="w-full max-w-[25%] h-auto">
           testtttffffffffffffffffffffff
         </div>
-        <ul className="grid grid-cols-4 gap-5 w-full max-w-[70%]">
+        <ul className="grid grid-cols-4 gap-5 w-full max-w-[75%] mt-20">
           {selectedCategory?.map((categoryItem) => {
-            const { name, images, price, id } = categoryItem;
+            const { name, images, price, id, discount } = categoryItem;
             return (
-              <li key={id} className="flex flex-col items-center bg-red-900">
-                <img src={images[0]} alt={name} className="h-[200px] w-auto" />
-                <h6>{name}</h6>
-                <p>{price}</p>
+              <li
+                key={id}
+                className="w-full h-[350px] flex flex-col items-center text-center bg-white hover:shadow-mainShadow hover:scale-105 transition-all ease-in duration-200 cursor-pointer"
+              >
+                <img
+                  src={images[0]}
+                  alt={name}
+                  loading="lazy"
+                  className="h-[200px] w-auto object-cover mt-10"
+                />
+                <h6 className="text-[14px]">{name}</h6>
+                <p>{CheckDiscount({ price, discount })}</p>
               </li>
             );
           })}
