@@ -13,11 +13,14 @@ const SingleCategory = ({ category }: SingleCategoryTypes) => {
     ?.filter((data) => data.category === category)
     .flatMap((data) => data.type ?? [])
     .filter((value, index, self) => self.indexOf(value) === index);
-
   return (
-    <li className="relative group border border-b text-[13px] cursor-pointer font-semibold flex justify-between items-center px-3 py-2">
-      <Link to={`/product/${category}`}>{category}</Link>
-      {categoryTypes && categoryTypes.length !== 0 && <IoIosArrowForward />}
+    <li className="relative group border border-b text-[13px] cursor-pointer font-semibold flex justify-between items-center ">
+      <Link className="px-3 py-2" to={`/product/${category}`}>
+        {category}
+      </Link>
+      {categoryTypes && categoryTypes.length !== 0 && (
+        <IoIosArrowForward className="mr-1" />
+      )}
       <TypesDropdown categoryTypes={categoryTypes} />
     </li>
   );
