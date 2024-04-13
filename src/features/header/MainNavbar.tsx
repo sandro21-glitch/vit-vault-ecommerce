@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import DesktopNav from "./navbar/desktop/nav/DesktopNav";
 import MobileNav from "./navbar/mobile/nav/MobileNav";
 
@@ -8,6 +9,18 @@ type MainNavTypes = {
 };
 
 const MainNavbar = ({ isMobileNav, isOpen, setOpen }: MainNavTypes) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
     <nav
       className={`${isMobileNav ? "" : "border border-b-gray-200 h-[52px]"} `}
@@ -15,7 +28,7 @@ const MainNavbar = ({ isMobileNav, isOpen, setOpen }: MainNavTypes) => {
       {isOpen && isMobileNav && (
         <div
           onClick={() => setOpen(false)}
-          className="absolute top-0 w-screen h-screen bg-black z-[9999] opacity-65"
+          className="fixed top-0 w-screen h-screen bg-black z-[9999] opacity-65"
         ></div>
       )}
       {isMobileNav ? <MobileNav isOpen={isOpen} /> : <DesktopNav />}
