@@ -9,11 +9,11 @@ const CheckDiscount = ({ price, discount }: CheckDiscountTypes) => {
   if (discount > 0) {
     const discountedPrice = price - (price * discount) / 100;
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1">
         <p className="line-through text-primaryGray">
           {formatToGeorgianLari(price)}
         </p>
-        <p className="text-secondaryGreen font-semibold">{formatToGeorgianLari(discountedPrice)}</p>
+        <p className="text-secondaryGreen font-bold">{formatToGeorgianLari(discountedPrice)}</p>
       </div>
     );
   } else {
