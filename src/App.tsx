@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchDataFromFirebase } from "./features/slices/productsSlice";
 import Spinner from "./ui/Spinner";
+import ProductByCategory from "./features/products/productsByCategory/ProductByCategory";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/product/:category" element={<ProductByCategory />} />
       </Routes>
       <Footer />
     </BrowserRouter>
