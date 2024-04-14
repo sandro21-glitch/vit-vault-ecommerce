@@ -3,14 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB9tG_d1aGPXhJ5jU8UToebGsOTcMNqdmg",
-  authDomain: "vitvault-47c5f.firebaseapp.com",
-  projectId: "vitvault-47c5f",
-  databaseURL: "https://vitvault-47c5f-default-rtdb.firebaseio.com/",
-  storageBucket: "vitvault-47c5f.appspot.com",
-  messagingSenderId: "97791255698",
-  appId: "1:97791255698:web:20efe72793a152e46a724b",
-  measurementId: "G-NS58NJ0RSS",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
