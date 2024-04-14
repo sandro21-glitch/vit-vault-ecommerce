@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/hooks";
-import SingleProductByCategory from "./SingleProductByCategory";
+import ProductCard from "../../../ui/ProductCard";
 
 const ProductsByCategoryList = () => {
   const { productData } = useAppSelector((store) => store.product);
@@ -14,10 +14,7 @@ const ProductsByCategoryList = () => {
     <ul className="grid grid-cols-4 gap-5 mt-10">
       {selectedCategory?.map((categoryItem) => {
         return (
-          <SingleProductByCategory
-            key={categoryItem.id}
-            categoryItem={categoryItem}
-          />
+          <ProductCard key={categoryItem.id} categoryItem={categoryItem} />
         );
       })}
     </ul>
