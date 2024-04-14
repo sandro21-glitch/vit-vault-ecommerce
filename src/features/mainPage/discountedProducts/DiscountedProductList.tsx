@@ -6,7 +6,7 @@ const DiscountedProductList = () => {
   const discountedProducts = productData?.filter((data) => data.discount !== 0);
 
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-2">
+    <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-2">
       {discountedProducts?.map((product) => {
         return <SingleDiscountedProduct key={product.id} product={product} />;
       })}
