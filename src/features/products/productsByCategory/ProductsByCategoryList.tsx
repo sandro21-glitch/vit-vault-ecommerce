@@ -22,7 +22,7 @@ const ProductsByCategoryList = ({ filterPrice }: ProductsByCategoryList) => {
   }
 
   return (
-    <ul className="grid grid-cols-4 gap-5 mt-10">
+    <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
       {selectedCategory?.map((categoryItem) => {
         return (
           <ProductCard key={categoryItem.id} categoryItem={categoryItem} />
