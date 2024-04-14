@@ -9,7 +9,7 @@ import { useAppSelector } from "../hooks/hooks";
 const ProductByCategory = () => {
   const { productData } = useAppSelector((store) => store.product);
   const prices = productData?.map((product) => product.price) ?? [];
-
+  
   // find the maximum price
   const maxPrice = Math.max(...prices);
   const [filterPrice, setFilterPrice] = useState(maxPrice);
@@ -18,9 +18,9 @@ const ProductByCategory = () => {
   return (
     <section>
       <SectionHeader path={category ? category : ""} />
-      <article className="section-x section-center flex">
+      <article className="section-x section-center flex flex-col-reverse lg:flex-row">
         <ProductsFilter filterPrice={filterPrice} setFilterPrice={setFilterPrice} />
-        <div className=" w-full max-w-[75%]">
+        <div className="w-full lg:max-w-[75%]">
           <ListHeader category={category} />
           <ProductsByCategoryList filterPrice={filterPrice} />
         </div>
