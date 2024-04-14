@@ -22,7 +22,7 @@ const SectionHeader = ({ path }: SectionHeaderTypes) => {
         >
           <FaLongArrowAltRight />
         </button>
-        <h1 className="text-white font-bold text-[2rem]">{categoryName}</h1>
+        <h1 className="text-white font-bold text-[1.3rem] md:text-[1.5rem] lg:text-[2rem]">{categoryName}</h1>
       </div>
     </header>
   );
