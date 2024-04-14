@@ -13,13 +13,17 @@ const CheckDiscount = ({ price, discount }: CheckDiscountTypes) => {
         <p className="line-through text-primaryGray">
           {formatToGeorgianLari(price)}
         </p>
-        <p className="text-secondaryGreen font-bold">{formatToGeorgianLari(discountedPrice)}</p>
+        <p className="text-secondaryGreen font-bold">
+          {formatToGeorgianLari(discountedPrice)}
+        </p>
       </div>
     );
   } else {
     return (
       <div>
-        <p>{formatToGeorgianLari(price)}</p>
+        <p className="text-secondaryGreen font-bold">
+          {formatToGeorgianLari(price)}
+        </p>
       </div>
     );
   }
