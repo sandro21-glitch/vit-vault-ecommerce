@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         src={images[0]}
         alt={name}
         loading="lazy"
-        className="h-[200px] w-auto object-cover mt-10"
+        className="h-[200px] w-auto object-cover mt-10 mb-2"
       />
       <h6 className="text-[14px]">{name}</h6>
       <div>{CheckDiscount({ price, discount })}</div>
