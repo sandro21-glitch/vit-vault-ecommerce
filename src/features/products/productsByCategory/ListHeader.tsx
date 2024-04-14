@@ -26,6 +26,7 @@ const ListHeader = ({ category }: ListHeaderTypes) => {
         <div className="hidden lg:block">აჩვენე: 12 / 24 / 48</div>
         <div className="relative">
           <GrSort
+          size={20}
             onClick={toggleOptions}
             className="cursor-pointer lg:hidden"
           />
