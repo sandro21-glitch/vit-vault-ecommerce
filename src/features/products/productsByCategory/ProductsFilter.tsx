@@ -11,7 +11,7 @@ const ProductsFilter = ({
   setFilterPrice,
 }: ProductsFilterTypes) => {
   return (
-      <div className="w-full max-w-[25%] h-auto px-[15px]">
+      <div className="w-full lg:max-w-[25%] h-auto px-[15px]">
       <FilterByCategory />
       <FilterByPrice
         filterPrice={filterPrice}
