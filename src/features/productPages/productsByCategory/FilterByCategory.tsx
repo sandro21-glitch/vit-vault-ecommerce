@@ -8,7 +8,7 @@ const FilterByCategory = () => {
 
   const uniqueCategories = [...new Set(categories)];
   return (
-    <div className="border-primaryGray border-b-2">
+    <div className="border-gray-300 border-b">
       <h5 className="mb-[10px] font-semibold tracking-wider">კატეგორიები</h5>
       <ul>
         {uniqueCategories?.map((category, index) => {
