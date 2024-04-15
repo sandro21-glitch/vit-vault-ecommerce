@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchDataFromFirebase } from "./features/slices/productsSlice";
 import Spinner from "./ui/Spinner";
 import ProductByCategory from "./pages/ProductByCategory";
+import PathChangeListener from "./utils/PathChangeListener";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/product/:category" element={<ProductByCategory />} />
       </Routes>
       <Footer />
+      <PathChangeListener />
     </BrowserRouter>
   );
 };
