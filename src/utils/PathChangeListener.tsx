@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { setProductPerPage } from "../features/slices/filtersSlice";
+import {
+  setPriceSort,
+  setProductPerPage,
+} from "../features/slices/filtersSlice";
 
 const PathChangeListener = () => {
   const dispatch = useDispatch();
@@ -9,6 +12,7 @@ const PathChangeListener = () => {
 
   useEffect(() => {
     dispatch(setProductPerPage(24));
+    dispatch(setPriceSort("normal"));
   }, [dispatch, location.pathname]);
 
   return null;
