@@ -12,17 +12,26 @@ const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
   filterPrice,
 }) => {
   const { productData } = useAppSelector((store) => store.product);
-  const { productsPerPage } = useAppSelector((store) => store.filters);
+  const { productsPerPage, sort } = useAppSelector((store) => store.filters);
   const { category } = useParams<{ category: string }>();
   const [currentPage, setCurrentPage] = useState(1);
 
   // filter products based on category and price
-  const selectedCategory = productData?.filter((product) => {
-    return (
-      product.price <= filterPrice &&
-      product.category === category?.replace(/-/g, " ")
-    );
-  });
+  const selectedCategory = productData
+    ?.filter((product) => {
+      return (
+        product.price <= filterPrice &&
+        product.category === category?.replace(/-/g, " ")
+      );
+    })
+    .sort((a, b) => {
+      if (sort === "lowest") {
+        return b.price - a.price;
+      } else if (sort === "highest") {
+        return a.price - b.price;
+      }
+      return 0;
+    });
 
   // handle page change
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
