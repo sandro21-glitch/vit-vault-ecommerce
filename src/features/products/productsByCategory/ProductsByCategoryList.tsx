@@ -12,9 +12,9 @@ const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
   filterPrice,
 }) => {
   const { productData } = useAppSelector((store) => store.product);
+  const { productsPerPage } = useAppSelector((store) => store.filters);
   const { category } = useParams<{ category: string }>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(8);
 
   // filter products based on category and price
   const selectedCategory = productData?.filter((product) => {
