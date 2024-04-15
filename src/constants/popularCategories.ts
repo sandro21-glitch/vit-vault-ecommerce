@@ -12,40 +12,48 @@ export const popularCategory = [
     id: 1,
     name: "საკვები დანამატები",
     image: supplements,
+    path: "საკვები-დანამატები",
   },
   {
     id: 2,
     name: "ვიტამინები და მინერალები",
     image: vitamins,
+    path: "ვიტამინები-და-მინერალები",
   },
   {
     id: 3,
     name: "ომეგა 3",
     image: omega,
+    path: "ომეგა-3",
   },
   {
     id: 4,
     name: "აქსესუარები",
     image: accessories,
+    path: "აქსესუარები",
   },
   {
     id: 5,
     name: "ქალებისთვის",
     image: women,
+    path: "ქალებისთვის",
   },
   {
     id: 6,
     name: "ვეგანური",
     image: vegan,
+    path: "ვეგანური",
   },
   {
     id: 7,
     name: "სახსრების ჯანმრთელობა",
     image: joint,
+    path: "სახსრების-ჯანმრთელობა",
   },
   {
     id: 8,
     name: "ჯანსაღი საკვები",
     image: healthy,
+    path: "ჯანსაღი-საკვები",
   },
 ];
