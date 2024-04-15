@@ -24,7 +24,7 @@ const FilterByPrice: React.FC<FilterByPriceProps> = ({
   const handleFilterPrice = () => setFilterPrice(newPrice);
 
   return (
-    <div className="mt-5 pb-5 border-gray-300 border-b">
+    <div className="my-5 pb-5 border-gray-300 border-b">
       <label
         htmlFor="price-range"
         className="block mb-2 text-[1rem] font-semibold text-gray-900 dark:text-white"
