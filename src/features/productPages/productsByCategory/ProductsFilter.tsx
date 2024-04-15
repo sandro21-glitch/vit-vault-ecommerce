@@ -1,3 +1,4 @@
+import RandomProducts from "../../../ui/RandomProducts";
 import FilterByCategory from "./FilterByCategory";
 import FilterByPrice from "./FilterByPrice";
 
@@ -11,12 +12,13 @@ const ProductsFilter = ({
   setFilterPrice,
 }: ProductsFilterTypes) => {
   return (
-      <div className="w-full lg:max-w-[25%] h-auto px-[15px]">
+    <div className="w-full lg:max-w-[25%] h-auto px-[15px]">
       <FilterByCategory />
       <FilterByPrice
         filterPrice={filterPrice}
         setFilterPrice={setFilterPrice}
       />
+      <RandomProducts />
     </div>
   );
 };
