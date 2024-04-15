@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { GrSort } from "react-icons/gr";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
+import { setPriceSort } from "../../../slices/filtersSlice";
 
 const PriceSorter = () => {
-    const [selectedOption, setSelectedOption] = useState("");
-    const [showOptions, setShowOptions] = useState(false);
-    const toggleOptions = () => {
-        setShowOptions(!showOptions);
-      };
-      const handleOptionClick = (option: string) => {
-        setSelectedOption(option);
-        setShowOptions(false);
-      };
+  const { sort } = useAppSelector((store) => store.filters);
+  const [showOptions, setShowOptions] = useState(false);
+  const dispatch = useAppDispatch();
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+  };
+
+  const handleOptionClick = (option: string) => {
+    setShowOptions(false);
+    dispatch(setPriceSort(option));
+  };
+
   return (
     <div className="relative">
       <GrSort
@@ -23,14 +28,12 @@ const PriceSorter = () => {
           showOptions ? "block" : "hidden"
         } absolute top-full right-0 z-[99999] outline-none font-semibold border-b-2 max-w-[200px] cursor-pointer text-[14px] border-primaryGreen lg:block`}
         onBlur={() => setShowOptions(false)}
-        value={selectedOption}
+        value={sort}
         onChange={(e) => handleOptionClick(e.target.value)}
       >
-        <option selected defaultChecked>
-          ნაგულისხმევი
-        </option>
-        <option value="ფასი: ზრდადობით">ფასი: ზრდადობით</option>
-        <option value="ფასი: კლებადობით">ფასი: კლებადობით</option>
+        <option value="normal">ნაგულისხმევი</option>
+        <option value="highest">ფასი: ზრდადობით</option>
+        <option value="lowest">ფასი: კლებადობით</option>
       </select>
     </div>
   );
