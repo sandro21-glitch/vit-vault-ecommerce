@@ -2,11 +2,13 @@ import { useState } from "react";
 import MobileTypesList from "./MobileTypesList";
 import { useAppSelector } from "../../../../../hooks/hooks";
 import { IoMdArrowDropright } from "react-icons/io";
+import { Link } from "react-router-dom";
 type SingleMobileCategory = {
   list: string;
+  setOpen: (isOpen: boolean) => void;
 };
 
-const SingleMobileCategoryList = ({ list }: SingleMobileCategory) => {
+const SingleMobileCategoryList = ({ list, setOpen }: SingleMobileCategory) => {
   const [isTypeOpen, setIsTypesOpen] = useState<boolean>(false);
   const { productData } = useAppSelector((store) => store.product);
 
@@ -15,14 +17,26 @@ const SingleMobileCategoryList = ({ list }: SingleMobileCategory) => {
     .flatMap((data) => data.type ?? [])
     .filter((value, index, self) => self.indexOf(value) === index);
 
+  const handleCloseNav = () => {
+    setOpen(false);
+  };
+
   return (
-    <li className="font-semibold border-b cursor-pointer">
+    <li
+      onClick={handleCloseNav}
+      className="font-semibold border-b cursor-pointer"
+    >
       <div
-        className={`flex justify-between items-center h-[3rem] ${
+        className={`flex justify-between items-center w-full h-[3rem] ${
           isTypeOpen ? "border-b" : "border-none"
         }`}
       >
-        <span className="pl-5">{list}</span>
+        <Link
+          to={`/product/${list.replace(/ /g, "-")}`}
+          className="pl-5 h-full min-w-full flex items-center"
+        >
+          <div>{list}</div>
+        </Link>
         {categoryTypes && categoryTypes.length > 0 && (
           <button
             onClick={() => setIsTypesOpen(!isTypeOpen)}
