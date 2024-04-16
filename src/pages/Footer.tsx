@@ -2,7 +2,11 @@ const Footer = () => {
   return (
     <footer className="border border-t py-5">
       <div className="section-center section-x flex justify-between items-center">
-        <p>© 2024 VitVault. All rights reserved</p>
+        <p>
+          © 2024{" "}
+          <span className="text-primaryGreen cursor-pointer">VitVault</span>.
+          All rights reserved
+        </p>
         <p>
           <a
             href="https://www.top.ge/"
