@@ -18,7 +18,7 @@ const FilterByCategory = () => {
               key={index}
               className="py-[8px] text-primaryGray text-[14px] hover:text-black transition-colors ease-in duration-150"
             >
-              <Link to={`/product/${formattedCategory}`}>{category}</Link>
+              <Link to={`/product-category/${formattedCategory}`}>{category}</Link>
             </li>
           );
         })}
