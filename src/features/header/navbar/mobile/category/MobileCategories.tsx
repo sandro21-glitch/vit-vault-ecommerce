@@ -1,7 +1,11 @@
 import { useAppSelector } from "../../../../../hooks/hooks";
 import SingleMobileCategoryList from "./SingleMobileCategoryList";
 
-const MobileCategories = () => {
+type MobileCategoriesTypes = {
+  setOpen: (open: boolean) => void;
+};
+
+const MobileCategories = ({setOpen}:MobileCategoriesTypes) => {
   const { productData } = useAppSelector((store) => store.product);
   const uniqueCategories = Array.from(
     new Set(productData?.map((product) => product.category))
@@ -9,7 +13,7 @@ const MobileCategories = () => {
   return (
     <ul>
       {uniqueCategories.map((list, index) => {
-        return <SingleMobileCategoryList key={index} list={list} />;
+        return <SingleMobileCategoryList key={index} list={list} setOpen={setOpen} />;
       })}
     </ul>
   );
