@@ -20,8 +20,9 @@ const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
   const selectedCategory = productData
     ?.filter((product) => {
       return (
-        product.price <= filterPrice &&
-        product.category === category?.replace(/-/g, " ")
+        (product.price <= filterPrice &&
+          product.category === category?.replace(/-/g, " ")) ||
+        product.type === category?.replace(/-/g, " ")
       );
     })
     .sort((a, b) => {
@@ -57,8 +58,8 @@ const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
   return (
     <div>
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
-        {currentProducts.map((categoryItem) => (
-          <ProductCard key={categoryItem.id} categoryItem={categoryItem} />
+        {currentProducts.map((categoryItem, index) => (
+          <ProductCard key={index} categoryItem={categoryItem} />
         ))}
       </ul>
       <CustomPagination
