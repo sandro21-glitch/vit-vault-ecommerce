@@ -32,7 +32,7 @@ const SingleMobileCategoryList = ({ list, setOpen }: SingleMobileCategory) => {
         }`}
       >
         <Link
-          to={`/product/${list.replace(/ /g, "-")}`}
+          to={`/product-category/${list.replace(/ /g, "-")}`}
           className="pl-5 h-full min-w-full flex items-center"
         >
           <div>{list}</div>
