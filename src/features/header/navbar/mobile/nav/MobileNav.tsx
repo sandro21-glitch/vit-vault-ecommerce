@@ -6,9 +6,10 @@ import MobileCategories from "../category/MobileCategories";
 
 type MobileNavTypes = {
   isOpen: boolean;
+  setOpen: (open: boolean) => void;
 };
 
-const MobileNav = ({ isOpen }: MobileNavTypes) => {
+const MobileNav = ({ isOpen, setOpen }: MobileNavTypes) => {
   const [activeTab, setActiveTab] = useState<string>("menu");
 
   return (
@@ -20,7 +21,7 @@ const MobileNav = ({ isOpen }: MobileNavTypes) => {
       <div className="overflow-hidden">
         <SearchProduct />
         <NavTabs setActiveTab={setActiveTab} activeTab={activeTab} />
-        {activeTab === "menu" ? <MobileNavList /> : <MobileCategories />}
+        {activeTab === "menu" ? <MobileNavList /> : <MobileCategories setOpen={setOpen} />}
       </div>
     </div>
   );
