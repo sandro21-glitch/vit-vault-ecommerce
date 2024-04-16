@@ -8,6 +8,7 @@ import { fetchDataFromFirebase } from "./features/slices/productsSlice";
 import Spinner from "./ui/Spinner";
 import ProductByCategory from "./pages/ProductByCategory";
 import PathChangeListener from "./utils/PathChangeListener";
+import SingleProduct from "./features/productPages/singleProduct/SingleProduct";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +25,11 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/product/:category" element={<ProductByCategory />} />
+        <Route
+          path="/product-category/:category"
+          element={<ProductByCategory />}
+        />
+        <Route path="/product/:product" element={<SingleProduct />} />
       </Routes>
       <Footer />
       <PathChangeListener />
