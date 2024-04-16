@@ -4,6 +4,9 @@ const SingleProduct = () => {
 
   return (
     <section>
+      
+      
+
     </section>
   )
 }
