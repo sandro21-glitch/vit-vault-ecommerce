@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { database } from "../../config/firebase";
 import { get, ref } from "firebase/database";
 import { Product } from "../../types/ProductTypes";
@@ -30,18 +30,24 @@ export interface ProductState {
   productData: Product[] | null;
   status: Status;
   error: string | null;
+  selectedProductId: string | null;
 }
 
 const initialState: ProductState = {
   productData: null,
   status: Status.Idle,
   error: null,
+  selectedProductId: null,
 };
 
 export const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedProductId: (state, action: PayloadAction<string>) => {
+      state.selectedProductId = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchDataFromFirebase.pending, (state) => {
@@ -57,6 +63,8 @@ export const productSlice = createSlice({
       });
   },
 });
+
+export const { setSelectedProductId } = productSlice.actions;
 
 export const selectProductData = (state: RootState) =>
   state.product.productData;
