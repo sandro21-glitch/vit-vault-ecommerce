@@ -1,5 +1,8 @@
 import Breadcrumb from "../../../../../ui/Breadcrumb";
 import CheckDiscount from "../../../../../ui/CheckDiscount";
+import AddToCart from "./addToCart/AddToCart";
+import AddToWhishlist from "./AddToWhishlist";
+import CheckStock from "./CheckStock";
 import ProductPortion from "./ProductPortion";
 import ProductQuantity from "./ProductQuantity";
 import ProductWeight from "./ProductWeight";
@@ -44,6 +47,9 @@ const ProductSummary = ({ singleProdData }: ProductSummaryTypes) => {
       {portion && <ProductPortion portion={portion} />}
       {quantity && <ProductQuantity quantity={quantity} />}
       {property && <Property property={property} />}
+      <CheckStock stock={inStock} />
+      <AddToCart />
+      <AddToWhishlist />
     </div>
   );
 };
