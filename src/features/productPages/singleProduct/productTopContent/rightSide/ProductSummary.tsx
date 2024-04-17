@@ -1,6 +1,7 @@
 import Breadcrumb from "../../../../../ui/Breadcrumb";
 import CheckDiscount from "../../../../../ui/CheckDiscount";
 import ProductPortion from "./ProductPortion";
+import ProductQuantity from "./ProductQuantity";
 import ProductWeight from "./ProductWeight";
 import Property from "./Property";
 
@@ -20,14 +21,28 @@ type ProductSummaryTypes = {
 };
 
 const ProductSummary = ({ singleProdData }: ProductSummaryTypes) => {
-  const { name, price, discount, property, weight, portion } = singleProdData;
+  const {
+    name,
+    price,
+    discount,
+    property,
+    weight,
+    portion,
+    inStock,
+    quantity,
+  } = singleProdData;
   return (
     <div className="flex-1">
       <Breadcrumb category={name} classname="font-sans" />
       <h1 className="text-[18px] font-semibold my-5">{name}</h1>
-      <CheckDiscount discount={discount} price={price} classname="text-[22px]" />
+      <CheckDiscount
+        discount={discount}
+        price={price}
+        classname="text-[22px]"
+      />
       {weight && <ProductWeight weight={weight} />}
       {portion && <ProductPortion portion={portion} />}
+      {quantity && <ProductQuantity quantity={quantity} />}
       {property && <Property property={property} />}
     </div>
   );
