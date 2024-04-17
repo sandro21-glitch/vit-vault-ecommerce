@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type SingleCategoryDropdownTypes = {
   type: string | null;
 };
@@ -5,7 +7,9 @@ type SingleCategoryDropdownTypes = {
 const SingleCategoryDropdown = ({ type }: SingleCategoryDropdownTypes) => {
   return (
     <div className="h-[3rem] flex items-center border-b">
-      <span className="pl-5 text-primaryGray">{type}</span>
+      <Link to={`/product-category/${type?.replace(/ /g, "-")}`}>
+        <span className="pl-5 text-primaryGray">{type}</span>
+      </Link>
     </div>
   );
 };
