@@ -12,6 +12,7 @@ const Property = ({ property }: PropertyTypes) => {
             <option
               key={index}
               disabled={prop.available}
+              value={prop.name}
               className={` text-[14px] cursor-not-allowed ${
                 !prop.available ? "text-primaryGray" : "text-gray-200"
               }`}
