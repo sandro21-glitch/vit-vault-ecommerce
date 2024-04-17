@@ -25,7 +25,7 @@ const ProductImages = ({ images, name }: ProductImagesTypes) => {
             src={image}
             alt={name}
             loading="lazy"
-            className="w-full h-[500px] object-contain"
+            className="w-full h-[350px] lg:h-[500px] object-contain"
           />
         ))}
       </Slider>
