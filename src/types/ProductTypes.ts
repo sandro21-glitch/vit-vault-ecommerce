@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   discount: number;
   portion: number | null;
-  property: null | string;
+  property: null | { available: boolean; name: string }[];
   inStock: boolean;
   quantity: null | string;
   weight: null | string;
