@@ -15,7 +15,7 @@
   border-radius: 20px;
   text-align: center;
   line-height: 40px;
-  color: #2E854B;
+  color: #2e854b;
   text-decoration: none;
 }
 
@@ -26,7 +26,7 @@
 .page-item.active .page-link {
   font-weight: 700;
   color: #ffffff;
-  background-color: #2E854B;
+  background-color: #2e854b;
 }
 
 .page-item.disabled .page-link {
