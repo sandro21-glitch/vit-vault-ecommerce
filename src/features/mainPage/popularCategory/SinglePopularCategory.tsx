@@ -21,7 +21,7 @@ const SinglePopularCategory = ({ item }: SinglePopCategoryTypes) => {
 
   return (
     <li className="group cursor-pointer rounded-full">
-      <Link to={`/product/${item.path}`}>
+      <Link to={`/product-category/${item.path}`}>
         <div className="shadow-mainShadow bg-white overflow-hidden rounded-full mb-4">
           <img
             src={item.image}
