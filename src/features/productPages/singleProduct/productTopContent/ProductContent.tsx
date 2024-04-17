@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../../hooks/hooks";
 import ProductImages from "./leftSide/ProductImages";
+import ProductSummary from "./rightSide/ProductSummary";
 
 const ProductContent = () => {
   const { state } = useLocation();
@@ -12,12 +13,12 @@ const ProductContent = () => {
   if (!singleProdData) return null;
   return (
     <article className="section-center section-x">
-      <div className="grid grid-cols-2 py-10">
+      <div className="grid grid-cols-2 py-10 gap-7">
         <ProductImages
           images={singleProdData.images || []}
           name={singleProdData.name}
         />
-        <div className="flex-1 ">test</div>
+        <ProductSummary singleProdData={singleProdData} />
       </div>
     </article>
   );
