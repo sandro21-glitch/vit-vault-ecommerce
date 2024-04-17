@@ -14,15 +14,15 @@ const SectionHeader = ({ path }: SectionHeaderTypes) => {
   };
 
   return (
-    <header className="bg-primaryGreen mb-[40px]">
+    <header className="bg-primaryGreen mb-[40px] ">
       <div className="section-center py-[15px] flex items-center justify-center">
         <button
           onClick={navigateBack}
-          className="mr-5 rotate-180 text-[2rem] text-white"
+          className="mr-5 rotate-180 text-[2rem] text-white "
         >
           <FaLongArrowAltRight />
         </button>
-        <h1 className="text-white font-bold text-[1.3rem] md:text-[1.5rem] lg:text-[2rem]">{categoryName}</h1>
+        <h1 className="text-white font-bold text-[1rem] md:text-[1.5rem] lg:text-[2rem] whitespace-nowrap">{categoryName}</h1>
       </div>
     </header>
   );
