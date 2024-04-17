@@ -9,15 +9,13 @@ const ProductImages = ({ images, name }: ProductImagesTypes) => {
     dots: false,
     infinite: true,
     speed: 500,
-    fade: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
   };
 
   if (!images) return null;
   return (
-    <Slider {...settings} className="flex-1 ">
+    <Slider {...settings} arrows={false} className="flex-1">
       {images.map((image, index) => (
         <div key={index}>
           <img
