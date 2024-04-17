@@ -22,10 +22,7 @@ const SingleMobileCategoryList = ({ list, setOpen }: SingleMobileCategory) => {
   };
 
   return (
-    <li
-      onClick={handleCloseNav}
-      className="font-semibold border-b cursor-pointer"
-    >
+    <li className="font-semibold border-b cursor-pointer">
       <div
         className={`flex justify-between items-center w-full h-[3rem] ${
           isTypeOpen ? "border-b" : "border-none"
@@ -33,7 +30,8 @@ const SingleMobileCategoryList = ({ list, setOpen }: SingleMobileCategory) => {
       >
         <Link
           to={`/product-category/${list.replace(/ /g, "-")}`}
-          className="pl-5 h-full min-w-full flex items-center"
+          className="pl-5 h-full w-full flex items-center"
+          onClick={handleCloseNav}
         >
           <div>{list}</div>
         </Link>
@@ -53,7 +51,11 @@ const SingleMobileCategoryList = ({ list, setOpen }: SingleMobileCategory) => {
           </button>
         )}
       </div>
-      <MobileTypesList isTypeOpen={isTypeOpen} categoryTypes={categoryTypes} />
+      <MobileTypesList
+        isTypeOpen={isTypeOpen}
+        categoryTypes={categoryTypes}
+        setOpen={setOpen}
+      />
     </li>
   );
 };
