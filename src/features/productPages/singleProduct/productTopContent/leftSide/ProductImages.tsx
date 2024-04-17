@@ -4,26 +4,27 @@ type ProductImagesTypes = {
   images: string[];
   name: string;
 };
+
 const ProductImages = ({ images, name }: ProductImagesTypes) => {
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: images.length > 1,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
 
-  if (!images) return null;
+  if (!images || images.length === 0) return null;
+
   return (
-    <Slider {...settings} arrows={false} className="flex-1">
+    <Slider {...settings} arrows={false}>
       {images.map((image, index) => (
-        <div key={index}>
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-[500px] object-contain"
-          />
-        </div>
+        <img
+          key={index}
+          src={image}
+          alt={name}
+          className="w-full h-[500px] object-contain"
+        />
       ))}
     </Slider>
   );
