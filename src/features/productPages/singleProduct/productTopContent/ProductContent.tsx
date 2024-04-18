@@ -5,6 +5,7 @@ import ProductSummary from "./rightSide/ProductSummary";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedProductId } from "../../../slices/productsSlice";
+import ProductDetails from "../productDetails/ProductDetails";
 
 const ProductContent = () => {
   const { state } = useLocation();
@@ -33,6 +34,7 @@ const ProductContent = () => {
         />
         <ProductSummary singleProdData={singleProdData} />
       </div>
+      <ProductDetails singleProdData={singleProdData} />
     </article>
   );
 };
