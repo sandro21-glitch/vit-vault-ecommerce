@@ -4,9 +4,9 @@ type PropertyTypes = {
 
 const Property = ({ property }: PropertyTypes) => {
   return (
-    <div className="flex justify-between items-center mt-5 pb-5 border-b">
-      <div className="text-[14px] mr-5">აირჩიეთ პარამეტრი</div>
-      <select className="border-2 flex-1 py-2 text-[14px] cursor-pointer outline-none">
+    <div className="flex lg:flex-row flex-col justify-between items-start lg:items-center mt-5 pb-5 border-b">
+      <div className="text-[14px] mr-5 mb-2 lg:mb-0">აირჩიეთ პარამეტრი</div>
+      <select className="border-2 flex-1 w-full lg:w-auto py-2 text-[14px] cursor-pointer outline-none">
         {property?.map((prop, index) => {
           return (
             <option
