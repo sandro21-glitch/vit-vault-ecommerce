@@ -1,3 +1,4 @@
+
 import ProductContent from "./productTopContent/ProductContent";
 
 const SingleProduct = () => {
