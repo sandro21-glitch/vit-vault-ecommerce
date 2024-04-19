@@ -10,16 +10,21 @@ type ProductDetailTypes = {
 };
 
 const ProductDetails = ({ singleProdData }: ProductDetailTypes) => {
-  const { desc, characteristics, name, use } = singleProdData;
+  const { desc, characteristics, name, use, category } = singleProdData;
 
   return (
     <div className="border-t relative">
       <ProductTabs />
       <div className="pt-10">
         <ProductDescription desc={desc} />
-        <Characteristics characteristics={characteristics} name={name} />
-        <ProductUsage use={use} />
-        <Warning />
+        {category !== "სპორტული ტანსაცმელი და ფეხსაცმელი" && (
+          <>
+            <Characteristics characteristics={characteristics} name={name} />
+            <ProductUsage use={use} />
+          </>
+        )}
+        {category !== "სპორტული ტანსაცმელი და ფეხსაცმელი" &&
+          category !== "აქსესუარები" && <Warning />}
       </div>
     </div>
   );
