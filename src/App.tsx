@@ -8,7 +8,7 @@ import { fetchDataFromFirebase } from "./features/slices/productsSlice";
 import Spinner from "./ui/Spinner";
 import ProductByCategory from "./pages/ProductByCategory";
 import PathChangeListener from "./utils/PathChangeListener";
-import SingleProduct from "./features/productPages/singleProduct/SingleProduct";
+import SingleProduct from "./pages/SingleProduct";
 
 const App = () => {
   const dispatch = useAppDispatch();
