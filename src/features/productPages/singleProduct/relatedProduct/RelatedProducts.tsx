@@ -1,3 +1,5 @@
+import RelatedProductList from "./RelatedProductList";
+
 const RelatedProducts = () => {
   return (
     <article
@@ -5,7 +7,7 @@ const RelatedProducts = () => {
       style={{ marginBottom: "40px", marginTop: "50px" }}
     >
       <h6 className="font-semibold">შესაძლოა, ასევე მოგეწონოთ…</h6>
-      
+      <RelatedProductList />
     </article>
   );
 };
