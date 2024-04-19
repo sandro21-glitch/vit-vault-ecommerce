@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../../../hooks/hooks";
+import ProductCard from "../../../../ui/ProductCard";
 
 const RelatedProductList = () => {
   const { selectedProductId, productData } = useAppSelector(
@@ -15,8 +16,13 @@ const RelatedProductList = () => {
       }
     })
     .slice(0, 8);
-  console.log(relatedProduct);
-  return <div>RelatedProductList</div>;
+  return (
+    <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {relatedProduct?.map((product) => {
+        return <ProductCard key={product.id} categoryItem={product} />;
+      })}
+    </ul>
+  );
 };
 
 export default RelatedProductList;
