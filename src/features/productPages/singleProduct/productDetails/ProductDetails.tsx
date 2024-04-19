@@ -3,6 +3,7 @@ import Characteristics from "./characteristics/Characteristics";
 import ProductDescription from "./productDescription/ProductDescription";
 import ProductTabs from "./tabs/ProductTabs";
 import ProductUsage from "./use/ProductUsage";
+import Warning from "./warning/Warning";
 
 type ProductDetailTypes = {
   singleProdData: Product;
@@ -18,6 +19,7 @@ const ProductDetails = ({ singleProdData }: ProductDetailTypes) => {
         <ProductDescription desc={desc} />
         <Characteristics characteristics={characteristics} name={name} />
         <ProductUsage use={use} />
+        <Warning />
       </div>
     </div>
   );
