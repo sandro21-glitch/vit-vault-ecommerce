@@ -7,16 +7,25 @@ type SingleRandomProdTypes = {
     images: string[];
     discount: number;
     price: number;
+    id: string;
   };
 };
 
 const SingleRandomProduct = ({
-  product: { name, images, discount, price },
+  product: { name, images, discount, price, id },
 }: SingleRandomProdTypes) => {
+  const formattedName = name
+    .replace(/\+/g, " ")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/-$/, "");
+
   return (
     <li>
       <Link
-        to="/"
+        to={`/product/${formattedName}`}
+        state={{ id }}
         className="flex items-center gap-5 border-b pb-[15px] mb-[15px]"
       >
         <img
