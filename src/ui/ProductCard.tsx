@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
           loading="lazy"
           className="h-[200px] w-auto object-cover mt-10 mb-2"
         />
-        <h6 className="text-[14px]">{name}</h6>
+        <h6 className="text-[14px] px-10">{name}</h6>
         <div>{CheckDiscount({ price, discount })}</div>
         {!inStock && (
           <div className="absolute top-0 right-0">
