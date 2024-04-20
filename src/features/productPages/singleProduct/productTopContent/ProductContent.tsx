@@ -33,7 +33,7 @@ const ProductContent = () => {
       className="section-center section-x"
       style={{ marginBottom: "40px", marginTop: "50px" }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 pb-10 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 pb-10 gap-5 mb-20">
         <ProductImages
           images={singleProdData.images || []}
           name={singleProdData.name}
