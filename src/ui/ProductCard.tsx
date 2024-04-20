@@ -1,8 +1,6 @@
-import React from "react";
 import soldOutIcon from "/icons/sold-out-sales-svgrepo-com.svg";
 import CheckDiscount from "./CheckDiscount";
 import { Link } from "react-router-dom";
-
 type ProductCardProps = {
   categoryItem: {
     name: string;
@@ -16,6 +14,7 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
   const { discount, price, id, images, inStock, name } = categoryItem;
+
   // format the name
   const formattedName = name
     .replace(/\+/g, " ")
