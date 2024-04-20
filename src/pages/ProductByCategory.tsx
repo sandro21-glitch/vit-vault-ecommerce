@@ -5,8 +5,10 @@ import SectionHeader from "../ui/SectionHeader";
 import ProductsByCategoryList from "../features/productPages/productsByCategory/ProductsByCategoryList";
 import ProductsFilter from "../features/productPages/productsByCategory/ProductsFilter";
 import ListHeader from "../features/productPages/productsByCategory/ListHeader";
+import useScrollToTopOnPageChange from "../hooks/useScrollToTopOnPageChange";
 
 const ProductByCategory = () => {
+  useScrollToTopOnPageChange();
   const { productData } = useAppSelector((store) => store.product);
   const prices = productData?.map((product) => product.price) ?? [];
 
