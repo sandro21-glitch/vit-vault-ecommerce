@@ -17,7 +17,7 @@ const ProductImages = ({ images, name }: ProductImagesTypes) => {
   if (!images || images.length === 0) return null;
 
   return (
-    <div>
+    <div className="mb-5">
       <Slider {...settings} arrows={false}>
         {images.map((image, index) => (
           <img
