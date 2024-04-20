@@ -17,7 +17,7 @@ const SingleCategory = ({ category }: SingleCategoryTypes) => {
   return (
     <li className="relative group/navItem border border-b text-[13px] cursor-pointer font-semibold flex justify-between items-center ">
       <Link
-        className="px-3 py-2"
+        className="px-3 py-2 w-full"
         to={`/product-category/${category.replace(/ /g, "-")}`}
       >
         {category}
