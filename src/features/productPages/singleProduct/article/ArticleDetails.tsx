@@ -14,7 +14,8 @@ const ArticleDetails = () => {
       <div className="section-center section-x">
         <ul className="flex justify-evenly flex-col md:flex-row">
           <li className="text-[14px]">
-            <strong>კატეგორია:</strong> {singleProdData?.category},{" "}
+            <strong>კატეგორია:</strong> {singleProdData?.category}
+            {singleProdData?.type && ","}
             {singleProdData?.type}
           </li>
           <li className="text-[14px]">
