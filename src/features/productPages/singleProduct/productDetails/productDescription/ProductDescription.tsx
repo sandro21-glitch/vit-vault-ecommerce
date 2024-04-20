@@ -1,3 +1,5 @@
+import React from "react";
+
 type DescriptionTypes = {
   desc: string;
 };
@@ -11,11 +13,11 @@ const ProductDescription = ({ desc }: DescriptionTypes) => {
       return `${part} `;
     }
     return (
-      <>
+      <React.Fragment key={index}>
         {part}
         <br />
         <br />
-      </>
+      </React.Fragment>
     );
   });
 
