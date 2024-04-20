@@ -48,7 +48,7 @@ const ProductSummary = ({ singleProdData }: ProductSummaryTypes) => {
       {quantity && <ProductQuantity quantity={quantity} />}
       {property && <Property property={property} />}
       <CheckStock stock={inStock} />
-      <AddToCart />
+      {inStock && <AddToCart />}
       <AddToWhishlist />
     </div>
   );
