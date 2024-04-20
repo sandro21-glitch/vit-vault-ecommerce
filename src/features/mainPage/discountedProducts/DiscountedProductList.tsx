@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../../hooks/hooks";
-import SingleDiscountedProduct from "./SingleDiscountedProduct";
+import ProductCard from "../../../ui/ProductCard";
 
 const DiscountedProductList = () => {
   const { productData } = useAppSelector((store) => store.product);
@@ -8,7 +8,7 @@ const DiscountedProductList = () => {
   return (
     <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 w-full gap-2">
       {discountedProducts?.map((product) => {
-        return <SingleDiscountedProduct key={product.id} product={product} />;
+        return <ProductCard key={product.id} categoryItem={product} />;
       })}
     </ul>
   );
