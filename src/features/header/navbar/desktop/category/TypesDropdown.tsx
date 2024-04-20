@@ -10,10 +10,11 @@ const TypesDropdown = ({ categoryTypes }: TypesDropdownProps) => {
         return (
           <div
             key={index}
-            className="flex flex-col w-[10rem] h-auto p-3 hover:bg-veryLightGray"
+            className="flex flex-col w-[10rem] h-auto hover:bg-veryLightGray"
           >
             <Link
               to={`/product-category/${type.replace(/ /g, "-")}`}
+              className="p-3"
             >
               <p className="font-medium">{type}</p>
             </Link>
