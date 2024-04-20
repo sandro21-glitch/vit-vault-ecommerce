@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./ui/Header";
 import MainPage from "./pages/MainPage";
-import Footer from "./pages/Footer";
+import Footer from "./features/mainPage/Footer";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchDataFromFirebase } from "./features/slices/productsSlice";
