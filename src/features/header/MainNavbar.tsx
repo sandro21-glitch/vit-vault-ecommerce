@@ -10,11 +10,12 @@ type MainNavTypes = {
 
 const MainNavbar = ({ isMobileNav, isOpen, setOpen }: MainNavTypes) => {
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    const handleOverflow = () => {
+      document.body.style.overflow =
+        !isOpen || window.innerWidth < 1280 ? "auto" : "hidden";
+    };
+
+    handleOverflow();
 
     return () => {
       document.body.style.overflow = "auto";
@@ -31,7 +32,11 @@ const MainNavbar = ({ isMobileNav, isOpen, setOpen }: MainNavTypes) => {
           className="fixed top-0 w-screen h-screen bg-black z-[9999] opacity-65"
         ></div>
       )}
-      {isMobileNav ? <MobileNav isOpen={isOpen} setOpen={setOpen} /> : <DesktopNav />}
+      {isMobileNav ? (
+        <MobileNav isOpen={isOpen} setOpen={setOpen} />
+      ) : (
+        <DesktopNav />
+      )}
     </nav>
   );
 };
