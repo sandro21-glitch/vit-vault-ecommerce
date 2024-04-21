@@ -69,4 +69,31 @@ export const { setSelectedProductId } = productSlice.actions;
 export const selectProductData = (state: RootState) =>
   state.product.productData;
 
+
+export const selectFilteredProducts = (
+  state: RootState,
+  category: string,
+  filterPrice: number,
+  sort: string
+) => {
+  const { productData } = state.product;
+
+  return productData
+    ?.filter((product) => {
+      return (
+        (product.price <= filterPrice &&
+          product.category === category.replace(/-/g, " ")) ||
+        product.type === category.replace(/-/g, " ")
+      );
+    })
+    .sort((a, b) => {
+      if (sort === "lowest") {
+        return b.price - a.price;
+      } else if (sort === "highest") {
+        return a.price - b.price;
+      }
+      return 0;
+    });
+};
+
 export default productSlice.reducer;
