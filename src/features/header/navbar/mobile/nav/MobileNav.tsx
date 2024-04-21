@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchProduct from "../../../general/SearchProduct";
+import SearchProduct from "../../../general/search/SearchProduct";
 import MobileNavList from "./MobileNavList";
 import NavTabs from "../NavTabs";
 import MobileCategories from "../category/MobileCategories";
@@ -21,7 +21,11 @@ const MobileNav = ({ isOpen, setOpen }: MobileNavTypes) => {
       <div className="overflow-hidden">
         <SearchProduct />
         <NavTabs setActiveTab={setActiveTab} activeTab={activeTab} />
-        {activeTab === "menu" ? <MobileNavList /> : <MobileCategories setOpen={setOpen} />}
+        {activeTab === "menu" ? (
+          <MobileNavList />
+        ) : (
+          <MobileCategories setOpen={setOpen} />
+        )}
       </div>
     </div>
   );
