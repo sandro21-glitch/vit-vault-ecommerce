@@ -9,6 +9,7 @@ import Spinner from "./ui/Spinner";
 import ProductByCategory from "./pages/ProductByCategory";
 import PathChangeListener from "./utils/PathChangeListener";
 import SingleProduct from "./pages/SingleProduct";
+import ProductByInput from "./pages/ProductByInput";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ const App = () => {
           element={<ProductByCategory />}
         />
         <Route path="/product/:product" element={<SingleProduct />} />
+        <Route path="/shop/:input" element={<ProductByInput />} />
       </Routes>
       <Footer />
       <PathChangeListener />
