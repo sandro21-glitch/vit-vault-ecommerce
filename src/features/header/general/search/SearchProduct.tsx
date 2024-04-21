@@ -1,7 +1,8 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useAppDispatch } from "../../../../hooks/hooks";
 import { setFilteredProducts } from "../../../slices/productsSlice";
+import SearchResult from "./SearchResult";
 
 const SearchProduct = () => {
   const [search, setSearch] = useState("");
@@ -9,11 +10,21 @@ const SearchProduct = () => {
 
   const handleSearchProduct = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(setFilteredProducts(search));
+    if (search.trim() !== "") {
+      dispatch(setFilteredProducts(search));
+    }
   };
 
+  useEffect(() => {
+    if (search !== "") {
+      dispatch(setFilteredProducts(search));
+    } else {
+      dispatch(setFilteredProducts(""));
+    }
+  }, [search]);
+
   return (
-    <div className="flex-1">
+    <div className="flex-1 relative">
       <form className="relative" onSubmit={handleSearchProduct}>
         <input
           type="text"
@@ -31,6 +42,7 @@ const SearchProduct = () => {
           <CiSearch size={25} />
         </button>
       </form>
+      <SearchResult />
     </div>
   );
 };
