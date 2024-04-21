@@ -1,7 +1,7 @@
 import Hamburger from "hamburger-react";
 import Cart from "./general/Cart";
 import Logo from "./general/Logo";
-import SearchProduct from "./general/SearchProduct";
+import SearchProduct from "./general/search/SearchProduct";
 import UserAuth from "./general/UserAuth";
 
 type GenHeaderTypes = {
