@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/hooks";
 import ProductCard from "../../../ui/ProductCard";
 import CustomPagination from "../../../ui/CustomPagination";
+import { selectFilteredProducts } from "../../slices/productsSlice";
 
 type ProductsByCategoryListProps = {
   filterPrice: number;
@@ -11,33 +12,18 @@ type ProductsByCategoryListProps = {
 const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
   filterPrice,
 }) => {
-  const { productData } = useAppSelector((store) => store.product);
   const { productsPerPage, sort } = useAppSelector((store) => store.filters);
   const { category } = useParams<{ category: string }>();
   const [currentPage, setCurrentPage] = useState(1);
 
   // filter products based on category and price
-  const selectedCategory = productData
-    ?.filter((product) => {
-      return (
-        (product.price <= filterPrice &&
-          product.category === category?.replace(/-/g, " ")) ||
-        product.type === category?.replace(/-/g, " ")
-      );
-    })
-    .sort((a, b) => {
-      if (sort === "lowest") {
-        return b.price - a.price;
-      } else if (sort === "highest") {
-        return a.price - b.price;
-      }
-      return 0;
-    });
-
+  const filteredProducts = useAppSelector((state) =>
+    selectFilteredProducts(state, category || "", filterPrice, sort)
+  );
   // handle page change
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  if (!selectedCategory || selectedCategory.length < 1) {
+  if (!filteredProducts || filteredProducts.length < 1) {
     return (
       <p className="text-[1.5rem] h-full flex items-center justify-center">
         პროდუქტები ვერ მოიძებნა
@@ -50,7 +36,7 @@ const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
   // get current products for the current page
-  const currentProducts = selectedCategory.slice(
+  const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -64,7 +50,7 @@ const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
       </ul>
       <CustomPagination
         currentPage={currentPage}
-        totalPages={Math.ceil(selectedCategory.length / productsPerPage)}
+        totalPages={Math.ceil(filteredProducts.length / productsPerPage)}
         onPageChange={handlePageChange}
       />
     </div>
