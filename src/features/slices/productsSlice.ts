@@ -31,6 +31,7 @@ export interface ProductState {
   status: Status;
   error: string | null;
   selectedProductId: string | null;
+  filteredProducts: Product[] | null;
 }
 
 const initialState: ProductState = {
@@ -38,6 +39,7 @@ const initialState: ProductState = {
   status: Status.Idle,
   error: null,
   selectedProductId: null,
+  filteredProducts: null,
 };
 
 export const productSlice = createSlice({
@@ -46,6 +48,15 @@ export const productSlice = createSlice({
   reducers: {
     setSelectedProductId: (state, action: PayloadAction<string>) => {
       state.selectedProductId = action.payload;
+    },
+    setFilteredProducts: (state, action: PayloadAction<string>) => {
+      const { productData } = state;
+      if (productData) {
+        const searchTerm = action.payload.toLowerCase();
+        state.filteredProducts = productData.filter((data) =>
+          data.name.toLowerCase().startsWith(searchTerm)
+        );
+      }
     },
   },
   extraReducers: (builder) => {
@@ -64,11 +75,11 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setSelectedProductId } = productSlice.actions;
+export const { setSelectedProductId, setFilteredProducts } =
+  productSlice.actions;
 
 export const selectProductData = (state: RootState) =>
   state.product.productData;
-
 
 export const selectFilteredProducts = (
   state: RootState,
