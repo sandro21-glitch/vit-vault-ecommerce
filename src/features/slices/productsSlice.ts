@@ -51,8 +51,11 @@ export const productSlice = createSlice({
     },
     setFilteredProducts: (state, action: PayloadAction<string>) => {
       const { productData } = state;
-      if (productData) {
-        const searchTerm = action.payload.toLowerCase();
+      const searchTerm = action.payload.toLowerCase().trim(); 
+
+      if (!searchTerm) {
+        state.filteredProducts = [];
+      } else if (productData) {
         state.filteredProducts = productData.filter((data) =>
           data.name.toLowerCase().startsWith(searchTerm)
         );
