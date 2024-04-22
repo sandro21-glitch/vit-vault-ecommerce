@@ -1,9 +1,4 @@
-import {
-  PayloadAction,
-  createAsyncThunk,
-  createSelector,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { database } from "../../config/firebase";
 import { get, ref } from "firebase/database";
 import { Product } from "../../types/ProductTypes";
@@ -37,6 +32,7 @@ export interface ProductState {
   error: string | null;
   selectedProductId: string | null;
   filteredProducts: Product[] | null;
+  productsByCategory: Product[] | null;
   searchTerm: string;
 }
 
@@ -46,6 +42,7 @@ const initialState: ProductState = {
   error: null,
   selectedProductId: null,
   filteredProducts: null,
+  productsByCategory: null,
   searchTerm: "",
 };
 
@@ -70,6 +67,13 @@ export const productSlice = createSlice({
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload.toLowerCase().trim();
     },
+    setProductsByCategory: (state, action: PayloadAction<string>) => {
+      if (state.productData) {
+        state.productsByCategory = state.productData?.filter(
+          (data) => data.category.toLowerCase() === action.payload.toLowerCase()
+        );
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -87,35 +91,14 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setSelectedProductId, setFilteredProducts, setSearchTerm } =
-  productSlice.actions;
+export const {
+  setSelectedProductId,
+  setFilteredProducts,
+  setSearchTerm,
+  setProductsByCategory,
+} = productSlice.actions;
 
 export const selectProductData = (state: RootState) =>
   state.product.productData;
-
-export const selectFilteredProducts = createSelector(
-  (state: RootState) => state.product.productData,
-  (_, category: string) => category,
-  (_, __, filterPrice: number) => filterPrice,
-  (_, ___, __, sort: string) => sort,
-  (productData, category, filterPrice, sort) => {
-    return productData
-      ?.filter((product: Product) => {
-        return (
-          (product.price <= filterPrice &&
-            product.category === category.replace(/-/g, " ")) ||
-          product.type === category.replace(/-/g, " ")
-        );
-      })
-      .sort((a: Product, b: Product) => {
-        if (sort === "lowest") {
-          return b.price - a.price;
-        } else if (sort === "highest") {
-          return a.price - b.price;
-        }
-        return 0;
-      });
-  }
-);
 
 export default productSlice.reducer;
