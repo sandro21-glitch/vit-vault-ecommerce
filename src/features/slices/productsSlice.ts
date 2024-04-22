@@ -1,4 +1,9 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  PayloadAction,
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
 import { database } from "../../config/firebase";
 import { get, ref } from "firebase/database";
 import { Product } from "../../types/ProductTypes";
@@ -51,7 +56,7 @@ export const productSlice = createSlice({
     },
     setFilteredProducts: (state, action: PayloadAction<string>) => {
       const { productData } = state;
-      const searchTerm = action.payload.toLowerCase().trim(); 
+      const searchTerm = action.payload.toLowerCase().trim();
 
       if (!searchTerm) {
         state.filteredProducts = [];
@@ -84,30 +89,32 @@ export const { setSelectedProductId, setFilteredProducts } =
 export const selectProductData = (state: RootState) =>
   state.product.productData;
 
-export const selectFilteredProducts = (
-  state: RootState,
-  category: string,
-  filterPrice: number,
-  sort: string
-) => {
-  const { productData } = state.product;
-
-  return productData
-    ?.filter((product) => {
-      return (
-        (product.price <= filterPrice &&
-          product.category === category.replace(/-/g, " ")) ||
-        product.type === category.replace(/-/g, " ")
-      );
-    })
-    .sort((a, b) => {
-      if (sort === "lowest") {
-        return b.price - a.price;
-      } else if (sort === "highest") {
-        return a.price - b.price;
-      }
-      return 0;
-    });
-};
+export const selectFilteredProducts = createSelector(
+  // Input selectors: select the parts of state needed for calculation
+  (state: RootState) => state.product.productData,
+  (_, category: string) => category,
+  (_, __, filterPrice: number) => filterPrice,
+  (_, ___, __, sort: string) => sort,
+  // Computation function: perform the calculation based on input selectors
+  (productData, category, filterPrice, sort) => {
+    // Perform filtering and sorting based on category, filterPrice, and sort
+    return productData
+      ?.filter((product: Product) => {
+        return (
+          (product.price <= filterPrice &&
+            product.category === category.replace(/-/g, " ")) ||
+          product.type === category.replace(/-/g, " ")
+        );
+      })
+      .sort((a: Product, b: Product) => {
+        if (sort === "lowest") {
+          return b.price - a.price;
+        } else if (sort === "highest") {
+          return a.price - b.price;
+        }
+        return 0;
+      });
+  }
+);
 
 export default productSlice.reducer;
