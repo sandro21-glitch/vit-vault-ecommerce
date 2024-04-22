@@ -13,7 +13,6 @@ const ProductsByCategoryList = () => {
   const formattedCategory = category ? category.replace(/-/g, " ") : "";
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useAppDispatch();
-  console.log(formattedCategory);
   
   useEffect(() => {
     dispatch(setProductsByCategory(formattedCategory));
