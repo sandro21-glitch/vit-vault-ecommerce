@@ -3,15 +3,19 @@ import { CiSearch } from "react-icons/ci";
 import { useAppDispatch } from "../../../../hooks/hooks";
 import { setFilteredProducts } from "../../../slices/productsSlice";
 import SearchResult from "./SearchResult";
+import { useNavigate } from "react-router-dom";
 
 const SearchProduct = () => {
-  const [search, setSearch] = useState("");
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
+  const [search, setSearch] = useState<string>("");
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const handleSearchProduct = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (search.trim() !== "") {
       dispatch(setFilteredProducts(search));
+      navigate(`/shop/${search}`);
+      setIsClicked(true);
     }
   };
 
@@ -20,6 +24,7 @@ const SearchProduct = () => {
       dispatch(setFilteredProducts(search));
     } else {
       dispatch(setFilteredProducts(""));
+      setIsClicked(false);
     }
   }, [search]);
 
@@ -42,7 +47,7 @@ const SearchProduct = () => {
           <CiSearch size={25} />
         </button>
       </form>
-      <SearchResult />
+      {!isClicked && <SearchResult />}
     </div>
   );
 };
