@@ -60,7 +60,13 @@ const SearchProduct = () => {
           <CiSearch size={25} />
         </button>
       </form>
-      {isTyping && <SearchResult localData={filteredData} />}
+      {isTyping && (
+        <SearchResult
+          localData={filteredData}
+          setIsTyping={setIsTyping}
+          setSearch={setSearch}
+        />
+      )}
     </div>
   );
 };
