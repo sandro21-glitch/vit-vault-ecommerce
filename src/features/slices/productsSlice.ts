@@ -37,6 +37,7 @@ export interface ProductState {
   error: string | null;
   selectedProductId: string | null;
   filteredProducts: Product[] | null;
+  searchTerm: string;
 }
 
 const initialState: ProductState = {
@@ -45,6 +46,7 @@ const initialState: ProductState = {
   error: null,
   selectedProductId: null,
   filteredProducts: null,
+  searchTerm: "",
 };
 
 export const productSlice = createSlice({
@@ -54,17 +56,19 @@ export const productSlice = createSlice({
     setSelectedProductId: (state, action: PayloadAction<string>) => {
       state.selectedProductId = action.payload;
     },
-    setFilteredProducts: (state, action: PayloadAction<string>) => {
-      const { productData } = state;
-      const searchTerm = action.payload.toLowerCase().trim();
+    setFilteredProducts: (state) => {
+      const { productData, searchTerm } = state;
 
-      if (!searchTerm) {
-        state.filteredProducts = [];
-      } else if (productData) {
+      if (productData && searchTerm !== "") {
         state.filteredProducts = productData.filter((data) =>
           data.name.toLowerCase().startsWith(searchTerm)
         );
+      } else {
+        state.filteredProducts = [];
       }
+    },
+    setSearchTerm: (state, action: PayloadAction<string>) => {
+      state.searchTerm = action.payload.toLowerCase().trim();
     },
   },
   extraReducers: (builder) => {
@@ -83,21 +87,18 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setSelectedProductId, setFilteredProducts } =
+export const { setSelectedProductId, setFilteredProducts, setSearchTerm } =
   productSlice.actions;
 
 export const selectProductData = (state: RootState) =>
   state.product.productData;
 
 export const selectFilteredProducts = createSelector(
-  // Input selectors: select the parts of state needed for calculation
   (state: RootState) => state.product.productData,
   (_, category: string) => category,
   (_, __, filterPrice: number) => filterPrice,
   (_, ___, __, sort: string) => sort,
-  // Computation function: perform the calculation based on input selectors
   (productData, category, filterPrice, sort) => {
-    // Perform filtering and sorting based on category, filterPrice, and sort
     return productData
       ?.filter((product: Product) => {
         return (
