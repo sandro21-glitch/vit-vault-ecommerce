@@ -1,32 +1,45 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { useAppDispatch } from "../../../../hooks/hooks";
-import { setFilteredProducts } from "../../../slices/productsSlice";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
+import {
+  setFilteredProducts,
+  setSearchTerm,
+} from "../../../slices/productsSlice";
 import SearchResult from "./SearchResult";
 import { useNavigate } from "react-router-dom";
 
 const SearchProduct = () => {
   const dispatch = useAppDispatch();
+  const { productData } = useAppSelector((store) => store.product);
   const navigate = useNavigate();
   const [search, setSearch] = useState<string>("");
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+
   const handleSearchProduct = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (search.trim() !== "") {
-      dispatch(setFilteredProducts(search));
+      dispatch(setSearchTerm(search));
+      dispatch(setFilteredProducts());
       navigate(`/shop/${search}`);
-      setIsClicked(true);
+      setIsTyping(false);
+      setSearch("");
     }
   };
 
+  const filteredData = useMemo(() => {
+    if (!search || !productData) return null;
+    return productData.filter((data) =>
+      data.name.toLowerCase().startsWith(search.toLowerCase())
+    );
+  }, [search, productData]);
+
   useEffect(() => {
-    if (search !== "") {
-      dispatch(setFilteredProducts(search));
+    if (search !== "" && productData) {
+      setIsTyping(true);
     } else {
-      dispatch(setFilteredProducts(""));
-      setIsClicked(false);
+      setIsTyping(false);
     }
-  }, [search]);
+  }, [search, productData]);
 
   return (
     <div className="flex-1 relative">
@@ -47,7 +60,7 @@ const SearchProduct = () => {
           <CiSearch size={25} />
         </button>
       </form>
-      {!isClicked && <SearchResult />}
+      {isTyping && <SearchResult localData={filteredData} />}
     </div>
   );
 };
