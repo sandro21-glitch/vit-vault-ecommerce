@@ -6,7 +6,7 @@ const Categories = () => {
   const [isLocationChanged, setIsLocationChanged] = useState<boolean>(false);
   return (
     <div className="h-full mr-[15px]">
-      <div className="relative group min-w-[270px] max-w-[320px] h-full bg-secondaryGreen flex items-center justify-between">
+      <div className="relative group min-w-[270px] max-w-[320px] h-full bg-yellow-500 flex items-center justify-between">
         <div className="flex items-center gap-1 pl-5 text-white text-[15px] font-bold">
           <GiHamburgerMenu className="text-[20px]" />
           <span>კატეგორიები</span>
