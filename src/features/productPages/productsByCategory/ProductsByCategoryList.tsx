@@ -1,18 +1,14 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../../hooks/hooks";
-import ProductCard from "../../../ui/ProductCard";
+import { useState } from "react";
 import CustomPagination from "../../../ui/CustomPagination";
+import ProductCard from "../../../ui/ProductCard";
 import { selectFilteredProducts } from "../../slices/productsSlice";
+import { useAppSelector } from "../../../hooks/hooks";
+import { useParams } from "react-router-dom";
 
-type ProductsByCategoryListProps = {
-  filterPrice: number;
-};
-
-const ProductsByCategoryList: React.FC<ProductsByCategoryListProps> = ({
-  filterPrice,
-}) => {
-  const { productsPerPage, sort } = useAppSelector((store) => store.filters);
+const ProductsByCategoryList = () => {
+  const { productsPerPage, sort, filterPrice } = useAppSelector(
+    (store) => store.filters
+  );
   const { category } = useParams<{ category: string }>();
   const [currentPage, setCurrentPage] = useState(1);
 
