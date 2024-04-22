@@ -70,7 +70,9 @@ export const productSlice = createSlice({
     setProductsByCategory: (state, action: PayloadAction<string>) => {
       if (state.productData) {
         state.productsByCategory = state.productData?.filter(
-          (data) => data.category.toLowerCase() === action.payload.toLowerCase()
+          (data) =>
+            data.category.toLowerCase() === action.payload.toLowerCase() ||
+            data?.type?.toLowerCase() === action.payload.toLowerCase()
         );
       }
     },
