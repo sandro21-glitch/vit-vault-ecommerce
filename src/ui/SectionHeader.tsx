@@ -5,9 +5,8 @@ type SectionHeaderTypes = {
 };
 
 const SectionHeader = ({ path }: SectionHeaderTypes) => {
-  if (!path) return null;
-  const categoryName = path.replace(/-/g, " ");
   const navigate = useNavigate();
+  const categoryName = path ? path.replace(/-/g, " ") : "პროდუქტები";
 
   const navigateBack = () => {
     navigate(-1);
@@ -22,7 +21,9 @@ const SectionHeader = ({ path }: SectionHeaderTypes) => {
         >
           <FaLongArrowAltRight />
         </button>
-        <h1 className="text-white font-bold text-[1rem] md:text-[1.5rem] lg:text-[2rem] whitespace-nowrap">{categoryName}</h1>
+        <h1 className="text-white font-bold text-[1rem] md:text-[1.5rem] lg:text-[2rem] whitespace-nowrap">
+          {categoryName}
+        </h1>
       </div>
     </header>
   );
