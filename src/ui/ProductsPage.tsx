@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import useScrollToTopOnPageChange from "../hooks/useScrollToTopOnPageChange";
 import { useParams } from "react-router-dom";
 import SectionHeader from "./SectionHeader";
-import ProductsFilter from "../features/productPages/productsByCategory/ProductsFilter";
-import ListHeader from "../features/productPages/productsByCategory/ListHeader";
+import ProductsFilter from "../features/filters/ProductsFilter";
+import ListHeader from "../features/filters/ListHeader";
 import { setFilterPrice } from "../features/slices/filtersSlice";
 
 type ProductsPageTypes = {
@@ -20,7 +20,7 @@ const ProductsPage = ({ children }: ProductsPageTypes) => {
   const [filterPrice, setFilterPriceLocal] = useState(maxPrice);
 
   const { category } = useParams();
-  
+
   useEffect(() => {
     dispatch(setFilterPrice(filterPrice));
   }, [filterPrice, dispatch]);
