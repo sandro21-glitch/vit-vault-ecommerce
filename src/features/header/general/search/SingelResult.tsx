@@ -5,13 +5,20 @@ import CheckDiscount from "../../../../ui/CheckDiscount";
 
 type SingleResultTypes = {
   data: Product;
+  setIsTyping: (typeing: boolean) => void;
+  setSearch: (search: string) => void;
 };
 
-const SingelResult = ({ data }: SingleResultTypes) => {
+const SingelResult = ({ data, setIsTyping, setSearch }: SingleResultTypes) => {
   const { name, images, discount, price, id } = data;
 
+  const handleStopTyping = () => {
+    setSearch("");
+    setIsTyping(false);
+  };
+
   return (
-    <li>
+    <li onClick={handleStopTyping}>
       <Link
         to={`/product/${formatPath(name)}`}
         state={{ id }}
