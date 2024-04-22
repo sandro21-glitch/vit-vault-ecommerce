@@ -1,6 +1,7 @@
 import soldOutIcon from "/icons/sold-out-sales-svgrepo-com.svg";
 import CheckDiscount from "./CheckDiscount";
 import { Link } from "react-router-dom";
+import { formatPath } from "../utils/formatPath";
 type ProductCardProps = {
   categoryItem: {
     name: string;
@@ -15,17 +16,10 @@ type ProductCardProps = {
 const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
   const { discount, price, id, images, inStock, name } = categoryItem;
 
-  // format the name
-  const formattedName = name
-    .replace(/\+/g, " ")
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/-$/, "");
   return (
     <li key={id}>
       <Link
-        to={`/product/${formattedName}`}
+        to={`/product/${formatPath(name)}`}
         state={{ id }}
         className="relative w-full h-[350px] flex flex-col items-center text-center bg-white hover:shadow-mainShadow hover:scale-105 transition-all ease-in duration-200 cursor-pointer"
       >
