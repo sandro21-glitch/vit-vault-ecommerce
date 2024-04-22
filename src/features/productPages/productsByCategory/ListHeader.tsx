@@ -9,7 +9,7 @@ type ListHeaderTypes = {
 const ListHeader = ({ category }: ListHeaderTypes) => {
   return (
     <div className="flex justify-between">
-      <Breadcrumb category={category ? category : ""} />
+      <Breadcrumb category={category ? category : "პროდუქტები"} />
       <div className="flex gap-5 relative">
         <PerPageFilter />
         <PriceSorter />
