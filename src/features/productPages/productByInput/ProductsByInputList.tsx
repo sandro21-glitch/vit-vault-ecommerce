@@ -3,6 +3,7 @@ import { useAppSelector } from "../../../hooks/hooks";
 import ProductCard from "../../../ui/ProductCard";
 import CustomPagination from "../../../ui/CustomPagination";
 import { filterProductPage } from "../../../utils/productFilters";
+import NoProducts from "../../../ui/NoProducts";
 
 const ProductsByInputList = () => {
   const { productsPerPage, sort, filterPrice } = useAppSelector(
@@ -15,14 +16,14 @@ const ProductsByInputList = () => {
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (!filteredProducts || filteredProducts.length < 1) {
-    return (
-      <p className="text-[1.5rem] h-full flex items-center justify-center">
-        პროდუქტები ვერ მოიძებნა
-      </p>
-    );
+    return <NoProducts />;
   }
 
-  const productWithFilters = filterProductPage(filteredProducts,filterPrice,sort)
+  const productWithFilters = filterProductPage(
+    filteredProducts,
+    filterPrice,
+    sort
+  );
 
   // calculate index range for current page
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -36,7 +37,7 @@ const ProductsByInputList = () => {
   return (
     <div>
       {currentProducts.length === 0 ? (
-        <p>No Products</p>
+        <NoProducts />
       ) : (
         <>
           <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
