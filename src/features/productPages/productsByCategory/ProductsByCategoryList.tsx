@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { useParams } from "react-router-dom";
 import { setProductsByCategory } from "../../slices/productsSlice";
 import { filterProductPage } from "../../../utils/productFilters";
+import NoProducts from "../../../ui/NoProducts";
 
 const ProductsByCategoryList = () => {
   const { productsPerPage, filterPrice, sort } = useAppSelector(
@@ -24,11 +25,7 @@ const ProductsByCategoryList = () => {
   const handlePageChange = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (!productsByCategory || productsByCategory.length < 1) {
-    return (
-      <p className="text-[1.5rem] h-full flex items-center justify-center">
-        პროდუქტები ვერ მოიძებნა
-      </p>
-    );
+    return <NoProducts />;
   }
 
   // filter and sort products
@@ -50,7 +47,7 @@ const ProductsByCategoryList = () => {
   return (
     <div>
       {currentProducts.length === 0 ? (
-        <p>No Products</p>
+        <NoProducts />
       ) : (
         <>
           <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
