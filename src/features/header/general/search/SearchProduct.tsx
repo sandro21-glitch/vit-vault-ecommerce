@@ -20,7 +20,9 @@ const SearchProduct = () => {
     if (search.trim() !== "") {
       dispatch(setSearchTerm(search));
       dispatch(setFilteredProducts());
-      navigate(`/shop/${search}`);
+      navigate(
+        `/shop?search=${encodeURIComponent(search).replace(/%20/g, "+")}`
+      );
       setIsTyping(false);
       setSearch("");
     }
