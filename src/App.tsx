@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./ui/Header";
 import MainPage from "./pages/MainPage";
 import Footer from "./features/mainPage/Footer";
@@ -49,6 +49,7 @@ const App = () => {
         />
         <Route path="/product/:product" element={<SingleProduct />} />
         <Route path="/shop" element={<ProductByInput />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
       <PathChangeListener />
