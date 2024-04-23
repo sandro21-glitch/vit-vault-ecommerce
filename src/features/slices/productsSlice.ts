@@ -60,8 +60,6 @@ export const productSlice = createSlice({
         state.filteredProducts = productData.filter((data) =>
           data.name.toLowerCase().startsWith(searchTerm)
         );
-      } else {
-        state.filteredProducts = [];
       }
     },
     setSearchTerm: (state, action: PayloadAction<string>) => {
