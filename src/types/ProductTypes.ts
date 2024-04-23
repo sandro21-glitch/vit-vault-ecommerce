@@ -10,7 +10,7 @@ export interface Product {
   inStock: boolean;
   quantity: null | string;
   weight: null | string;
-  desc: string;
+  desc: string | null;
   characteristics: string[] | null;
   use: string | null;
   images: string[];
