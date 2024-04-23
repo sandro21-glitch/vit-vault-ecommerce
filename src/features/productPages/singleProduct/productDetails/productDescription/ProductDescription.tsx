@@ -1,10 +1,11 @@
 import React from "react";
 
 type DescriptionTypes = {
-  desc: string;
+  desc: string | null;
 };
 
 const ProductDescription = ({ desc }: DescriptionTypes) => {
+  if (!desc) return null;
   const pattern = / - /g;
   const parts = desc.split(pattern);
 
