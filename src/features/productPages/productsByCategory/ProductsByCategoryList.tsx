@@ -4,16 +4,19 @@ import ProductCard from "../../../ui/ProductCard";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { useParams } from "react-router-dom";
 import { setProductsByCategory } from "../../slices/productsSlice";
+import { filterProductPage } from "../../../utils/productFilters";
 
 const ProductsByCategoryList = () => {
-  const { productsPerPage } = useAppSelector((store) => store.filters);
+  const { productsPerPage, filterPrice, sort } = useAppSelector(
+    (store) => store.filters
+  );
   const { productsByCategory } = useAppSelector((store) => store.product);
 
   const { category } = useParams<{ category?: string }>() || "";
   const formattedCategory = category ? category.replace(/-/g, " ") : "";
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     dispatch(setProductsByCategory(formattedCategory));
   }, [category]);
@@ -28,28 +31,40 @@ const ProductsByCategoryList = () => {
     );
   }
 
+  // filter and sort products
+  const productWithFilters = filterProductPage(
+    productsByCategory,
+    filterPrice,
+    sort
+  );
+
   // calculate index range for current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
   // get current products for the current page
-  const currentProducts = productsByCategory.slice(
+  const currentProducts = productWithFilters.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
-
   return (
     <div>
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
-        {currentProducts.map((categoryItem, index) => (
-          <ProductCard key={index} categoryItem={categoryItem} />
-        ))}
-      </ul>
-      <CustomPagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(productsByCategory.length / productsPerPage)}
-        onPageChange={handlePageChange}
-      />
+      {currentProducts.length === 0 ? (
+        <p>No Products</p>
+      ) : (
+        <>
+          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
+            {currentProducts.map((categoryItem, index) => (
+              <ProductCard key={index} categoryItem={categoryItem} />
+            ))}
+          </ul>
+          <CustomPagination
+            currentPage={currentPage}
+            totalPages={Math.ceil(productsByCategory.length / productsPerPage)}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </div>
   );
 };
