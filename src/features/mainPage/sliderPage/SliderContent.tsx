@@ -16,7 +16,7 @@ const SliderContent = () => {
     <Slider {...settings} dots={false}>
       {sliderContent.map((item) => {
         return (
-          <SingleSlider item={item} />
+          <SingleSlider key={item.id} item={item} />
         );
       })}
     </Slider>
