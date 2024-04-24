@@ -23,7 +23,7 @@ const ProductDescription = ({ desc }: DescriptionTypes) => {
   });
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 font-poppins">
       <p className="text-[14px]">{formattedParts}</p>
     </div>
   );
