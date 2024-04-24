@@ -14,6 +14,7 @@ import ProductByCategory from "./pages/ProductByCategory";
 import PathChangeListener from "./utils/PathChangeListener";
 import SingleProduct from "./pages/SingleProduct";
 import ProductByInput from "./pages/ProductByInput";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -49,6 +50,7 @@ const App = () => {
         />
         <Route path="/product/:product" element={<SingleProduct />} />
         <Route path="/shop" element={<ProductByInput />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
