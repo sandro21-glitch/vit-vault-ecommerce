@@ -8,7 +8,7 @@ const ProductUsage = ({ use }: ProdUsageTypes) => {
   return (
     <div className="mb-5">
       <p className="font-semibold text-black">მიღების წესი და დოზირება:</p>
-      <p className="text-[14px] ">{use}</p>
+      <p className="text-[14px] font-poppins">{use}</p>
     </div>
   );
 };
