@@ -11,7 +11,7 @@ const Characteristics = ({ characteristics, name }: CharacteristicTypes) => {
       <p className="mb-1 text-black font-semibold">
         {name}-ის ძირითადი თვისებები და მახასიათებლები:
       </p>
-      <ul>
+      <ul className="font-poppins">
         {characteristics?.map((char, index) => {
           return <SingleCharacteristic key={index} char={char} />;
         })}
