@@ -20,7 +20,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
   return (
     <li
       key={id}
-      className="group pt-2 pb-5 flex flex-col justify-between items-center relative w-full h-[360px] bg-white hover:shadow-mainShadow hover:scale-110 transition-all ease-in duration-300 cursor-pointer"
+      className="group pt-2 pb-5 flex flex-col justify-between items-center relative w-full h-[360px] bg-white hover:shadow-mainShadow
+       hover:translate-y-[-5px] transition-all ease-in duration-150 cursor-pointer"
     >
       <Link
         to={`/product/${formatPath(name)}`}
@@ -34,14 +35,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
           className="h-[200px] w-auto object-cover my-2"
         />
         <h6 className="text-[14px] px-10">{name}</h6>
-        <div className="mb-1">{CheckDiscount({ price, discount })}</div>
+
         {!inStock && (
           <div className="absolute top-0 right-0">
             <img src={soldOutIcon} alt="sold out" className="w-[3rem] h-auto" />
           </div>
         )}
       </Link>
-      <AddToCartBtn />
+      <div>
+        <div className="mb-1">{CheckDiscount({ price, discount })}</div>
+        <AddToCartBtn />
+      </div>
     </li>
   );
 };
