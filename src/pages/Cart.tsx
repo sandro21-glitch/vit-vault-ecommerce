@@ -1,11 +1,11 @@
-
+import CartHeader from "../features/cart/CartHeader";
 
 const Cart = () => {
   return (
     <section>
-        cart
+      <CartHeader />
     </section>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
