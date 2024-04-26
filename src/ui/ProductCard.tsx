@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
       </Link>
       <div>
         <div className="mb-1">{CheckDiscount({ price, discount })}</div>
-        <AddToCartBtn categoryItem={categoryItem} />
+        <AddToCartBtn name={name} id={id} />
       </div>
     </li>
   );
