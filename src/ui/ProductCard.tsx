@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
   return (
     <li
       key={id}
-      className="group pt-2 pb-5 flex flex-col justify-between items-center relative w-full h-[360px] bg-white hover:shadow-mainShadow
+      className="group pt-2 pb-5 flex flex-col justify-between items-center relative w-full h-[350px] bg-white hover:shadow-mainShadow
        hover:translate-y-[-5px] transition-all ease-in duration-150 cursor-pointer"
     >
       <Link
