@@ -13,17 +13,28 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
       <td>
         <button>X</button>
       </td>
-      <td className="">
+      <td>
         <Link to={`/${id}`}>
-          <img src={image} alt={name} className="max-w-[80px] min-w-[80px]" />
+          <img
+            src={image}
+            alt={name}
+            className="max-w-[80px] min-w-[80px] max-h-[80px] object-contain"
+          />
         </Link>
       </td>
-      <td className="">{name}</td>
-      <td className="">
-        <CheckDiscount discount={discount} price={price} />
+      <td className="cursor-pointer">
+        <Link
+          to="/"
+          className="hover:text-primaryGray transition-colors ease-in duration-150"
+        >
+          {name}
+        </Link>
       </td>
-      <td className="">{quantity}</td>
-      <td className="">{totalPrice}</td>
+      <td>
+        <CheckDiscount discount={discount} price={price} br={true} />
+      </td>
+      <td>{quantity}</td>
+      <td>{totalPrice}</td>
     </tr>
   );
 };
