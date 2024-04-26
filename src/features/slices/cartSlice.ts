@@ -26,16 +26,27 @@ export const cartSlice = createSlice({
   reducers: {
     addProductToCart: (state, action: PayloadAction<CartProductTypes>) => {
       const payload = action.payload;
+      const { cartProducts } = state;
+      const checkId = cartProducts.find((item) => item.id === payload.id);
       const discountedPrice =
         payload.price - (payload.price * payload.discount) / 100;
-      const product = {
-        ...payload,
-        totalPrice:
+
+      if (checkId && payload.id === checkId.id) {
+        (checkId.totalPrice +=
           payload.discount === null
             ? payload.price * payload.quantity
-            : discountedPrice * payload.quantity,
-      };
-      state.cartProducts.push(product);
+            : discountedPrice * payload.quantity),
+          (checkId.quantity += payload.quantity);
+      } else {
+        const product = {
+          ...payload,
+          totalPrice:
+            payload.discount === null
+              ? payload.price * payload.quantity
+              : discountedPrice * payload.quantity,
+        };
+        state.cartProducts.push(product);
+      }
     },
   },
 });
