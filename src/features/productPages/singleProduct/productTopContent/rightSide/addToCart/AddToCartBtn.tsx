@@ -10,9 +10,10 @@ type AddToCartTypes = {
     discount: number;
     images: string[];
   };
+  itemCount: number;
 };
 
-const AddToCartBtn = ({ singleProdData }: AddToCartTypes) => {
+const AddToCartBtn = ({ singleProdData, itemCount }: AddToCartTypes) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const newCartProduct = {
@@ -21,7 +22,7 @@ const AddToCartBtn = ({ singleProdData }: AddToCartTypes) => {
     image: singleProdData.images[0],
     price: singleProdData.price,
     discount: singleProdData.discount,
-    quantity: 1,
+    quantity: itemCount,
     totalPrice: singleProdData.price,
   };
 
