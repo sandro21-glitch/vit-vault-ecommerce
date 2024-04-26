@@ -46,7 +46,7 @@ const AddToCart = ({ singleProdData }: AddToCartTypes) => {
           +
         </button>
       </div>
-      <AddToCartBtn singleProdData={singleProdData} />
+      <AddToCartBtn singleProdData={singleProdData} itemCount={itemCount} />
     </div>
   );
 };
