@@ -25,7 +25,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addProductToCart: (state, action: PayloadAction<CartProductTypes>) => {
-      state.cartProducts.push(action.payload);
+      const payload = action.payload;
+      const discountedPrice =
+        payload.price - (payload.price * payload.discount) / 100;
+      const product = {
+        ...payload,
+        totalPrice:
+          payload.discount === null
+            ? payload.price * payload.quantity
+            : discountedPrice * payload.quantity,
+      };
+      state.cartProducts.push(product);
     },
   },
 });
