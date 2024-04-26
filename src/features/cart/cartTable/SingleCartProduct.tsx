@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { CartProductTypes } from "../../slices/cartSlice";
 import CheckDiscount from "../../../ui/CheckDiscount";
 import { formatToGeorgianLari } from "../../../utils/formatPrice";
+import RemoveCartItemBtn from "./RemoveCartItemBtn";
 
 type SingleCartProductTypes = {
   product: CartProductTypes;
@@ -12,7 +13,7 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
   return (
     <tr className="text-left">
       <td>
-        <button>X</button>
+        <RemoveCartItemBtn />
       </td>
       <td>
         <Link to={`/${id}`}>
