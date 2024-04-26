@@ -1,8 +1,39 @@
 import { FiShoppingCart } from "react-icons/fi";
-const AddToCartBtn = () => {
+import { useAppDispatch } from "../hooks/hooks";
+import { addProductToCart } from "../features/slices/cartSlice";
+
+type AddToCartTypes = {
+  categoryItem: {
+    name: string;
+    images: string[];
+    price: number;
+    id: string;
+    discount: number;
+    inStock: boolean;
+  };
+};
+
+const AddToCartBtn = ({ categoryItem }: AddToCartTypes) => {
+  const dispatch = useAppDispatch();
+
+  const newCartProduct = {
+    id: categoryItem.id,
+    name: categoryItem.name,
+    image: categoryItem.images[0],
+    price: categoryItem.price,
+    discount: categoryItem.discount,
+    quantity: 1,
+    totalPrice: categoryItem.price,
+  };
+
+  const handleAddProduct = () => {
+    dispatch(addProductToCart(newCartProduct));
+  };
+
   return (
     <button
       type="button"
+      onClick={handleAddProduct}
       data-twe-ripple-init
       data-twe-ripple-color="light"
       className="font-serif h-[2rem] overflow-hidden group/fade group-hover:visible group-hover:opacity-100 opacity-0 invisible hover:bg-primaryGreen transition-all ease-in duration-150 font-semibold bg-secondaryGreen
