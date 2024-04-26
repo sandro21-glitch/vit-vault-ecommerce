@@ -20,6 +20,7 @@ type ProductSummaryTypes = {
     inStock: boolean;
     quantity: null | string;
     weight: null | string;
+    images: string[];
   };
 };
 
@@ -48,7 +49,7 @@ const ProductSummary = ({ singleProdData }: ProductSummaryTypes) => {
       {quantity && <ProductQuantity quantity={quantity} />}
       {property && <Property property={property} />}
       <CheckStock stock={inStock} />
-      {inStock && <AddToCart />}
+      {inStock && <AddToCart singleProdData={singleProdData} />}
       <AddToWhishlist />
     </div>
   );
