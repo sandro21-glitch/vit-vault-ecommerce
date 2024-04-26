@@ -1,0 +1,43 @@
+.btn {
+  width: 150px;
+  height: 35px;
+  background: #5cb85c;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+  font-weight: 700;
+}
+
+.btn-text-one {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn-text-two {
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.btn:hover .btn-text-one {
+  top: -100%;
+}
+
+.btn:hover .btn-text-two {
+  top: 50%;
+}
