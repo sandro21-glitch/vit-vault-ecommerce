@@ -1,7 +1,15 @@
 import { useState } from "react";
 import AddToCartBtn from "./AddToCartBtn";
-
-const AddToCart = () => {
+type AddToCartTypes = {
+  singleProdData: {
+    id: string;
+    name: string;
+    price: number;
+    discount: number;
+    images: string[];
+  };
+};
+const AddToCart = ({ singleProdData }: AddToCartTypes) => {
   const [itemCount, setItemCount] = useState<number>(1);
   const handleIncreaseCount = () => {
     setItemCount(itemCount + 1);
@@ -38,7 +46,7 @@ const AddToCart = () => {
           +
         </button>
       </div>
-      <AddToCartBtn />
+      <AddToCartBtn singleProdData={singleProdData} />
     </div>
   );
 };
