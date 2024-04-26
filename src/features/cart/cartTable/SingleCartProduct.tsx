@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { CartProductTypes } from "../../slices/cartSlice";
 import CheckDiscount from "../../../ui/CheckDiscount";
+import { formatToGeorgianLari } from "../../../utils/formatPrice";
 
 type SingleCartProductTypes = {
   product: CartProductTypes;
@@ -33,8 +34,14 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
       <td>
         <CheckDiscount discount={discount} price={price} br={true} />
       </td>
-      <td>{quantity}</td>
-      <td>{totalPrice}</td>
+      <td>
+        <span>{quantity}</span>
+      </td>
+      <td>
+        <span className="font-semibold text-secondaryGreen text-[16px]">
+          {formatToGeorgianLari(totalPrice)}
+        </span>
+      </td>
     </tr>
   );
 };
