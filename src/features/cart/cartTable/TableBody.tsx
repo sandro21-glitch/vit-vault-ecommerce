@@ -1,30 +1,13 @@
-import { Link } from "react-router-dom";
+import { useAppSelector } from "../../../hooks/hooks";
+import SingleCartProduct from "./SingleCartProduct";
 
 const TableBody = () => {
+  const { cartProducts } = useAppSelector((store) => store.cart);
   return (
     <tbody className="w-full">
-      <tr className="text-left">
-        <td>
-          <button>X</button>
-        </td>
-        <td className="">
-          <Link to="">
-            <img
-              src="https://vitamini.ge/storage/products/8435/h.webp"
-              alt=""
-              className="max-w-[80px] min-w-[80px]"
-            />
-          </Link>
-        </td>
-        <td className="">Ronnie Coleman - Creatine XS</td>
-        <td className="">
-          <p>
-            78.00₾ <br /> 55.00₾
-          </p>
-        </td>
-        <td className="">2</td>
-        <td className="">110₾</td>
-      </tr>
+      {cartProducts.map((product) => {
+        return <SingleCartProduct key={product.id} product={product} />;
+      })}
     </tbody>
   );
 };
