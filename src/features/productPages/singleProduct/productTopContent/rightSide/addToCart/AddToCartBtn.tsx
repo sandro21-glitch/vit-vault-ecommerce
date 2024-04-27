@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../../../../hooks/hooks";
 import { addProductToCart } from "../../../../../slices/cartSlice";
-
+import "./addToCartBtn.css";
+import LoadingSpinnerSmall from "./LoadingSpinnerSmall";
 type AddToCartTypes = {
   singleProdData: {
     id: string;
@@ -14,6 +16,7 @@ type AddToCartTypes = {
 };
 
 const AddToCartBtn = ({ singleProdData, itemCount }: AddToCartTypes) => {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const newCartProduct = {
@@ -26,18 +29,27 @@ const AddToCartBtn = ({ singleProdData, itemCount }: AddToCartTypes) => {
     totalPrice: singleProdData.price,
   };
 
-  const handleAddProduct = () => {
-    dispatch(addProductToCart(newCartProduct));
-    navigate("/cart");
+  const handleAddProduct = async () => {
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      dispatch(addProductToCart(newCartProduct));
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+      navigate("/cart");
+    }
   };
 
   return (
     <button
       type="button"
       onClick={handleAddProduct}
-      className="bg-secondaryGreen h-[42px] hover:bg-primaryGreen transition-all ease-in duration-150 px-[20px] text-[14px] text-white font-semibold"
+      className="button min-w-[12rem] min-h-[42px] max-h-[42px] p-[12px] px-[20px]"
     >
-      კალათაში დამატება
+      {isLoading ? <LoadingSpinnerSmall /> : "კალათაში დამატება"}
     </button>
   );
 };
