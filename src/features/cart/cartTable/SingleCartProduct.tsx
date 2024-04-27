@@ -13,7 +13,7 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
   return (
     <tr className="text-left">
       <td>
-        <RemoveCartItemBtn />
+        <RemoveCartItemBtn id={id} />
       </td>
       <td>
         <Link to={`/${id}`}>
