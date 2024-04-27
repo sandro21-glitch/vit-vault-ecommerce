@@ -3,7 +3,7 @@ import CartTotal from "./cartTotal/CartTotal";
 
 const CartLayout = () => {
   return (
-    <div className="w-full max-w-[70%] flex mb-[40px]">
+    <div className="w-full max-w-[75%] min-w-[75%] flex mb-[40px]">
       <CartTable />
       <CartTotal />
     </div>
