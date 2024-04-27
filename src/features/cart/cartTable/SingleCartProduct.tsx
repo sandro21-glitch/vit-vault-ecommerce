@@ -36,7 +36,19 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
         <CheckDiscount discount={discount} price={price} br={true} />
       </td>
       <td>
-        <span>{quantity}</span>
+        <div className="flex">
+          <button className="border-2 min-w-[25px] h-[42px] font-semibold hover:bg-secondaryGreen hover:text-white hover:border-secondaryGreen transition-all ease-in duration-150">
+            -
+          </button>
+          <input
+            type="number"
+            defaultValue={quantity}
+            className="w-[30px] h-[42px] text-center border-t-2 border-b-2 outline-none"
+          />
+          <button className="border-2 min-w-[25px] h-[42px] font-semibold hover:bg-secondaryGreen hover:text-white hover:border-secondaryGreen transition-all ease-in duration-150">
+            +
+          </button>
+        </div>
       </td>
       <td>
         <span className="font-semibold text-secondaryGreen text-[16px]">
