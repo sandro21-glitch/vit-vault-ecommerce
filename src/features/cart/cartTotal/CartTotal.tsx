@@ -1,6 +1,6 @@
 const CartTotal = () => {
   return (
-    <div className="w-full p-[20px] ml-7 text-[22px] border-2">
+    <div className="p-[25px] inline-block flex-1 max-w-[40%] w-full ml-7 text-[20px] border-2">
       მთლიანი ღირებულება
     </div>
   );
