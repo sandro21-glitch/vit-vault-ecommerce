@@ -10,13 +10,15 @@ export interface CartProductTypes {
   totalPrice: number;
 }
 
+const storedProducts = localStorage.getItem("products");
+
 export interface CartState {
   cartProducts: CartProductTypes[];
   totalSum: number;
 }
 
 const initialState: CartState = {
-  cartProducts: [],
+  cartProducts: storedProducts ? JSON.parse(storedProducts) : [],
   totalSum: 0,
 };
 
@@ -25,27 +27,30 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addProductToCart: (state, action: PayloadAction<CartProductTypes>) => {
-      const payload = action.payload;
       const { cartProducts } = state;
-      const checkId = cartProducts.find((item) => item.id === payload.id);
-      const discountedPrice =
-        payload.price - (payload.price * payload.discount) / 100;
+      const { id, price, discount, quantity } = action.payload;
 
-      if (checkId && payload.id === checkId.id) {
-        (checkId.totalPrice +=
-          payload.discount === null
-            ? payload.price * payload.quantity
-            : discountedPrice * payload.quantity),
-          (checkId.quantity += payload.quantity);
+      const existingProduct = cartProducts.find((item) => item.id === id);
+      const discountedPrice = price - (price * (discount || 0)) / 100;
+
+      if (existingProduct) {
+        existingProduct.totalPrice +=
+          (discount || 0) === null
+            ? price * quantity
+            : discountedPrice * quantity;
+        existingProduct.quantity += quantity;
+        const updatedCartProducts = [...cartProducts];
+        localStorage.setItem("products", JSON.stringify(updatedCartProducts));
+        state.cartProducts = updatedCartProducts;
       } else {
-        const product = {
-          ...payload,
-          totalPrice:
-            payload.discount === null
-              ? payload.price * payload.quantity
-              : discountedPrice * payload.quantity,
-        };
-        state.cartProducts.push(product);
+        const totalPrice =
+          (discount || 0) === null
+            ? price * quantity
+            : discountedPrice * quantity;
+        const newProduct = { ...action.payload, totalPrice };
+        const updatedCartProducts = [...cartProducts, newProduct];
+        localStorage.setItem("products", JSON.stringify(updatedCartProducts));
+        state.cartProducts = updatedCartProducts;
       }
     },
   },
