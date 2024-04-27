@@ -4,8 +4,8 @@ import TableHeader from "./TableHeader";
 
 const CartTable = () => {
   return (
-    <div>
-      <table className="w-full flex-1 text-[14px] border-b-2 mb-[40px]">
+    <div className="flex-1 max-w-[60%]">
+      <table className="text-[14px] w-full border-b-2 mb-[40px]">
         <TableHeader />
         <TableBody />
       </table>
