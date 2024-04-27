@@ -3,9 +3,10 @@ import SingleCartProduct from "./SingleCartProduct";
 
 const TableBody = () => {
   const { cartProducts } = useAppSelector((store) => store.cart);
-  if (cartProducts.length < 1) return null;
+  if (cartProducts.length < 1)
+    return <div className="max-w-[65%] flex-1">test</div>;
   return (
-    <tbody className="w-full ">
+    <tbody>
       {cartProducts.map((product) => {
         return <SingleCartProduct key={product.id} product={product} />;
       })}
