@@ -3,6 +3,7 @@ import { CartProductTypes } from "../../slices/cartSlice";
 import CheckDiscount from "../../../ui/CheckDiscount";
 import { formatToGeorgianLari } from "../../../utils/formatPrice";
 import RemoveCartItemBtn from "./RemoveCartItemBtn";
+import { formatPath } from "../../../utils/formatPath";
 
 type SingleCartProductTypes = {
   product: CartProductTypes;
@@ -16,7 +17,7 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
         <RemoveCartItemBtn id={id} />
       </td>
       <td>
-        <Link to={`/${id}`}>
+        <Link to={`/product/${formatPath(name)}`} state={{ id }}>
           <img
             src={image}
             alt={name}
@@ -26,7 +27,8 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
       </td>
       <td className="cursor-pointer">
         <Link
-          to="/"
+          to={`/product/${formatPath(name)}`}
+          state={{ id }}
           className="hover:text-primaryGray transition-colors ease-in duration-150"
         >
           {name}
