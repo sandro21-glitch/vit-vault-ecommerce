@@ -11,6 +11,7 @@ export interface CartProductTypes {
 }
 
 const storedProducts = localStorage.getItem("products");
+const storedSum = localStorage.getItem("sum");
 
 export interface CartState {
   cartProducts: CartProductTypes[];
@@ -19,7 +20,7 @@ export interface CartState {
 
 const initialState: CartState = {
   cartProducts: storedProducts ? JSON.parse(storedProducts) : [],
-  totalSum: 0,
+  totalSum: storedSum ? +storedSum : 0,
 };
 
 export const cartSlice = createSlice({
@@ -42,6 +43,11 @@ export const cartSlice = createSlice({
         const updatedCartProducts = [...cartProducts];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         state.cartProducts = updatedCartProducts;
+        state.totalSum = state.cartProducts.reduce(
+          (sum, product) => sum + product.totalPrice,
+          0
+        );
+        localStorage.setItem("sum", JSON.stringify(state.totalSum));
       } else {
         const totalPrice =
           (discount || 0) === null
@@ -51,6 +57,11 @@ export const cartSlice = createSlice({
         const updatedCartProducts = [...cartProducts, newProduct];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         state.cartProducts = updatedCartProducts;
+        state.totalSum = state.cartProducts.reduce(
+          (sum, product) => sum + product.totalPrice,
+          0
+        );
+        localStorage.setItem("sum", JSON.stringify(state.totalSum));
       }
     },
     removeCartProduct: (state, action: PayloadAction<string>) => {
@@ -58,7 +69,7 @@ export const cartSlice = createSlice({
         (product) => product.id !== action.payload
       );
       localStorage.setItem("products", JSON.stringify(updtedCart));
-      state.cartProducts = updtedCart
+      state.cartProducts = updtedCart;
     },
   },
 });
