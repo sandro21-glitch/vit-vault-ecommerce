@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddToCartBtn from "./AddToCartBtn";
+import UpdateQuantity from "../../../../../../ui/UpdateQuantity";
 type AddToCartTypes = {
   singleProdData: {
     id: string;
@@ -26,26 +27,12 @@ const AddToCart = ({ singleProdData }: AddToCartTypes) => {
   };
   return (
     <div className="mt-5 flex items-center gap-5">
-      <div>
-        <button
-          onClick={handleDecreaseCount}
-          className="border-2 min-w-[25px] h-[42px] font-semibold hover:bg-secondaryGreen hover:text-white hover:border-secondaryGreen transition-all ease-in duration-150"
-        >
-          -
-        </button>
-        <input
-          type="number"
-          value={itemCount}
-          onChange={handleInputChange}
-          className="w-[30px] h-[42px] text-center border-t-2 border-b-2 outline-none"
-        />
-        <button
-          onClick={handleIncreaseCount}
-          className="border-2 min-w-[25px] h-[42px] font-semibold hover:bg-secondaryGreen hover:text-white hover:border-secondaryGreen transition-all ease-in duration-150"
-        >
-          +
-        </button>
-      </div>
+      <UpdateQuantity
+        itemCount={itemCount}
+        handleInputChange={handleInputChange}
+        handleIncreaseCount={handleIncreaseCount}
+        handleDecreaseCount={handleDecreaseCount}
+      />
       <AddToCartBtn singleProdData={singleProdData} itemCount={itemCount} />
     </div>
   );
