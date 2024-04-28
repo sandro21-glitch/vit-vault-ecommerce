@@ -1,4 +1,4 @@
-const CartOItemCount = () => {
+const CartItemCount = () => {
   return (
     <div
       className="w-[1rem] h-[1rem] flex items-center justify-center
@@ -9,4 +9,4 @@ const CartOItemCount = () => {
   );
 };
 
-export default CartOItemCount;
+export default CartItemCount;

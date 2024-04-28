@@ -1,5 +1,5 @@
 import { MdOutlineShoppingBag } from "react-icons/md";
-import CartOItemCount from "./cart/CartOItemCount";
+import CartOItemCount from "./cart/CartItemCount";
 import CartModal from "./cart/CartModal";
 
 const Cart = () => {
