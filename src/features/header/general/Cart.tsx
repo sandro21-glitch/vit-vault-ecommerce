@@ -10,7 +10,7 @@ const Cart = () => {
   return (
     <li className="flex items-center cursor-pointer relative font-sans group">
       <MdOutlineShoppingBag size={30} />
-      <span className="ml-3 font-semibold">{formatToGeorgianLari(totalSum)}</span>
+      <span className="ml-3 font-semibold text-[#333] text-[14px]">{formatToGeorgianLari(totalSum)}</span>
       <CartOItemCount />
       <CartModal />
     </li>
