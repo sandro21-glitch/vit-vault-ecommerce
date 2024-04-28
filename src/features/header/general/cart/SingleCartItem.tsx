@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { CartProductTypes } from "../../../slices/cartSlice";
 import CheckDiscount from "../../../../ui/CheckDiscount";
+import RemoveCartItem from "./RemoveCartItem";
 
 type SingleCartItemTypes = {
   item: CartProductTypes;
 };
 
 const SingleCartItem = ({ item }: SingleCartItemTypes) => {
-  const { name, price, quantity, image } = item;
+  const { name, price, quantity, image, id } = item;
   return (
     <li className="py-3 border-b-2 flex relative">
       <Link to={"/"} className="mr-2">
@@ -21,7 +22,7 @@ const SingleCartItem = ({ item }: SingleCartItemTypes) => {
           {<CheckDiscount discount={0} price={price} />}
         </div>
       </div>
-      <button className="absolute right-[-5px] top-0 text-[20px]">×</button>
+      <RemoveCartItem id={id} />
     </li>
   );
 };
