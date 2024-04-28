@@ -77,9 +77,16 @@ export const cartSlice = createSlice({
       localStorage.setItem("products", JSON.stringify(updtedCart));
       localStorage.setItem("sum", JSON.stringify(updatedSum));
     },
+    increaseAmount: () => {},
+    decreaseAmount: () => {},
   },
 });
 
-export const { addProductToCart, removeCartProduct } = cartSlice.actions;
+export const {
+  addProductToCart,
+  removeCartProduct,
+  increaseAmount,
+  decreaseAmount,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
