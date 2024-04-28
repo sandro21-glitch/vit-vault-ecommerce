@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../../hooks/hooks";
-import SingleCartProduct from "./SingleCartProduct";
+import SingleCartProduct from "./singleCartProduct/SingleCartProduct";
 
 const TableBody = () => {
   const { cartProducts } = useAppSelector((store) => store.cart);
