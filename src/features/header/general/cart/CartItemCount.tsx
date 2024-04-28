@@ -6,7 +6,7 @@ const CartItemCount = () => {
   return (
     <div
       className="w-[1rem] h-[1rem] flex items-center justify-center
-   rounded-full text-[.7rem] text-white bg-primaryGreen absolute left-5 top-0"
+   rounded-full text-[.7rem] text-white bg-secondaryGreen font-semibold absolute left-5 top-0"
     >
       {cartLenght}
     </div>
