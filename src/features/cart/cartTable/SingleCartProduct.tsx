@@ -4,6 +4,8 @@ import CheckDiscount from "../../../ui/CheckDiscount";
 import { formatToGeorgianLari } from "../../../utils/formatPrice";
 import RemoveCartItemBtn from "./RemoveCartItemBtn";
 import { formatPath } from "../../../utils/formatPath";
+import { useState } from "react";
+import UpdateQuantity from "../../../ui/UpdateQuantity";
 
 type SingleCartProductTypes = {
   product: CartProductTypes;
@@ -11,6 +13,20 @@ type SingleCartProductTypes = {
 
 const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
   const { discount, id, image, name, price, quantity, totalPrice } = product;
+  const [itemCount, setItemCount] = useState<number>(quantity);
+  const handleIncreaseCount = () => {
+    setItemCount(itemCount + 1);
+  };
+  const handleDecreaseCount = () => {
+    if (itemCount <= 1) return;
+    setItemCount(itemCount - 1);
+  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value, 10);
+    if (!isNaN(value)) {
+      setItemCount(value);
+    }
+  };
   return (
     <tr className="text-left">
       <td>
@@ -38,19 +54,12 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
         <CheckDiscount discount={discount} price={price} br={true} />
       </td>
       <td>
-        <div className="flex">
-          <button className="border-2 min-w-[25px] h-[42px] font-semibold hover:bg-secondaryGreen hover:text-white hover:border-secondaryGreen transition-all ease-in duration-150">
-            -
-          </button>
-          <input
-            type="number"
-            defaultValue={quantity}
-            className="w-[30px] h-[42px] text-center border-t-2 border-b-2 outline-none"
-          />
-          <button className="border-2 min-w-[25px] h-[42px] font-semibold hover:bg-secondaryGreen hover:text-white hover:border-secondaryGreen transition-all ease-in duration-150">
-            +
-          </button>
-        </div>
+        <UpdateQuantity
+          itemCount={itemCount}
+          handleInputChange={handleInputChange}
+          handleIncreaseCount={handleIncreaseCount}
+          handleDecreaseCount={handleDecreaseCount}
+        />
       </td>
       <td>
         <span className="font-semibold text-secondaryGreen text-[16px]">
