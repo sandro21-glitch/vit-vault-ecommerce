@@ -68,8 +68,14 @@ export const cartSlice = createSlice({
       const updtedCart = state.cartProducts.filter(
         (product) => product.id !== action.payload
       );
-      localStorage.setItem("products", JSON.stringify(updtedCart));
+      const updatedSum = (state.totalSum = updtedCart.reduce(
+        (sum, product) => sum + product.totalPrice,
+        0
+      ));
+      state.totalSum = updatedSum;
       state.cartProducts = updtedCart;
+      localStorage.setItem("products", JSON.stringify(updtedCart));
+      localStorage.setItem("sum", JSON.stringify(updatedSum));
     },
   },
 });
