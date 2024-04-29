@@ -7,10 +7,10 @@ const Cart = () => {
       <CartHeader />
       <div
         style={{ marginBottom: "40px" }}
-        className="flex section-center section-x gap-7"
+        className="flex flex-col md:flex-row section-center section-x md:gap-7"
       >
         <CartLayout />
-        <div className="w-full bg-red-900 max-w-[25%]">test</div>
+        <div className="w-full bg-red-900 lg:max-w-[25%]">test</div>
       </div>
     </section>
   );
