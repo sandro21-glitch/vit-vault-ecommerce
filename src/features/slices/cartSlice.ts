@@ -104,12 +104,49 @@ export const cartSlice = createSlice({
           (sum, product) => sum + product.totalPrice,
           0
         ));
+        // Update local storage
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         localStorage.setItem("sum", JSON.stringify(updatedSum));
       }
     },
+    decreaseAmount: (
+      state,
+      action: PayloadAction<{
+        id: string;
+        newCount: number;
+      }>
+    ) => {
+      const { id, newCount } = action.payload;
+      const { cartProducts } = state;
+      const existingProduct = cartProducts.find((item) => item.id === id);
+      console.log(newCount);
 
-    decreaseAmount: () => {},
+      if (existingProduct) {
+        const existingProductPrice = existingProduct.price;
+        const existingProductdiscount = existingProduct.discount;
+
+        const discountedPrice =
+          existingProductPrice -
+          (existingProductPrice * (existingProductdiscount || 0)) / 100;
+
+        existingProduct.totalPrice =
+          (existingProductdiscount || 0) === null
+            ? existingProductPrice * newCount
+            : discountedPrice * newCount;
+        existingProduct.quantity = newCount;
+
+        // Update the cart state and total sum
+        const updatedCartProducts = [...cartProducts];
+        const updatedSum = (state.totalSum = cartProducts.reduce(
+          (sum, product) => sum + product.totalPrice,
+          0
+        ));
+        
+        // Update local storage
+        localStorage.setItem("products", JSON.stringify(updatedCartProducts));
+        localStorage.setItem("sum", JSON.stringify(updatedSum));
+      }
+    },
   },
 });
 
