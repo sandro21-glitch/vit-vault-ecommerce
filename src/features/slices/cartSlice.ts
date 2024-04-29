@@ -31,7 +31,7 @@ export const cartSlice = createSlice({
       const { cartProducts } = state;
       const { id, price, discount, quantity } = action.payload;
 
-      // Check if the product is already in the cart
+      // check if the product is already in the cart
       const existingProduct = cartProducts.find((item) => item.id === id);
       const discountedPrice = price - (price * (discount || 0)) / 100;
 
@@ -43,7 +43,7 @@ export const cartSlice = createSlice({
             : discountedPrice * quantity;
         existingProduct.quantity += quantity;
 
-        // Update the cart state and total sum
+        // update the cart state and total sum
         const updatedCartProducts = [...cartProducts];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         state.cartProducts = updatedCartProducts;
@@ -62,7 +62,7 @@ export const cartSlice = createSlice({
         const updatedCartProducts = [...cartProducts, newProduct];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
 
-        // Update the cart state and total sum
+        // update the cart state and total sum
         state.cartProducts = updatedCartProducts;
         state.totalSum = state.cartProducts.reduce(
           (sum, product) => sum + product.totalPrice,
@@ -138,7 +138,7 @@ export const cartSlice = createSlice({
       console.log(newCount);
 
       if (existingProduct) {
-        // Calculate the discounted price
+        // calculate the discounted price
         const existingProductPrice = existingProduct.price;
         const existingProductdiscount = existingProduct.discount;
         const discountedPrice =
