@@ -128,4 +128,12 @@ table th {
   font-size: 16px;
   line-height: 1.2;
 }
-
+@media screen and (max-width: 768px) {
+  table td {
+    width:100%;
+    margin-bottom: 0;
+    padding: 0;
+    border-bottom: none;
+    text-align: left;
+  }
+}
