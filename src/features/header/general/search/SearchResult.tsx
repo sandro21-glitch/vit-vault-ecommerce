@@ -14,7 +14,7 @@ const SearchResult = ({
 }: SearchResultTypes) => {
   if (!localData || localData.length < 1) return null;
   return (
-    <div className="absolute top-full left-0 right-0 bg-white shadow-mainShadow z-[999999]">
+    <div className="absolute top-full left-0 right-0 bg-white shadow-mainShadow z-[999999] hidden xl:block">
       <ul className="grid grid-cols-2 max-h-[50vh] overflow-y-scroll">
         {localData?.map((data, index) => {
           return (
