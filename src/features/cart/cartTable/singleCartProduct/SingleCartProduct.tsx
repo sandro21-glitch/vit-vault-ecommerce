@@ -21,7 +21,7 @@ const SingleCartProduct = ({ product }: SingleCartProductTypes) => {
       <td>
         <CheckDiscount discount={discount} price={price} br={true} />
       </td>
-      <SingleProductQuantity quantity={quantity} />
+      <SingleProductQuantity quantity={quantity} id={id} />
       <ProductTotalSum totalPrice={totalPrice} />
     </tr>
   );
