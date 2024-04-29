@@ -13,7 +13,12 @@ const SingleCartItem = ({ item }: SingleCartItemTypes) => {
   return (
     <li className="py-3 border-b-2 flex relative">
       <Link to={`/product/${formatPath(name)}`} className="mr-2" state={{ id }}>
-        <img src={image} alt={name} className="min-w-[45px] max-w-[45px]" />
+        <img
+          src={image}
+          alt={name}
+          loading="lazy"
+          className="min-w-[45px] max-w-[45px] h-auto object-cover"
+        />
       </Link>
       <div className="flex flex-col">
         <h6 className="text-[14px]">{name}</h6>
