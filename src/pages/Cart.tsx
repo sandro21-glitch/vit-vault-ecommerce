@@ -7,7 +7,7 @@ const Cart = () => {
       <CartHeader />
       <div
         style={{ marginBottom: "40px" }}
-        className="flex flex-col md:flex-row section-center section-x md:gap-7"
+        className="flex flex-col lg:flex-row section-center section-x md:gap-7"
       >
         <CartLayout />
         <div className="w-full bg-red-900 lg:max-w-[25%]">test</div>
