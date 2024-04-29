@@ -65,19 +65,50 @@ export const cartSlice = createSlice({
       }
     },
     removeCartProduct: (state, action: PayloadAction<string>) => {
-      const updtedCart = state.cartProducts.filter(
+      const updatedCart = state.cartProducts.filter(
         (product) => product.id !== action.payload
       );
-      const updatedSum = (state.totalSum = updtedCart.reduce(
+      const updatedSum = (state.totalSum = updatedCart.reduce(
         (sum, product) => sum + product.totalPrice,
         0
       ));
       state.totalSum = updatedSum;
-      state.cartProducts = updtedCart;
-      localStorage.setItem("products", JSON.stringify(updtedCart));
+      state.cartProducts = updatedCart;
+      localStorage.setItem("products", JSON.stringify(updatedCart));
       localStorage.setItem("sum", JSON.stringify(updatedSum));
     },
-    increaseAmount: () => {},
+    increaseAmount: (
+      state,
+      action: PayloadAction<{
+        id: string;
+        newCount: number;
+      }>
+    ) => {
+      const { id, newCount } = action.payload;
+
+      const { cartProducts } = state;
+      const existingProduct = cartProducts.find((item) => item.id === id);
+      if (existingProduct) {
+        const existingProductPrice = existingProduct.price;
+        const existingProductdiscount = existingProduct.discount;
+        const discountedPrice =
+          existingProductPrice -
+          (existingProductPrice * (existingProductdiscount || 0)) / 100;
+        existingProduct.totalPrice =
+          (existingProductdiscount || 0) === null
+            ? existingProductPrice * newCount
+            : discountedPrice * newCount;
+        existingProduct.quantity = newCount;
+        const updatedCartProducts = [...cartProducts];
+        const updatedSum = (state.totalSum = cartProducts.reduce(
+          (sum, product) => sum + product.totalPrice,
+          0
+        ));
+        localStorage.setItem("products", JSON.stringify(updatedCartProducts));
+        localStorage.setItem("sum", JSON.stringify(updatedSum));
+      }
+    },
+
     decreaseAmount: () => {},
   },
 });
