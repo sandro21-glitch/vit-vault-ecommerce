@@ -31,15 +31,19 @@ export const cartSlice = createSlice({
       const { cartProducts } = state;
       const { id, price, discount, quantity } = action.payload;
 
+      // Check if the product is already in the cart
       const existingProduct = cartProducts.find((item) => item.id === id);
       const discountedPrice = price - (price * (discount || 0)) / 100;
 
       if (existingProduct) {
+        // If the product exists, update its quantity and total price
         existingProduct.totalPrice +=
           (discount || 0) === null
             ? price * quantity
             : discountedPrice * quantity;
         existingProduct.quantity += quantity;
+
+        // Update the cart state and total sum
         const updatedCartProducts = [...cartProducts];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         state.cartProducts = updatedCartProducts;
@@ -49,6 +53,7 @@ export const cartSlice = createSlice({
         );
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
       } else {
+        // If the product is not in the cart, add it
         const totalPrice =
           (discount || 0) === null
             ? price * quantity
@@ -56,6 +61,8 @@ export const cartSlice = createSlice({
         const newProduct = { ...action.payload, totalPrice };
         const updatedCartProducts = [...cartProducts, newProduct];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
+
+        // Update the cart state and total sum
         state.cartProducts = updatedCartProducts;
         state.totalSum = state.cartProducts.reduce(
           (sum, product) => sum + product.totalPrice,
@@ -65,15 +72,19 @@ export const cartSlice = createSlice({
       }
     },
     removeCartProduct: (state, action: PayloadAction<string>) => {
+      // Remove the product from the cart
       const updatedCart = state.cartProducts.filter(
         (product) => product.id !== action.payload
       );
+      // Calculate the updated total sum
       const updatedSum = (state.totalSum = updatedCart.reduce(
         (sum, product) => sum + product.totalPrice,
         0
       ));
+      // Update the cart state and total sum
       state.totalSum = updatedSum;
       state.cartProducts = updatedCart;
+      // Update local storage
       localStorage.setItem("products", JSON.stringify(updatedCart));
       localStorage.setItem("sum", JSON.stringify(updatedSum));
     },
@@ -89,16 +100,21 @@ export const cartSlice = createSlice({
       const { cartProducts } = state;
       const existingProduct = cartProducts.find((item) => item.id === id);
       if (existingProduct) {
+        // Calculate the discounted price
         const existingProductPrice = existingProduct.price;
         const existingProductdiscount = existingProduct.discount;
         const discountedPrice =
           existingProductPrice -
           (existingProductPrice * (existingProductdiscount || 0)) / 100;
+
+        // Update the total price and quantity of the existing product
         existingProduct.totalPrice =
           (existingProductdiscount || 0) === null
             ? existingProductPrice * newCount
             : discountedPrice * newCount;
         existingProduct.quantity = newCount;
+
+        // Update the cart state and total sum
         const updatedCartProducts = [...cartProducts];
         const updatedSum = (state.totalSum = cartProducts.reduce(
           (sum, product) => sum + product.totalPrice,
@@ -122,13 +138,14 @@ export const cartSlice = createSlice({
       console.log(newCount);
 
       if (existingProduct) {
+        // Calculate the discounted price
         const existingProductPrice = existingProduct.price;
         const existingProductdiscount = existingProduct.discount;
-
         const discountedPrice =
           existingProductPrice -
           (existingProductPrice * (existingProductdiscount || 0)) / 100;
 
+        // Update the total price and quantity of the existing product
         existingProduct.totalPrice =
           (existingProductdiscount || 0) === null
             ? existingProductPrice * newCount
@@ -141,7 +158,7 @@ export const cartSlice = createSlice({
           (sum, product) => sum + product.totalPrice,
           0
         ));
-        
+
         // Update local storage
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         localStorage.setItem("sum", JSON.stringify(updatedSum));
