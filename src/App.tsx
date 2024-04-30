@@ -15,6 +15,7 @@ import PathChangeListener from "./utils/PathChangeListener";
 import SingleProduct from "./pages/SingleProduct";
 import ProductByInput from "./pages/ProductByInput";
 import Cart from "./pages/Cart";
+import SidebarCart from "./pages/SidebarCart";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <SidebarCart />
       <Footer />
       <PathChangeListener />
     </BrowserRouter>
