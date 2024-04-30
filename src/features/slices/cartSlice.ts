@@ -31,10 +31,7 @@ export const cartSlice = createSlice({
       const { cartProducts } = state;
       const { id, price, discount, quantity } = action.payload;
 
-      const existingProductIndex = cartProducts.findIndex(
-        (item) => item.id === id
-      );
-      const existingProduct = cartProducts[existingProductIndex];
+      const existingProduct = cartProducts.find((item) => item.id === id);
       const discountedPrice = price - (price * (discount || 0)) / 100;
 
       if (existingProduct) {
