@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../../hooks/hooks";
 import { formatToGeorgianLari } from "../../../../utils/formatPrice";
 import { CartProductTypes } from "../../../slices/cartSlice";
@@ -22,8 +23,14 @@ const CartItemList = ({ cartProducts }: CartItemListTypes) => {
           {formatToGeorgianLari(totalSum)}
         </p>
       </div>
-      <button className="w-full py-2 bg-veryLightGray text-primaryGray font-semibold">
-        კალათის ნახვა
+      <button className="w-full">
+        <Link
+          to={"/cart"}
+          className="py-2 block w-full bg-veryLightGray text-primaryGray font-semibold
+          hover:bg-primaryGray hover:text-veryLightGray transition-colors ease-in duration-150"
+        >
+          კალათის ნახვა
+        </Link>
       </button>
     </div>
   );
