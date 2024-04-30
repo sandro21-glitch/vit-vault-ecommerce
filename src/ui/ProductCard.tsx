@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
           src={images[0]}
           alt={name}
           loading="lazy"
-          className="h-[200px] w-auto object-cover my-2"
+          className="h-[220px] w-auto object-cover my-2"
         />
         <h6 className="text-[14px] px-10">{name}</h6>
 
@@ -43,8 +43,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
         )}
       </Link>
       <div className="relative w-full">
-        <div className="flex items-center justify-center">{CheckDiscount({ price, discount })}</div>
-        <div className="absolute py-5 invisible group-hover:visible shadow-mainShadowB
+        <div className="flex items-center justify-center ">{CheckDiscount({ price, discount })}</div>
+        <div className="absolute pb-5 invisible group-hover:visible shadow-mainShadowB
          flex items-center justify-center opacity-0 group-hover:opacity-100
           top-7 left-0 right-0 z-[999999] w-full bg-white transition-all ease-in duration-150">
           <AddToCartBtn name={name} id={id} />
