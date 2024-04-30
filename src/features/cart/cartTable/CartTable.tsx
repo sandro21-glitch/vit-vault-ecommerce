@@ -8,7 +8,7 @@ const CartTable = () => {
   const { cartProducts } = useAppSelector((store) => store.cart);
 
   return (
-    <div className="w-full lg:max-w-[65%] ">
+    <div className="w-full lg:max-w-[65%]">
       <table
         className={`text-[14px] hidden md:table  ${
           cartProducts.length < 1 ? "border-none" : "border-b-2"
