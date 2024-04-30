@@ -11,7 +11,7 @@ type SingleMobileTableTypes = {
 const SingleMobileTable = ({ product }: SingleMobileTableTypes) => {
   const { discount, id, image, name, price, quantity, totalPrice } = product;
   return (
-    <div className="flex items-center border-b py-5">
+    <div className="flex items-center border-b-2 border-double py-5">
       <div className="mr-10">
         <img
           src={image}
