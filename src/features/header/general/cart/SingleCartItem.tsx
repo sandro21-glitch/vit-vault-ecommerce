@@ -23,8 +23,12 @@ const SingleCartItem = ({ item }: SingleCartItemTypes) => {
         />
       </Link>
       <div className="flex flex-col">
-        <Link to={`/product/${formatPath(name)}`} state={{ id }}>
-          <h6 className="text-[14px]">{name}</h6>
+        <Link
+          to={`/product/${formatPath(name)}`}
+          state={{ id }}
+          className="text-[14px]"
+        >
+          {name}
         </Link>
         <div className="flex">
           <p className="text-primaryGray font-semibold mr-1">{quantity} </p>
