@@ -28,7 +28,7 @@ const CheckDiscount = ({
   } else {
     return (
       <div>
-        <p className={`text-secondaryGreen font-bold text-center ${classname}`}>
+        <p className={`text-secondaryGreen font-bold ${classname}`}>
           {formatToGeorgianLari(price)}
         </p>
       </div>
