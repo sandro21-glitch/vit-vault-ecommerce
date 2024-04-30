@@ -9,7 +9,9 @@ type SingleCartItemTypes = {
 };
 
 const SingleCartItem = ({ item }: SingleCartItemTypes) => {
-  const { name, price, quantity, image, id } = item;
+  const { name, price, quantity, image, id, discount } = item;
+  const discountedPrice = price - (price * (discount || 0)) / 100;
+
   return (
     <li className="py-3 border-b-2 flex relative">
       <Link to={`/product/${formatPath(name)}`} className="mr-2" state={{ id }}>
@@ -27,7 +29,12 @@ const SingleCartItem = ({ item }: SingleCartItemTypes) => {
         <div className="flex">
           <p className="text-primaryGray font-semibold mr-1">{quantity} </p>
           <span className="font-semibold text-primaryGray"> x </span>
-          {<CheckDiscount discount={0} price={price} />}
+          {
+            <CheckDiscount
+              discount={0}
+              price={discount ? discountedPrice : price}
+            />
+          }
         </div>
       </div>
       <RemoveCartItem id={id} />
