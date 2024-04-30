@@ -11,7 +11,7 @@ const ProductName = ({ id, name }: ProductNameTypes) => {
       <Link
         to={`/product/${formatPath(name)}`}
         state={{ id }}
-        className="hover:text-primaryGray transition-colors ease-in duration-150"
+        className="hover:text-primaryGray transition-colors w-full ease-in duration-150"
       >
         {name}
       </Link>
