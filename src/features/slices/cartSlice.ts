@@ -47,10 +47,12 @@ export const cartSlice = createSlice({
         const updatedCartProducts = [...cartProducts];
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
         state.cartProducts = updatedCartProducts;
-        state.totalSum = state.cartProducts.reduce(
-          (sum, product) => sum + product.totalPrice,
-          0
-        );
+        // calculate the total sum considering discounted prices
+        state.totalSum = state.cartProducts.reduce((sum, product) => {
+          const price = product.discount ? discountedPrice : product.price;
+          return sum + price * product.quantity;
+        }, 0);
+
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
       } else {
         // If the product is not in the cart, add it
@@ -64,10 +66,10 @@ export const cartSlice = createSlice({
 
         // update the cart state and total sum
         state.cartProducts = updatedCartProducts;
-        state.totalSum = state.cartProducts.reduce(
-          (sum, product) => sum + product.totalPrice,
-          0
-        );
+        state.totalSum = state.cartProducts.reduce((sum, product) => {
+          const price = product.discount ? discountedPrice : product.price;
+          return sum + price * product.quantity;
+        }, 0);
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
       }
     },
@@ -116,13 +118,13 @@ export const cartSlice = createSlice({
 
         // Update the cart state and total sum
         const updatedCartProducts = [...cartProducts];
-        const updatedSum = (state.totalSum = cartProducts.reduce(
-          (sum, product) => sum + product.totalPrice,
-          0
-        ));
+        state.totalSum = state.cartProducts.reduce((sum, product) => {
+          const price = product.discount ? discountedPrice : product.price;
+          return sum + price * product.quantity;
+        }, 0);
         // Update local storage
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
-        localStorage.setItem("sum", JSON.stringify(updatedSum));
+        localStorage.setItem("sum", JSON.stringify(state.totalSum));
       }
     },
     decreaseAmount: (
@@ -154,14 +156,14 @@ export const cartSlice = createSlice({
 
         // Update the cart state and total sum
         const updatedCartProducts = [...cartProducts];
-        const updatedSum = (state.totalSum = cartProducts.reduce(
-          (sum, product) => sum + product.totalPrice,
-          0
-        ));
+        state.totalSum = state.cartProducts.reduce((sum, product) => {
+          const price = product.discount ? discountedPrice : product.price;
+          return sum + price * product.quantity;
+        }, 0);
 
         // Update local storage
         localStorage.setItem("products", JSON.stringify(updatedCartProducts));
-        localStorage.setItem("sum", JSON.stringify(updatedSum));
+        localStorage.setItem("sum", JSON.stringify(state.totalSum));
       }
     },
   },
