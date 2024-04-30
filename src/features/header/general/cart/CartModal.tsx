@@ -10,7 +10,7 @@ const CartModal = () => {
     >
       <div className="pt-[15px] bg-white shadow-mainShadow p-[20px]">
         {cartProducts.length < 1 ? (
-          <p className="text-center">თქვენ კალათში პროდუქტები არ არის.</p>
+          <p className="text-center text-black font-semibold">თქვენ კალათში პროდუქტები არ არის.</p>
         ) : (
           <CartItemList cartProducts={cartProducts} />
         )}
