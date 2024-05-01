@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UpdateQuantity from "../../../../ui/UpdateQuantity";
 import { useAppDispatch } from "../../../../hooks/hooks";
-import { decreaseAmount, increaseAmount } from "../../../slices/cartSlice";
+import { decreaseAmount, increaseAmount, removeCartProduct } from "../../../slices/cartSlice";
 
 type SingleProductQuantityTypes = {
   quantity: number;
@@ -20,7 +20,9 @@ const SingleProductQuantity = ({
     dispatch(increaseAmount({ id, newCount }));
   };
   const handleDecreaseCount = () => {
-    if (itemCount <= 1) return;
+    if (itemCount <= 1) {
+      dispatch(removeCartProduct(id))
+    }
     const newCount = itemCount - 1;
     setItemCount(newCount);
     dispatch(decreaseAmount({ id, newCount }));
