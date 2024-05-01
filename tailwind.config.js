@@ -12,10 +12,10 @@ export default {
       },
       boxShadow: {
         mainShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-        mainShadowB: "0px 4px 8px rgba(99, 99, 99, 0.2)"
+        mainShadowB: "0px 4px 8px rgba(99, 99, 99, 0.2)",
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        poppins: ['"Poppins"', "sans-serif"],
       },
     },
   },
