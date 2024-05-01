@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../../../../hooks/hooks";
 import { addProductToCart } from "../../../../../slices/cartSlice";
 import "./addToCartBtn.css";
 import LoadingSpinnerSmall from "./LoadingSpinnerSmall";
+import { openSidebar } from "../../../../../slices/modalSlice";
 type AddToCartTypes = {
   singleProdData: {
     id: string;
@@ -18,7 +18,6 @@ type AddToCartTypes = {
 const AddToCartBtn = ({ singleProdData, itemCount }: AddToCartTypes) => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const newCartProduct = {
     id: singleProdData.id,
     name: singleProdData.name,
@@ -39,7 +38,7 @@ const AddToCartBtn = ({ singleProdData, itemCount }: AddToCartTypes) => {
       console.log(error);
     } finally {
       setIsLoading(false);
-      navigate("/cart");
+      dispatch(openSidebar());
     }
   };
 
