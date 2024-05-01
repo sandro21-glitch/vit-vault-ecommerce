@@ -10,7 +10,7 @@ const CloseSidebar = () => {
     <button
       type="button"
       onClick={haneleCloseSidebar}
-      className="flex items-center gap-1 group text-[13px] font-sans font-semibold "
+      className="flex items-center gap-1 group text-[13px] poppins-font font-semibold "
     >
       <p className="text-[#2d2a2a]">დახურვა</p>
       <p
