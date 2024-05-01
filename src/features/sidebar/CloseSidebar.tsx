@@ -1,6 +1,17 @@
+import { useAppDispatch } from "../../hooks/hooks";
+import { closeSidebar } from "../slices/modalSlice";
+
 const CloseSidebar = () => {
+  const dispatch = useAppDispatch();
+  const haneleCloseSidebar = () => {
+    dispatch(closeSidebar());
+  };
   return (
-    <button className="flex items-center gap-1 group text-[13px] font-sans font-semibold ">
+    <button
+      type="button"
+      onClick={haneleCloseSidebar}
+      className="flex items-center gap-1 group text-[13px] font-sans font-semibold "
+    >
       <p className="text-[#2d2a2a]">დახურვა</p>
       <p
         className="
