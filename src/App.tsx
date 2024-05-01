@@ -22,7 +22,6 @@ const App = () => {
   const { status, error, productData } = useAppSelector(
     (store) => store.product
   );
-
   const queryString = window.location.search;
   const searchParams = new URLSearchParams(queryString);
   const searchQuery = searchParams.get("search");
