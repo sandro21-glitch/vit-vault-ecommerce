@@ -121,6 +121,35 @@ export const cartSlice = createSlice({
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
       }
     },
+    setProductAmount: (
+      state,
+      action: PayloadAction<{ id: string; itemCount: number }>
+    ) => {
+      const { id, itemCount } = action.payload;
+      const existingProduct = state.cartProducts.find(
+        (product) => product.id === id
+      );
+
+      if (existingProduct) {
+        const discountedPrice =
+          existingProduct.price -
+          (existingProduct.price * (existingProduct.discount || 0)) / 100;
+
+        existingProduct.totalPrice =
+          (discountedPrice || existingProduct.price) * itemCount;
+        existingProduct.quantity = itemCount;
+
+        // Recalculate the total sum of all products
+        state.totalSum = state.cartProducts.reduce(
+          (sum, product) => sum + product.totalPrice,
+          0
+        );
+
+        // Update the local storage
+        localStorage.setItem("products", JSON.stringify(state.cartProducts));
+        localStorage.setItem("sum", JSON.stringify(state.totalSum));
+      }
+    },
   },
 });
 
@@ -129,6 +158,7 @@ export const {
   removeCartProduct,
   increaseAmount,
   decreaseAmount,
+  setProductAmount,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
