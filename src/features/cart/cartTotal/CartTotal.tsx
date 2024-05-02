@@ -1,7 +1,9 @@
+
 import CartTotalList from "./CartTotalList";
 import Checkout from "./Checkout";
 
 const CartTotal = () => {
+
   return (
     <div className="w-full lg:max-w-[40%]">
       <div className="p-[25px] w-full border-2">
