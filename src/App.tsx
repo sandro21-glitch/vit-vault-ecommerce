@@ -16,6 +16,7 @@ import SingleProduct from "./pages/SingleProduct";
 import ProductByInput from "./pages/ProductByInput";
 import Cart from "./pages/Cart";
 import SidebarCart from "./pages/SidebarCart";
+import Articles from "./pages/Articles";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/product/:product" element={<SingleProduct />} />
         <Route path="/shop" element={<ProductByInput />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/blog" element={<Articles />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <SidebarCart />
