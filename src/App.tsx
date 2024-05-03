@@ -17,6 +17,7 @@ import ProductByInput from "./pages/ProductByInput";
 import Cart from "./pages/Cart";
 import SidebarCart from "./pages/SidebarCart";
 import Articles from "./pages/Articles";
+import { fetchArticlesData } from "./features/slices/articlesSlice";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +29,7 @@ const App = () => {
   const searchQuery = searchParams.get("search");
   useEffect(() => {
     dispatch(fetchDataFromFirebase());
+    dispatch(fetchArticlesData())
   }, [dispatch]);
 
   useEffect(() => {
