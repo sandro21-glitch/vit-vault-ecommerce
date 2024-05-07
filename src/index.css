@@ -76,18 +76,6 @@ p {
   }
 }
 
-@layer utilities {
-  .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
 
 .section-x {
   padding: 0 15px;
@@ -129,6 +117,7 @@ table th {
   font-size: 16px;
   line-height: 1.2;
 }
+
 @media screen and (max-width: 768px) {
   table td {
     width: 100%;
