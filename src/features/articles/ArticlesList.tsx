@@ -6,9 +6,9 @@ const ArticlesList = () => {
   if (status === "error") return <p>Error</p>;
   if (status === "loading") return <p>loading...</p>;
   return (
-    <ul>
+    <ul className="max-w-[75%]">
       {articlesData?.map((item) => {
-        return <SingleArticle key={item.id} />;
+        return <SingleArticle key={item.id} item={item} />;
       })}
     </ul>
   );
