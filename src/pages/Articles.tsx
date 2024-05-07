@@ -1,9 +1,13 @@
-
+import ArticlesLayout from "../features/articles/ArticlesLayout";
+import SectionHeader from "../ui/SectionHeader";
 
 const Articles = () => {
   return (
-    <section>Articles</section>
-  )
-}
+    <section>
+      <SectionHeader path="ბლოგი" />
+      <ArticlesLayout />
+    </section>
+  );
+};
 
-export default Articles
+export default Articles;
