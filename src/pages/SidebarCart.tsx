@@ -1,11 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SidebarHeader from "../features/sidebar/SidebarHeader";
 import SidebarList from "../features/sidebar/SidebarList";
-import { useAppSelector } from "../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import useOutsideClick from "../hooks/useOutsideClick";
+import { closeSidebar } from "../features/slices/modalSlice";
 
 const SidebarCart = () => {
   const { sidebar } = useAppSelector((store) => store.modals);
   const [isVisible, setIsVisible] = useState(false);
+  const asideRef = useRef<HTMLElement>(null);
+  const dispatch = useAppDispatch();
+
+  // Hook to handle clicks outside the sidebar
+  useOutsideClick(asideRef, () => {
+    if (sidebar) {
+      dispatch(closeSidebar());
+    }
+  });
 
   useEffect(() => {
     if (sidebar) {
@@ -27,6 +38,7 @@ const SidebarCart = () => {
     >
       <div className="fixed inset-0 bg-black opacity-60 z-[-1]"></div>
       <aside
+        ref={asideRef}
         className={`w-[300px] lg:w-[340px] bg-white float-end h-screen
           ${isVisible ? "translate-x-0" : "translate-x-[200%]"}
           transition-all ease-in duration-200
