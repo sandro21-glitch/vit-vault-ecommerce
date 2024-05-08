@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-const WidgetList = (props: Props) => {
+const WidgetList = () => {
   return (
     <div>WidgetList</div>
   )
