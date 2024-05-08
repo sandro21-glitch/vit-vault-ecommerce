@@ -8,7 +8,7 @@ type SingleWidgetTypes = {
 const SingleWidget = ({ article }: SingleWidgetTypes) => {
   return (
     <Link to={"/"}>
-      <div className="flex gap-5">
+      <div className="flex gap-3">
         <img
           src={article.image}
           alt="article image"
