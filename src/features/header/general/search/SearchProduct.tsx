@@ -57,7 +57,7 @@ const SearchProduct = () => {
         />
         <button
           type="submit"
-          className="absolute right-0 bottom-0 top-0 w-[50px] bg-transparent text-[#777] flex-center"
+          className="absolute right-0 bottom-0 top-0 w-[50px] text-[#777] flex-center"
         >
           <CiSearch size={25} />
         </button>
