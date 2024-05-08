@@ -15,7 +15,7 @@ const SubInfos = ({ subInfos }: SubInfoTypes) => {
               <span>{info.infoTitle}</span>
             </div>
             {splitInfo.map((part, index) => (
-              <p className="font-poppins text-[16px] mb-3">
+              <p className="font-poppins text-[18px] mb-3">
                 {part.trim()}
                 {index < splitInfo.length - 1 && <br />}
               </p>
