@@ -14,7 +14,7 @@ const ArticleContent = ({ selectedArticle }: ArticleContentTypes) => {
   return (
     <div className="max-w-[75%]">
       <Title title={title} />
-      <img src={image} alt="article image" className="mb-10" />
+      <img src={image} alt="article image" loading="lazy" className="mb-10" />
       {subTitle && <SubTitle subTitle={subTitle} />}
       {info && <Info info={info} />}
       {subInfos && <SubInfos subInfos={subInfos} />}
