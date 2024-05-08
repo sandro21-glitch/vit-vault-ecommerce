@@ -16,7 +16,7 @@ const NavTabs = ({ setActiveTab, activeTab }: NavTabTypes) => {
         onClick={() => setActiveTab("menu")}
         className={`py-[18px] px-[15px] w-1/2 text-center font-bold text-primaryGray
          cursor-pointer ${
-           activeTab === "menu" ? "bg-transparentBlack" : "bg-veryLightGray"
+           activeTab === "menu" ? "bg-gray-200" : "bg-veryLightGray"
          } 
          
          `}
@@ -28,7 +28,7 @@ const NavTabs = ({ setActiveTab, activeTab }: NavTabTypes) => {
         className={`py-[18px] px-[15px] w-1/2 text-center font-bold text-primaryGray
          cursor-pointer ${
            activeTab === "categories"
-             ? "bg-transparentBlack"
+             ? "bg-gray-200"
              : "bg-veryLightGray"
          } `}
       >
