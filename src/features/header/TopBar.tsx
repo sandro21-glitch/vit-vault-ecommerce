@@ -6,7 +6,7 @@ const TopBar = () => {
   return (
     <div className=" bg-primaryGreen">
       <div className="h-[40px] px-[15px] section-center flex items-center justify-end">
-        <ul className="h-full border-l px-3 text-center flex-center gap-2">
+        <ul className="h-full border-l px-3 text-center flex items-center gap-2">
           <li className="cursor-pointer hover:scale-105 transition-all ease-in duration-150">
             <img
               src={ge}
