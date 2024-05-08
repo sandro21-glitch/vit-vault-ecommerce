@@ -1,9 +1,14 @@
+import Breadcrumb from "../../../../ui/Breadcrumb";
+
 type TitleTypes = {
   title: string;
 };
-const Title = ({title}:TitleTypes) => {
+const Title = ({ title }: TitleTypes) => {
   return (
-    <h1 className="text-center text-[40px] font-semibold mb-10">{title}</h1>
+    <div className="flex justify-between w-full items-center mb-10">
+      <h1 className="text-[30px] font-semibold">{title}</h1>
+      <Breadcrumb category={title} />
+    </div>
   );
 };
 
