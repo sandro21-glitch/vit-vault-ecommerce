@@ -10,6 +10,9 @@ export default {
         veryLightGray: "#F5F5F5",
         transparentBlack: "rgba(0,0,0,.08)",
       },
+      backgroundColor: {
+        transparentBlack: "rgba(0,0,0,.2)",
+      },
       boxShadow: {
         mainShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
         mainShadowB: "0px 4px 8px rgba(99, 99, 99, 0.2)",
