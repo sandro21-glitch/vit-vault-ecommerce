@@ -11,7 +11,7 @@ export default {
         transparentBlack: "rgba(0,0,0,.08)",
       },
       backgroundColor: {
-        transparentBlack: "rgba(0,0,0,.2)",
+        transparentBlack: "rgba(0,0,0,.4)",
       },
       boxShadow: {
         mainShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
