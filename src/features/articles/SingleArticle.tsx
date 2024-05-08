@@ -14,7 +14,10 @@ const SingleArticle = ({ item, index }: SingleArticleTypes) => {
         !isDivisible ? "flex-row-reverse" : "flex-row"
       } group `}
     >
-      <div className="overflow-hidden rounded-md cursor-pointer flex-1 relative">
+      <div
+        className="overflow-hidden rounded-md
+       cursor-pointer flex-1 relative after:absolute after:inset-0 after:w-full after:h-full after:z-[1] after:bg-transparentBlack"
+      >
         <img
           src={item.image}
           alt="article image"
