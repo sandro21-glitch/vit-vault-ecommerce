@@ -12,7 +12,7 @@ const SingleWidget = ({ article }: SingleWidgetTypes) => {
         <img
           src={article.image}
           alt="article image"
-          className="w-[95px] h-[80] object-cover"
+          className="w-full max-w-[95px] h-[80px] object-cover rounded-md"
         />
         <p className="text-[13px] font-poppins">{article.title}</p>
       </div>
