@@ -1,4 +1,4 @@
-import ArticlesLayout from "../features/articles/ArticlesLayout";
+import ArticlesLayout from "../features/articles/articlesPage/ArticlesLayout";
 import SectionHeader from "../ui/SectionHeader";
 
 const Articles = () => {
