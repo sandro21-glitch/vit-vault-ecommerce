@@ -1,11 +1,23 @@
-import React from 'react'
+import { Link } from "react-router-dom";
+import { ArticlesData } from "../slices/articlesSlice";
 
-type Props = {}
+type SingleWidgetTypes = {
+  article: ArticlesData;
+};
 
-const SingleWidget = (props: Props) => {
+const SingleWidget = ({ article }: SingleWidgetTypes) => {
   return (
-    <div>SingleWidget</div>
-  )
-}
+    <Link to={"/"}>
+      <div className="flex gap-5">
+        <img
+          src={article.image}
+          alt="article image"
+          className="w-[95px] h-[80] object-cover"
+        />
+        <p className="text-[13px] font-poppins">{article.title}</p>
+      </div>
+    </Link>
+  );
+};
 
-export default SingleWidget
+export default SingleWidget;
