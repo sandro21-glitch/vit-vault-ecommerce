@@ -1,9 +1,12 @@
-
+import { useAppSelector } from "../hooks/hooks";
 
 const ArticleWidgets = () => {
-  return (
-    <div className="">ArticleWidgets</div>
-  )
-}
+  const { articlesData, status } = useAppSelector((store) => store.articles);
 
-export default ArticleWidgets
+  if(status === 'error') return <p>error</p>
+  if(status === 'loading') return <p>loading...</p>
+    
+  return <div className="">ArticleWidgets</div>;
+};
+
+export default ArticleWidgets;
