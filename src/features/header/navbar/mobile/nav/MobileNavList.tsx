@@ -1,17 +1,25 @@
+import { Link } from "react-router-dom";
 import { navItems } from "../../../../../constants/navItems";
 
-const MobileNavList = () => {
+type MobileNavListTypes = {
+  setOpen: (open: boolean) => void;
+};
+
+const MobileNavList = ({ setOpen }: MobileNavListTypes) => {
   return (
     <ul>
       {navItems.map((listItem) => {
-        const { id, name, color } = listItem;
+        const { id, name, color, path } = listItem;
         return (
           <li
+            onClick={() => setOpen(false)}
             key={id}
             style={{ color: color ? color : "" }}
-            className="p-[14px] font-semibold border-b cursor-pointer"
+            className="border-b"
           >
-            {name}
+            <Link to={path} className="p-[14px] font-semibold block">
+              {name}
+            </Link>
           </li>
         );
       })}
