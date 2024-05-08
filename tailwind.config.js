@@ -9,6 +9,8 @@ export default {
         primaryGray: "#909090",
         veryLightGray: "#F5F5F5",
         transparentBlack: "rgba(0,0,0,.08)",
+        transparent: "rgba(0,0,0,.05)",
+        
       },
       backgroundColor: {
         transparentBlack: "rgba(0,0,0,.4)",
