@@ -18,6 +18,7 @@ import Cart from "./pages/Cart";
 import SidebarCart from "./pages/SidebarCart";
 import Articles from "./pages/Articles";
 import { fetchArticlesData } from "./features/slices/articlesSlice";
+import SingleArticle from "./pages/SingleArticle";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +30,7 @@ const App = () => {
   const searchQuery = searchParams.get("search");
   useEffect(() => {
     dispatch(fetchDataFromFirebase());
-    dispatch(fetchArticlesData())
+    dispatch(fetchArticlesData());
   }, [dispatch]);
 
   useEffect(() => {
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/shop" element={<ProductByInput />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/blog" element={<Articles />} />
+        <Route path="/" element={<SingleArticle />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <SidebarCart />
