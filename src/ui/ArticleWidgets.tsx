@@ -1,4 +1,4 @@
-import SingleWidget from "../features/articleWidgets/SingleWidget";
+import SingleWidget from "../features/articles/articleWidgets/SingleWidget";
 import { useAppSelector } from "../hooks/hooks";
 
 const ArticleWidgets = () => {
