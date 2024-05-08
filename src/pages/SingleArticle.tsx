@@ -9,7 +9,7 @@ const SingleArticle = () => {
   const selectedArticle = articlesData?.find((article) => article.id === state);
   return (
     <section>
-      <SectionHeader path="test" />
+      <SectionHeader path={`${selectedArticle?.title}`} />
       <article className="section-center section-x">
         <SingleArticlePageItem selectedArticle={selectedArticle} />
       </article>
