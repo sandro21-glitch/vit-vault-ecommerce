@@ -10,7 +10,7 @@ const SingleArticle = ({ item, index }: SingleArticleTypes) => {
   const isDivisible = index % 2 === 0;
   return (
     <li
-      className={`mb-10 flex items-center gap-5 shadow-mainShadow p-5 rounded-md ${
+      className={`mb-10 flex items-center flex-col lg:flex-row gap-5 shadow-mainShadow p-5 rounded-md ${
         !isDivisible ? "flex-row-reverse" : "flex-row"
       } group `}
     >
@@ -21,9 +21,9 @@ const SingleArticle = ({ item, index }: SingleArticleTypes) => {
         <img
           src={item.image}
           alt="article image"
-          className="w-full h-fit  max-h-[250px] object-cover group-hover:scale-105 transition-all ease-in duration-300 "
+          className="w-full h-fit max-h-[250px] object-cover group-hover:scale-105 transition-all ease-in duration-300 "
         />
-        <ImageTitle />
+        <ImageTitle title={item.title} />
       </div>
       <div className="w-full flex flex-col items-center flex-1 ">
         <h3 className=" text-[23px] leading-8 cursor-pointer text-center font-semibold mb-5 hover:text-secondaryGreen transition-all ease-in duration-150">
