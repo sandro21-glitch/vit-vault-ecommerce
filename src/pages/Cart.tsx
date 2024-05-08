@@ -1,5 +1,6 @@
 import CartHeader from "../features/cart/CartHeader";
 import CartLayout from "../features/cart/CartLayout";
+import ArticleWidgets from "../ui/ArticleWidgets";
 
 const Cart = () => {
   return (
@@ -10,7 +11,7 @@ const Cart = () => {
         className="flex flex-col lg:flex-row section-center section-x md:gap-7"
       >
         <CartLayout />
-        <div className="w-full bg-red-900 lg:max-w-[25%]">test</div>
+        <ArticleWidgets />
       </div>
     </section>
   );
