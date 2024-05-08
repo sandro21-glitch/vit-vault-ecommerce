@@ -1,11 +1,13 @@
 import "./imageTitle.css";
-const ImageTitle = () => {
+type ImageTitleTypes = {
+  title: string;
+};
+
+const ImageTitle = ({ title }: ImageTitleTypes) => {
   return (
     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999]">
       <div className="notification">
-        <div className="notiglow"></div>
-        <div className="notiborderglow"></div>
-        <div className="notititle">პრაქტიკული მითითებები ცილის შესახებ</div>
+        <h4 className="notititle">{title}</h4>
       </div>
     </div>
   );
