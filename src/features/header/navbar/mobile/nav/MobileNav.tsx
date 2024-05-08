@@ -22,7 +22,7 @@ const MobileNav = ({ isOpen, setOpen }: MobileNavTypes) => {
         <SearchProduct />
         <NavTabs setActiveTab={setActiveTab} activeTab={activeTab} />
         {activeTab === "menu" ? (
-          <MobileNavList />
+          <MobileNavList setOpen={setOpen} />
         ) : (
           <MobileCategories setOpen={setOpen} />
         )}
