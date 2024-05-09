@@ -5,7 +5,7 @@ type InfoTypes = {
 const Info = ({ info }: InfoTypes) => {
   const infoParts = info.split(" - ");
   return (
-    <div>
+    <div className="mb-10">
       {infoParts?.map((part, index) => (
         <p key={index} className="font-poppins text-[20px] mb-10">
           {part.trim()}
