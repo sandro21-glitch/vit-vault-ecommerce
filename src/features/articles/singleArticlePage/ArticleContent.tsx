@@ -1,4 +1,5 @@
 import { ArticlesData } from "../../slices/articlesSlice";
+import ArticleFooter from "./ArticleFooter";
 import Info from "./parts/Info";
 import SubInfos from "./parts/SubInfos";
 import SubTitle from "./parts/SubTitle";
@@ -18,6 +19,7 @@ const ArticleContent = ({ selectedArticle }: ArticleContentTypes) => {
       {subTitle && <SubTitle subTitle={subTitle} />}
       {info && <Info info={info} />}
       {subInfos && <SubInfos subInfos={subInfos} />}
+      <ArticleFooter />
     </div>
   );
 };
