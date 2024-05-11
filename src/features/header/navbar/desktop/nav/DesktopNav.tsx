@@ -8,7 +8,7 @@ const DesktopNav = () => {
       <Categories />
       <NavList />
       <li className="list-none cursor-pointer text-[14px] font-semibold text-primaryGreen">
-        <Link to="/">ფასდაკლებები</Link>
+        <Link to="/discount">ფასდაკლებები</Link>
       </li>
     </div>
   );
