@@ -1,5 +1,5 @@
-import Countdown from "../features/discounted/Countdown";
-import DiscountedList from "../features/discounted/DiscountedList";
+import Countdown from "../features/productPages/discounted/Countdown";
+import DiscountedList from "../features/productPages/discounted/DiscountedList";
 import SectionHeader from "../ui/SectionHeader";
 
 const Discounted = () => {
