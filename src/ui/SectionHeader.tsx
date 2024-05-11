@@ -21,7 +21,7 @@ const SectionHeader = ({ path }: SectionHeaderTypes) => {
         >
           <FaLongArrowAltRight />
         </button>
-        <h1 className="text-white font-bold text-[1rem] md:text-[1.5rem] lg:text-[2rem] whitespace-nowrap">
+        <h1 className="text-white font-bold text-[1.5rem] md:text-[1.7rem] lg:text-[2rem] whitespace-nowrap">
           {categoryName}
         </h1>
       </div>
