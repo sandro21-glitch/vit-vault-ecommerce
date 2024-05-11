@@ -19,6 +19,7 @@ import SidebarCart from "./pages/SidebarCart";
 import Articles from "./pages/Articles";
 import { fetchArticlesData } from "./features/slices/articlesSlice";
 import SingleArticle from "./pages/SingleArticle";
+import Discounted from "./pages/Discounted";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/blog" element={<Articles />} />
         <Route path="/:article" element={<SingleArticle />} />
+        <Route path="/fasdaklebebi" element={<Discounted />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <SidebarCart />
