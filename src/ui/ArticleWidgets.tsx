@@ -8,7 +8,7 @@ const ArticleWidgets = () => {
   if (status === "loading") return <p>loading...</p>;
   if (!articlesData) return <p>No articles available</p>;
   return (
-    <div className="flex flex-col gap-5 max-w-[25%]">
+    <div className="flex flex-col gap-5 lg:max-w-[25%]">
       {articlesData.map((article) => (
         <SingleWidget key={article.id} article={article} />
       ))}
