@@ -23,6 +23,11 @@ const MobileNavList = ({ setOpen }: MobileNavListTypes) => {
           </li>
         );
       })}
+      <li className="border-b list-none cursor-pointer text-[14px] font-semibold text-secondaryGreen">
+        <Link to="/discount" className="p-[14px] block">
+          ფასდაკლებები
+        </Link>
+      </li>
     </ul>
   );
 };
