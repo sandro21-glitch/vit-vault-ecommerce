@@ -29,6 +29,9 @@ body {
   font-weight: 700;
   font-style: normal;
 }
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
 h1,
 h2,
 h3,
