@@ -9,6 +9,7 @@ const Countdown = () => {
       setTime((time) => {
         if (time === 0) {
           clearInterval(timer);
+          setTime(initialTime);
           return initialTime;
         } else return time - 1;
       });
