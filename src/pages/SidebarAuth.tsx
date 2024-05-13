@@ -4,6 +4,7 @@ import useOutsideClick from "../hooks/useOutsideClick";
 import { closeLoginSidebar } from "../features/slices/modalSlice";
 import SidebarHeader from "../features/sidebar/SidebarHeader";
 import LoginForm from "../features/sidebar/loginSidebar/LoginForm";
+import LoginFooter from "../features/sidebar/loginSidebar/LoginFooter";
 
 const SidebarAuth = () => {
   const { loginSidebar } = useAppSelector((store) => store.modals);
@@ -46,6 +47,7 @@ const SidebarAuth = () => {
       >
         <SidebarHeader title="შესვლა" />
         <LoginForm />
+        <LoginFooter />
       </aside>
     </div>
   );
