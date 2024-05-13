@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import useOutsideClick from "../hooks/useOutsideClick";
 import { closeLoginSidebar } from "../features/slices/modalSlice";
 import SidebarHeader from "../features/sidebar/SidebarHeader";
+import LoginForm from "../features/sidebar/loginSidebar/LoginForm";
 
 const SidebarAuth = () => {
   const { loginSidebar } = useAppSelector((store) => store.modals);
@@ -38,12 +39,13 @@ const SidebarAuth = () => {
       <div className="fixed inset-0 bg-black opacity-60 z-[-1]"></div>
       <aside
         ref={asideRef}
-        className={`w-[300px] lg:w-[340px] bg-white float-end h-screen
+        className={`w-[300px] lg:w-[350px] bg-white float-end h-screen
         ${isVisible ? "translate-x-0" : "translate-x-[200%]"}
         transition-all ease-in duration-200
       `}
       >
         <SidebarHeader title="შესვლა" />
+        <LoginForm />
       </aside>
     </div>
   );
