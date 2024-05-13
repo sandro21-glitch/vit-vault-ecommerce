@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import useOutsideClick from "../hooks/useOutsideClick";
 import { closeLoginSidebar } from "../features/slices/modalSlice";
+import SidebarHeader from "../features/sidebar/SidebarHeader";
 
 const SidebarAuth = () => {
   const { loginSidebar } = useAppSelector((store) => store.modals);
@@ -42,8 +43,7 @@ const SidebarAuth = () => {
         transition-all ease-in duration-200
       `}
       >
-        <h1>header</h1>
-        <h5>footer</h5>
+        <SidebarHeader title="შესვლა" />
       </aside>
     </div>
   );
