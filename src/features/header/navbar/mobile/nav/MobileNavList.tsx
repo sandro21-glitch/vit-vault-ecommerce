@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { navItems } from "../../../../../constants/navItems";
-
+import UserAuthBtn from "./UserAuthBtn";
 type MobileNavListTypes = {
   setOpen: (open: boolean) => void;
 };
@@ -28,6 +28,7 @@ const MobileNavList = ({ setOpen }: MobileNavListTypes) => {
           ფასდაკლებები
         </Link>
       </li>
+      <UserAuthBtn />
     </ul>
   );
 };
