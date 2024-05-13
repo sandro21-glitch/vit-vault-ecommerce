@@ -1,14 +1,20 @@
 const LoginForm = () => {
   return (
-    <form className="p-5 font-poppins">
+    <form className="p-5 font-poppins border-b">
       <div className="flex flex-col">
-        <label htmlFor="name" className="text-right text-[18px] text-primaryGray">
+        <label
+          htmlFor="name"
+          className="text-right text-[18px] text-primaryGray"
+        >
           სახელი, ან ელფოსტა
         </label>
         <input type="text" id="name" className="border-2 outline-none p-2" />
       </div>
       <div className="flex flex-col mt-5">
-        <label htmlFor="password" className="text-right text-[18px] text-primaryGray">
+        <label
+          htmlFor="password"
+          className="text-right text-[18px] text-primaryGray"
+        >
           პაროლი
         </label>
         <input
@@ -32,7 +38,9 @@ const LoginForm = () => {
           დამახსოვრება
         </label>
       </div>
-      <p className="text-secondaryGreen mt-5">დაგავიწყდათ პაროლი?</p>
+      <p className="text-secondaryGreen mt-5 hover:underline cursor-pointer text-[20px]">
+        დაგავიწყდათ პაროლი?
+      </p>
     </form>
   );
 };
