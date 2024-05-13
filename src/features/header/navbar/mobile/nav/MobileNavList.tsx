@@ -28,7 +28,7 @@ const MobileNavList = ({ setOpen }: MobileNavListTypes) => {
           ფასდაკლებები
         </Link>
       </li>
-      <UserAuthBtn />
+      <UserAuthBtn setOpen={setOpen} />
     </ul>
   );
 };
