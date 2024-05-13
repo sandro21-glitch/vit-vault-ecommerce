@@ -1,10 +1,16 @@
-import { useAppDispatch } from "../../../hooks/hooks";
-import { closeSidebar } from "../../slices/modalSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { closeLoginSidebar, closeSidebar } from "../slices/modalSlice";
 
 const CloseSidebar = () => {
+  const { loginSidebar, sidebar } = useAppSelector((store) => store.modals);
   const dispatch = useAppDispatch();
   const haneleCloseSidebar = () => {
-    dispatch(closeSidebar());
+    if (sidebar) {
+      dispatch(closeSidebar());
+    }
+    if (loginSidebar) {
+      dispatch(closeLoginSidebar());
+    }
   };
   return (
     <button
