@@ -16,7 +16,7 @@ const MobileNav = ({ isOpen, setOpen }: MobileNavTypes) => {
     <div
       className={`fixed ${
         isOpen ? "translate-x-0" : "translate-x-[-200%]"
-      } overflow-y-scroll bg-white top-0 left-0 w-[60%] right-0 bottom-0 z-[9999] transition-all ease-in duration-300 delay-100`}
+      } overflow-y-scroll bg-white top-0 left-0 w-[75%] sm:w-[60%] right-0 bottom-0 z-[9999] transition-all ease-in duration-300 delay-100`}
     >
       <div className="overflow-hidden">
         <SearchProduct />
