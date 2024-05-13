@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import SidebarHeader from "../features/sidebar/cartSidebar/SidebarHeader";
+import SidebarHeader from "../features/sidebar/SidebarHeader";
 import SidebarList from "../features/sidebar/cartSidebar/SidebarList";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import useOutsideClick from "../hooks/useOutsideClick";
@@ -44,7 +44,7 @@ const SidebarCart = () => {
           transition-all ease-in duration-200
         `}
       >
-        <SidebarHeader />
+        <SidebarHeader title="საყიდლების კალათა" />
         <SidebarList />
       </aside>
     </div>
