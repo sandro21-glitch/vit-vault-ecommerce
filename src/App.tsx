@@ -18,10 +18,10 @@ import {
   MainPage,
   ProductByCategory,
   ProductByInput,
-  SidebarCart,
   SingleArticle,
   SingleProduct,
 } from "./pages";
+import Sidebars from "./pages/Sidebars";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -63,7 +63,7 @@ const App = () => {
         <Route path="/discount" element={<Discounted />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <SidebarCart />
+      <Sidebars />
       <Footer />
       <PathChangeListener />
     </BrowserRouter>
