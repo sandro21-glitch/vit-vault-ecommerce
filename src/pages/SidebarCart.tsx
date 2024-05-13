@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import SidebarHeader from "../features/sidebar/SidebarHeader";
-import SidebarList from "../features/sidebar/SidebarList";
+import SidebarHeader from "../features/sidebar/cartSidebar/SidebarHeader";
+import SidebarList from "../features/sidebar/cartSidebar/SidebarList";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import useOutsideClick from "../hooks/useOutsideClick";
 import { closeSidebar } from "../features/slices/modalSlice";
