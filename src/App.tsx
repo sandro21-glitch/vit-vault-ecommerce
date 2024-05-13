@@ -1,7 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Header from "./ui/Header";
-import MainPage from "./pages/MainPage";
-import Footer from "./features/mainPage/Footer";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import {
@@ -9,17 +6,22 @@ import {
   setFilteredProducts,
   setSearchTerm,
 } from "./features/slices/productsSlice";
-import Spinner from "./ui/Spinner";
-import ProductByCategory from "./pages/ProductByCategory";
-import PathChangeListener from "./utils/PathChangeListener";
-import SingleProduct from "./pages/SingleProduct";
-import ProductByInput from "./pages/ProductByInput";
-import Cart from "./pages/Cart";
-import SidebarCart from "./pages/SidebarCart";
-import Articles from "./pages/Articles";
 import { fetchArticlesData } from "./features/slices/articlesSlice";
-import SingleArticle from "./pages/SingleArticle";
-import Discounted from "./pages/Discounted";
+import PathChangeListener from "./utils/PathChangeListener";
+import Header from "./ui/Header";
+import Footer from "./features/mainPage/Footer";
+import Spinner from "./ui/Spinner";
+import {
+  Articles,
+  Cart,
+  Discounted,
+  MainPage,
+  ProductByCategory,
+  ProductByInput,
+  SidebarCart,
+  SingleArticle,
+  SingleProduct,
+} from "./pages";
 
 const App = () => {
   const dispatch = useAppDispatch();
