@@ -5,9 +5,8 @@ type TitleTypes = {
 };
 const Title = ({ title }: TitleTypes) => {
   return (
-    <div className="flex justify-between w-full items-center mb-10">
-      <h1 className="text-[30px] font-semibold">{title}</h1>
-      <Breadcrumb category={title} />
+    <div className="flex justify-between w-full items-start mb-10">
+      <Breadcrumb category={title} classname="text-[18px]" />
     </div>
   );
 };
