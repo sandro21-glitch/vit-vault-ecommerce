@@ -14,12 +14,8 @@ const CartTotalList = () => {
       </li>
       <li className="py-3 border-b text-[14px]">
         <div className="flex items-center justify-between">
-          <p className="text-[16px] text-black font-semibold">
-            საერთო ფასდაკლება
-          </p>
-          <p className="text-secondaryGreen font-semibold  text-[20px]">
-            {formatToGeorgianLari(totalDiscount)}
-          </p>
+          <p className="text-black">საერთო ფასდაკლება</p>
+          <p>{formatToGeorgianLari(totalDiscount)}</p>
         </div>
       </li>
       <li className="py-3">
