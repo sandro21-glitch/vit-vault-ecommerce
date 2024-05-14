@@ -12,15 +12,17 @@ export interface CartProductTypes {
 
 const storedProducts = localStorage.getItem("products");
 const storedSum = localStorage.getItem("sum");
-
+const storedTotDiscount = localStorage.getItem("totDiscount");
 export interface CartState {
   cartProducts: CartProductTypes[];
   totalSum: number;
+  totalDiscount: number;
 }
 
 const initialState: CartState = {
   cartProducts: storedProducts ? JSON.parse(storedProducts) : [],
   totalSum: storedSum ? +storedSum : 0,
+  totalDiscount: storedTotDiscount ? +storedTotDiscount : 0,
 };
 
 export const cartSlice = createSlice({
@@ -47,8 +49,15 @@ export const cartSlice = createSlice({
         (sum, product) => sum + product.totalPrice,
         0
       );
+      state.totalDiscount = cartProducts.reduce(
+        (discountSum, product) =>
+          discountSum +
+          ((product.price * product.discount || 0) / 100) * product.quantity,
+        0
+      );
       localStorage.setItem("products", JSON.stringify(cartProducts));
       localStorage.setItem("sum", JSON.stringify(state.totalSum));
+      localStorage.setItem("totDiscount", JSON.stringify(state.totalDiscount));
     },
     removeCartProduct: (state, action: PayloadAction<string>) => {
       // remove the product from the cart
@@ -60,12 +69,19 @@ export const cartSlice = createSlice({
         (sum, product) => sum + product.totalPrice,
         0
       ));
+      state.totalDiscount = updatedCart.reduce(
+        (discountSum, product) =>
+          discountSum +
+          ((product.price * product.discount || 0) / 100) * product.quantity,
+        0
+      );
       // update the cart state and total sum
       state.totalSum = updatedSum;
       state.cartProducts = updatedCart;
       // update local storage
       localStorage.setItem("products", JSON.stringify(updatedCart));
       localStorage.setItem("sum", JSON.stringify(updatedSum));
+      localStorage.setItem("totDiscount", JSON.stringify(state.totalDiscount));
     },
     increaseAmount: (
       state,
@@ -90,8 +106,18 @@ export const cartSlice = createSlice({
           (sum, product) => sum + product.totalPrice,
           0
         );
+        state.totalDiscount = cartProducts.reduce(
+          (discountSum, product) =>
+            discountSum +
+            ((product.price * product.discount || 0) / 100) * product.quantity,
+          0
+        );
         localStorage.setItem("products", JSON.stringify(cartProducts));
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
+        localStorage.setItem(
+          "totDiscount",
+          JSON.stringify(state.totalDiscount)
+        );
       }
     },
     decreaseAmount: (
@@ -117,8 +143,18 @@ export const cartSlice = createSlice({
           (sum, product) => sum + product.totalPrice,
           0
         );
+        state.totalDiscount = cartProducts.reduce(
+          (discountSum, product) =>
+            discountSum +
+            ((product.price * product.discount || 0) / 100) * product.quantity,
+          0
+        );
         localStorage.setItem("products", JSON.stringify(cartProducts));
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
+        localStorage.setItem(
+          "totDiscount",
+          JSON.stringify(state.totalDiscount)
+        );
       }
     },
     setProductAmount: (
@@ -144,10 +180,20 @@ export const cartSlice = createSlice({
           (sum, product) => sum + product.totalPrice,
           0
         );
+        state.totalDiscount = state.cartProducts.reduce(
+          (discountSum, product) =>
+            discountSum +
+            ((product.price * product.discount || 0) / 100) * product.quantity,
+          0
+        );
 
         // Update the local storage
         localStorage.setItem("products", JSON.stringify(state.cartProducts));
         localStorage.setItem("sum", JSON.stringify(state.totalSum));
+        localStorage.setItem(
+          "totDiscount",
+          JSON.stringify(state.totalDiscount)
+        );
       }
     },
   },
