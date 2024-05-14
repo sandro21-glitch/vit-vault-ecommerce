@@ -27,7 +27,7 @@ const SingleSidebarListItem = ({ product }: SingleSidebarItemTypes) => {
     <li className="relative" onClick={handleCloseSidebar}>
       <Link to={`/product/${formatPath(name)}`} state={{ id }}>
         <div className="flex px-4 py-5 border-b">
-          <div className="mr-5">
+          <div className="mr-1 md:mr-5">
             <img
               src={image}
               alt={name}
