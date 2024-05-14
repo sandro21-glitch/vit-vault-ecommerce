@@ -4,6 +4,7 @@ import { checkDiscount } from "../../../utils/checkDiscount";
 import { CartProductTypes, removeCartProduct } from "../../slices/cartSlice";
 import CloseButton from "../../../ui/CloseButton";
 import { useAppDispatch } from "../../../hooks/hooks";
+import { formatPath } from "../../../utils/formatPath";
 
 type SingleSidebarItemTypes = {
   product: CartProductTypes;
@@ -18,14 +19,14 @@ const SingleSidebarListItem = ({ product }: SingleSidebarItemTypes) => {
   };
   return (
     <li className="relative">
-      <Link to="/">
+      <Link to={`/product/${formatPath(name)}`} state={{ id }}>
         <div className="flex px-4 py-5 border-b">
           <div className="mr-5">
             <img
               src={image}
               alt={name}
               loading="lazy"
-              className="max-w-[45px] min-w-[45px]"
+              className="max-w-[65px] min-w-[65px] h-[65px] object-contain"
             />
           </div>
           <div>
