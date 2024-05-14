@@ -5,6 +5,7 @@ import { CartProductTypes, removeCartProduct } from "../../slices/cartSlice";
 import CloseButton from "../../../ui/CloseButton";
 import { useAppDispatch } from "../../../hooks/hooks";
 import { formatPath } from "../../../utils/formatPath";
+import { closeSidebar } from "../../slices/modalSlice";
 
 type SingleSidebarItemTypes = {
   product: CartProductTypes;
@@ -17,8 +18,13 @@ const SingleSidebarListItem = ({ product }: SingleSidebarItemTypes) => {
   const handleRemoveItem = () => {
     dispatch(removeCartProduct(id));
   };
+
+  const handleCloseSidebar = () => {
+    dispatch(closeSidebar());
+  };
+
   return (
-    <li className="relative">
+    <li className="relative" onClick={handleCloseSidebar}>
       <Link to={`/product/${formatPath(name)}`} state={{ id }}>
         <div className="flex px-4 py-5 border-b">
           <div className="mr-5">
