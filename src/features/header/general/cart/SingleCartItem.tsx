@@ -19,7 +19,7 @@ const SingleCartItem = ({ item }: SingleCartItemTypes) => {
           src={image}
           alt={name}
           loading="lazy"
-          className="min-w-[45px] max-w-[45px] h-auto object-cover"
+          className="min-w-[55px] max-w-[55px] h-[55px] object-contain"
         />
       </Link>
       <div className="flex flex-col">
