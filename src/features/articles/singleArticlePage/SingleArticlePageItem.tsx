@@ -7,7 +7,7 @@ type SingleArticleTypes = {
 
 const SingleArticlePageItem = ({ selectedArticle }: SingleArticleTypes) => {
   return (
-    <div className="flex gap-10">
+    <div className="flex flex-col lg:flex-row gap-10">
       <ArticleContent selectedArticle={selectedArticle} />
       <ArticleWidgets />
     </div>
