@@ -1,13 +1,10 @@
-type LoggedUserTypes = {
-  email: string;
-};
 
-const LoggedInUser = ({email }: LoggedUserTypes) => {
+const LoggedInUser = () => {
   return (
     <li
       className="text-[#808080] font-bold text-[13px] cursor-pointer"
     >
-      {email}
+      ჩემი ანგარიში
     </li>
   );
 };
