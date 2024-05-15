@@ -22,6 +22,7 @@ import {
   SingleProduct,
 } from "./pages";
 import Sidebars from "./pages/Sidebars";
+import Register from "./pages/Register";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/blog" element={<Articles />} />
         <Route path="/:article" element={<SingleArticle />} />
         <Route path="/discount" element={<Discounted />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Sidebars />
