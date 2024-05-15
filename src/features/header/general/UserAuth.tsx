@@ -10,11 +10,19 @@ const UserAuth = () => {
     dispatch(openLoginSidebar());
   };
   const { error, isLoading, user } = useAppSelector((store) => store.user);
-  if (isLoading) return <Skeleton highlightColor="red" width={100} />;
-  if (error) return <p>Error...</p>;
+
+  if (isLoading) {
+    return <Skeleton highlightColor="red" width={100} />;
+  }
+
+  if (error) {
+    alert(error);
+  }
+
   if (user) {
     return <LoggedInUser email={user.email} />;
   }
+
   return (
     <li
       onClick={handleOpenAuthSidebar}
