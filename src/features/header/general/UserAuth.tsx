@@ -20,7 +20,7 @@ const UserAuth = () => {
   }
 
   if (user) {
-    return <LoggedInUser email={user.email} />;
+    return <LoggedInUser />;
   }
 
   return (
