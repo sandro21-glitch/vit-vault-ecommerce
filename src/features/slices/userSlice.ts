@@ -2,9 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 
-interface UserData {
+export interface UserData {
   email: string;
   password: string;
+}
+export interface UserDataState {
+  email: string;
+  uid: string;
 }
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
@@ -15,7 +19,11 @@ export const registerUser = createAsyncThunk(
         userData.email,
         userData.password
       );
-      return userCredential.user;
+      const { uid, email } = userCredential.user;
+      if (!email) {
+        throw new Error("Email cannot be null");
+      }
+      return { uid, email };
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -23,11 +31,10 @@ export const registerUser = createAsyncThunk(
 );
 
 export interface UserState {
-  user: string | null;
+  user: UserDataState | null;
   isLoading: boolean;
-  error: boolean | null;
+  error: string | null;
 }
-
 const initialState: UserState = {
   user: null,
   isLoading: false,
@@ -37,25 +44,25 @@ const initialState: UserState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    setUser: (state, action) => {
-      state.user = action.payload;
-    },
-    setLoading: (state, action) => {
-      state.isLoading = action.payload;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
-    logout: (state) => {
-      state.user = null;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(registerUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      });
   },
 });
 
-export const { setUser, setLoading, setError, clearError, logout } = userSlice.actions;
+export const {} = userSlice.actions;
 
 export default userSlice.reducer;
