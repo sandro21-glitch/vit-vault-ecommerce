@@ -7,3 +7,6 @@ export { default as ProductByInput } from "./ProductByInput";
 export { default as SidebarCart } from "./SidebarCart";
 export { default as SingleArticle } from "./SingleArticle";
 export { default as SingleProduct } from "./SingleProduct";
+export { default as Profile } from "./Profile";
+export { default as Sidebars } from "./Sidebars";
+export { default as Register } from "./Register";
