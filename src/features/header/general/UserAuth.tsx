@@ -1,6 +1,8 @@
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { openLoginSidebar } from "../../slices/modalSlice";
 import LoggedInUser from "./LoggedInUser";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const UserAuth = () => {
   const dispatch = useAppDispatch();
@@ -8,7 +10,14 @@ const UserAuth = () => {
     dispatch(openLoginSidebar());
   };
   const { error, isLoading, user } = useAppSelector((store) => store.user);
-  if (isLoading) return <p>Loading..</p>;
+  if (isLoading)
+    return (
+      <SkeletonTheme baseColor="#1eff00" highlightColor="#ff0000">
+        <p>
+          <Skeleton count={3} highlightColor="red" className="text-red-900 text-[10px]" />
+        </p>
+      </SkeletonTheme>
+    );
   if (error) return <p>Error...</p>;
   if (user) {
     return <LoggedInUser email={user.email} />;
