@@ -1,6 +1,6 @@
 type SidebarListProps = {
-  setSelectedTab: (tab: string) => void;
   selectedTab: string;
+  setSelectedTab: (tab: string) => void;
 };
 
 const SidebarList = ({ setSelectedTab, selectedTab }: SidebarListProps) => {
