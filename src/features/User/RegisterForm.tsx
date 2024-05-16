@@ -6,9 +6,11 @@ import PasswordInput from "./registerFormLabels/PasswordInput";
 import TermsCheckbox from "./registerFormLabels/TermsCheckbox";
 import SubmitRegisterBtn from "./registerFormLabels/SubmitRegisterBtn";
 import FormHeader from "./registerFormLabels/FormHeader";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [userData, setUserData] = useState<UserData>({
     email: "",
     password: "",
@@ -31,6 +33,7 @@ const RegisterForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(registerUser(userData));
+    navigate("/profile");
   };
 
   return (
