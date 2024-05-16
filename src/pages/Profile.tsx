@@ -1,9 +1,15 @@
-
+import ProfileLayout from "../features/profile/ProfileLayout";
+import SectionHeader from "../ui/SectionHeader";
 
 const Profile = () => {
   return (
-    <div>Profile</div>
-  )
-}
+    <section>
+      <SectionHeader path="ჩემი ანგარიში" />
+      <article className="section-center section-x">
+        <ProfileLayout />
+      </article>
+    </section>
+  );
+};
 
-export default Profile
+export default Profile;
