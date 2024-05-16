@@ -6,10 +6,7 @@ const ProfileLayout = () => {
 
   return (
     <div className="py-20">
-      <AccountSidebar
-        setSelectedTab={setSelectedTab}
-        selectedTab={selectedTab}
-      />
+      <AccountSidebar setSelectedTab={setSelectedTab} selectedTab={selectedTab} />
     </div>
   );
 };
