@@ -1,3 +1,5 @@
+import Input from "../../../../ui/Input";
+
 type LoginNameTypes = {
   userData: { email: string; password: string };
   setUserData: (userData: { email: string; password: string }) => void;
@@ -9,10 +11,9 @@ const LoginNameInput = ({ setUserData, userData }: LoginNameTypes) => {
       <label htmlFor="name" className="text-right text-[18px] text-primaryGray">
         სახელი, ან ელფოსტა
       </label>
-      <input
-        type="text"
+      <Input
         id="name"
-        className="border-2 outline-none p-2"
+        type="text"
         value={userData.email}
         onChange={(e) => setUserData({ ...userData, email: e.target.value })}
       />
