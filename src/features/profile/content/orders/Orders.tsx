@@ -1,9 +1,11 @@
-
+import OrderListHeader from "./OrderListHeader";
 
 const Orders = () => {
   return (
-    <div>Orders</div>
-  )
-}
+    <div>
+      <OrderListHeader />
+    </div>
+  );
+};
 
-export default Orders
+export default Orders;
