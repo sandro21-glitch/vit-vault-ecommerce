@@ -13,7 +13,7 @@ const Input = ({ value, className, id, onChange, type }: TextInputProps) => {
     <input
       type={type}
       id={id}
-      className={`${className} border-2 outline-none p-2`}
+      className={`${className} border-[3px] outline-none p-2`}
       value={value}
       onChange={onChange}
     />
