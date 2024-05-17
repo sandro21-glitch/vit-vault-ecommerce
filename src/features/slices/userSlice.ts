@@ -52,6 +52,18 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+export const signOutUser = createAsyncThunk(
+  "auth/signOut",
+  async (_, { rejectWithValue }) => {
+    try {
+      const userSignOut = await auth.signOut();
+      return userSignOut;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export interface UserState {
   user: UserDataState | null;
   isLoading: boolean;
@@ -95,6 +107,20 @@ export const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = state.error = action.payload as string;
+      });
+    builder
+      .addCase(signOutUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(signOutUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user = null;
+      })
+      .addCase(signOutUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
       });
   },
 });
