@@ -10,10 +10,12 @@ import { closeLoginSidebar } from "../../slices/modalSlice";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const storedInputMail = localStorage.getItem("userEmail");
   const [userData, setUserData] = useState<UserData>({
-    email: "",
+    email: storedInputMail ? JSON.parse(storedInputMail) : "",
     password: "",
   });
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -23,6 +25,9 @@ const LoginForm = () => {
       await dispatch(loginUser(userData));
       dispatch(closeLoginSidebar());
       navigate("/profile");
+      if (isChecked) {
+        localStorage.setItem("userEmail", JSON.stringify(userData.email));
+      }
     } catch (error) {
       console.error("Login failed:", error);
     }
@@ -33,7 +38,7 @@ const LoginForm = () => {
       <LoginNameInput userData={userData} setUserData={setUserData} />
       <LoginPasswordInput userData={userData} setUserData={setUserData} />
       <LoginButton />
-      <SaveCheckbox />
+      <SaveCheckbox setIsChecked={setIsChecked} isChecked={isChecked} />
       <ForgotPasswordLink />
     </form>
   );
