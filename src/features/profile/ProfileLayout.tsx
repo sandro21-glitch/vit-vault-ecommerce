@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AccountSidebar from "./sidebar/AccountSidebar";
+import AccountSidebar from "./profileSidebar/AccountSidebar";
 import Orders from "./content/orders/Orders";
 import Address from "./content/address/Address";
 import AccountDetails from "./content/accountDetails/AccountDetails";
