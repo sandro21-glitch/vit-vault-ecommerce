@@ -15,7 +15,7 @@ export interface UserDataState {
 }
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (userData: UserData, { rejectWithValue }) => {
+  async (userData: UserData, {}) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -28,14 +28,18 @@ export const registerUser = createAsyncThunk(
       }
       return { uid, email };
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      if (error instanceof Error) {
+        return Promise.reject(error.message);
+      } else {
+        return Promise.reject("An unknown error occurred");
+      }
     }
   }
 );
 
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async (userData: UserData, { rejectWithValue }) => {
+  async (userData: UserData, {}) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -48,21 +52,27 @@ export const loginUser = createAsyncThunk(
       }
       return { uid, email };
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      if (error instanceof Error) {
+        return Promise.reject(error.message);
+      } else {
+        return Promise.reject("An unknown error occurred");
+      }
     }
   }
 );
-export const signOutUser = createAsyncThunk(
-  "auth/signOut",
-  async (_, { rejectWithValue }) => {
-    try {
-      const userSignOut = await auth.signOut();
-      return userSignOut;
-    } catch (error: any) {
-      return rejectWithValue(error.message);
+
+export const signOutUser = createAsyncThunk("auth/signOut", async (_, {}) => {
+  try {
+    const userSignOut = await auth.signOut();
+    return userSignOut;
+  } catch (error: any) {
+    if (error instanceof Error) {
+      return Promise.reject(error.message);
+    } else {
+      return Promise.reject("An unknown error occurred");
     }
   }
-);
+});
 
 export interface UserState {
   user: UserDataState | null;
@@ -106,7 +116,7 @@ export const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = state.error = action.payload as string;
+        state.error = action.payload as string;
       });
     builder
       .addCase(signOutUser.pending, (state) => {
