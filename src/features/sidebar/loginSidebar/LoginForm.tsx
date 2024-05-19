@@ -8,6 +8,7 @@ import { UserData, clearError, loginUser } from "../../slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { closeLoginSidebar } from "../../slices/modalSlice";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   const { error } = useAppSelector((store) => store.user);
@@ -38,7 +39,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (error) {
-      alert(error);
+      toast.error(error);
       dispatch(clearError());
     }
   }, [error, dispatch]);
