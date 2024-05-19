@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { useAppDispatch } from "../../hooks/hooks";
-import { UserData, registerUser } from "../slices/userSlice";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { UserData, clearError, registerUser } from "../slices/userSlice";
 import EmailInput from "./registerFormLabels/EmailInput";
 import PasswordInput from "./registerFormLabels/PasswordInput";
 import TermsCheckbox from "./registerFormLabels/TermsCheckbox";
 import SubmitRegisterBtn from "./registerFormLabels/SubmitRegisterBtn";
 import FormHeader from "./registerFormLabels/FormHeader";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const RegisterForm = () => {
+  const { error } = useAppSelector((store) => store.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [userData, setUserData] = useState<UserData>({
@@ -30,12 +32,21 @@ const RegisterForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(registerUser(userData));
-    navigate("/profile");
+    try {
+      await dispatch(registerUser(userData));
+      navigate("/profile");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
-
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearError());
+    }
+  }, [error, dispatch]);
   return (
     <form onSubmit={handleSubmit} className="mb-[40px] font-poppins">
       <div className="flex items-center justify-center flex-col max-w-[600px] mx-auto  p-10">
