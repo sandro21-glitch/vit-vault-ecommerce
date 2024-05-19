@@ -14,7 +14,6 @@ const LoginNameInput = ({ setUserData, userData }: LoginNameTypes) => {
       <Input
         id="name"
         type="text"
-        className={`${userData.email === "" ? "border-[1px] border-red-600" : ""}`}
         value={userData.email}
         onChange={(e) => setUserData({ ...userData, email: e.target.value })}
       />
