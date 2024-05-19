@@ -17,7 +17,6 @@ const LoginPasswordInput = ({ setUserData, userData }: LoginPasswordTypes) => {
       <Input
         type="password"
         id="password"
-        className={`${userData.password === "" ? "border-[1px] border-red-600" : ""}`}
         value={userData.password}
         onChange={(e) => setUserData({ ...userData, password: e.target.value })}
       />
