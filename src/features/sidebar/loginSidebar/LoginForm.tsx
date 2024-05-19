@@ -13,11 +13,13 @@ const LoginForm = () => {
   const { error } = useAppSelector((store) => store.user);
   const storedInputMail = localStorage.getItem("userEmail");
   const [localError, setLocalError] = useState<string | null>(null);
+
   const [userData, setUserData] = useState<UserData>({
     email: storedInputMail ? JSON.parse(storedInputMail) : "",
     password: "",
   });
   const [isChecked, setIsChecked] = useState<boolean>(false);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ const LoginForm = () => {
     if (error) {
       setLocalError(error);
       alert(error);
-      dispatch(clearError()); 
+      dispatch(clearError());
     }
   }, [error, dispatch]);
 
@@ -48,7 +50,9 @@ const LoginForm = () => {
     <form onSubmit={handleSubmitLogin} className="p-5 font-poppins border-b">
       <LoginNameInput userData={userData} setUserData={setUserData} />
       <LoginPasswordInput userData={userData} setUserData={setUserData} />
-      {localError && <p className="text-red-600 text-[14px] mt-1">{localError}</p>}
+      {localError && (
+        <p className="text-red-600 text-[14px] mt-1">{localError}</p>
+      )}
       <LoginButton />
       <SaveCheckbox setIsChecked={setIsChecked} isChecked={isChecked} />
       <ForgotPasswordLink />
