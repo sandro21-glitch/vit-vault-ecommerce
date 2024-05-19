@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
   const { error } = useAppSelector((store) => store.user);
   const storedInputMail = localStorage.getItem("userEmail");
-  const [localError, setLocalError] = useState<string | null>(null);
 
   const [userData, setUserData] = useState<UserData>({
     email: storedInputMail ? JSON.parse(storedInputMail) : "",
@@ -34,13 +33,11 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.error("Login failed:", error);
-      setLocalError(error as string);
     }
   };
 
   useEffect(() => {
     if (error) {
-      setLocalError(error);
       alert(error);
       dispatch(clearError());
     }
@@ -50,9 +47,6 @@ const LoginForm = () => {
     <form onSubmit={handleSubmitLogin} className="p-5 font-poppins border-b">
       <LoginNameInput userData={userData} setUserData={setUserData} />
       <LoginPasswordInput userData={userData} setUserData={setUserData} />
-      {localError && (
-        <p className="text-red-600 text-[14px] mt-1">{localError}</p>
-      )}
       <LoginButton />
       <SaveCheckbox setIsChecked={setIsChecked} isChecked={isChecked} />
       <ForgotPasswordLink />
