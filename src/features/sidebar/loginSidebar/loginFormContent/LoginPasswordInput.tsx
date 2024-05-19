@@ -1,3 +1,5 @@
+import Input from "../../../../ui/Input";
+
 type LoginPasswordTypes = {
   userData: { email: string; password: string };
   setUserData: (userData: { email: string; password: string }) => void;
@@ -12,10 +14,10 @@ const LoginPasswordInput = ({ setUserData, userData }: LoginPasswordTypes) => {
       >
         პაროლი
       </label>
-      <input
+      <Input
         type="password"
         id="password"
-        className="border-2 outline-none p-2"
+        className={`${userData.password === "" ? "border-[1px] border-red-600" : ""}`}
         value={userData.password}
         onChange={(e) => setUserData({ ...userData, password: e.target.value })}
       />
