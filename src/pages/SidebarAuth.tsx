@@ -5,8 +5,10 @@ import { closeLoginSidebar } from "../features/slices/modalSlice";
 import SidebarHeader from "../features/sidebar/SidebarHeader";
 import LoginForm from "../features/sidebar/loginSidebar/LoginForm";
 import LoginFooter from "../features/sidebar/loginSidebar/LoginFooter";
+import UserLoading from "../features/sidebar/loginSidebar/UserLoading";
 
 const SidebarAuth = () => {
+  const { isLoading } = useAppSelector((store) => store.user);
   const { loginSidebar } = useAppSelector((store) => store.modals);
   const [isVisible, setIsVisible] = useState(false);
   const asideRef = useRef<HTMLElement>(null);
@@ -42,9 +44,10 @@ const SidebarAuth = () => {
         ref={asideRef}
         className={`w-[300px] lg:w-[350px] bg-white float-end h-screen
         ${isVisible ? "translate-x-0" : "translate-x-[200%]"}
-        transition-all ease-in duration-200
+        transition-all ease-in duration-200 relative
       `}
       >
+        {isLoading && <UserLoading />}
         <SidebarHeader title="შესვლა" />
         <LoginForm />
         <LoginFooter />
