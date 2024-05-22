@@ -14,7 +14,7 @@ const Header = () => {
       setIsMobileNav(window.innerWidth < 1280);
     };
     handleResize();
-    
+
     window.addEventListener("resize", handleResize);
 
     return () => {
