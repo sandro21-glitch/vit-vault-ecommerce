@@ -79,7 +79,15 @@ export const signOutUser = createAsyncThunk(
 
 export const updateUserData = createAsyncThunk(
   "user/updateUserData",
-  async ({ uid, name, surname }: { uid: string; name?: string; surname?: string }) => {
+  async ({
+    uid,
+    name,
+    surname,
+  }: {
+    uid: string;
+    name?: string;
+    surname?: string;
+  }) => {
     try {
       await update(ref(database, `users/${uid}`), { name, surname });
       return { uid, name, surname };
@@ -88,7 +96,6 @@ export const updateUserData = createAsyncThunk(
     }
   }
 );
-
 
 export const saveUserData = createAsyncThunk(
   "user/saveUserData",
