@@ -10,8 +10,14 @@ type AddToCartBtnTypes = {
 const AddToCartBtn = ({ name, id }: AddToCartBtnTypes) => {
   return (
     <button className="btn ">
-      <Link to={`/product/${formatPath(name)}`} state={{ id }} className="inline-block h-full">
-        <span className="btn-text-one h-full flex items-center justify-center">კალათაში დამატება</span>
+      <Link
+        to={`/product/${formatPath(name)}`}
+        state={{ id }}
+        className="inline-block h-full"
+      >
+        <span className="btn-text-one h-full flex items-center justify-center">
+          კალათაში დამატება
+        </span>
         <span className="btn-text-two h-full flex items-center justify-center">
           <FiShoppingCart className="text-[18px] text-center w-full font-semibold" />
         </span>
