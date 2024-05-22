@@ -4,8 +4,9 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, database } from "../../config/firebase";
-import { ref, set, update } from "firebase/database";
+import { get, ref, set, update } from "firebase/database";
 
+// Define the user data interfaces
 export interface UserData {
   email: string;
   password: string;
@@ -20,6 +21,7 @@ export interface UserDataState {
   surname?: string;
 }
 
+// Register user thunk
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (userData: UserData, { rejectWithValue }) => {
@@ -33,7 +35,7 @@ export const registerUser = createAsyncThunk(
       if (!email) {
         throw new Error("Email cannot be null");
       }
-      await set(ref(database, "users/" + uid), {
+      await set(ref(database, `users/${uid}`), {
         uid,
         email,
         name: "",
@@ -46,6 +48,7 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+// Login user thunk
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userData: UserData, { rejectWithValue }) => {
@@ -59,13 +62,26 @@ export const loginUser = createAsyncThunk(
       if (!email) {
         throw new Error("Email cannot be null");
       }
-      return { uid, email };
+      
+      // Fetch the user's profile data
+      const userRef = ref(database, `users/${uid}`);
+      const userSnapshot = await get(userRef);
+
+      if (!userSnapshot.exists()) {
+        throw new Error("User profile does not exist");
+      }
+
+      const userProfile = userSnapshot.val();
+      const { name, surname } = userProfile;
+
+      return { uid, email, name, surname };
     } catch (error: any) {
       return rejectWithValue(error.message || "Login failed");
     }
   }
 );
 
+// Sign out user thunk
 export const signOutUser = createAsyncThunk(
   "auth/signOut",
   async (_, { rejectWithValue }) => {
@@ -77,35 +93,18 @@ export const signOutUser = createAsyncThunk(
   }
 );
 
+// Update user data thunk
 export const updateUserData = createAsyncThunk(
   "user/updateUserData",
-  async ({
-    uid,
-    name,
-    surname,
-  }: {
-    uid: string;
-    name?: string;
-    surname?: string;
-  }) => {
+  async (
+    { uid, name, surname }: { uid: string; name?: string; surname?: string },
+    { rejectWithValue }
+  ) => {
     try {
       await update(ref(database, `users/${uid}`), { name, surname });
       return { uid, name, surname };
-    } catch (error) {
-      throw new Error("Failed to update user data");
-    }
-  }
-);
-
-export const saveUserData = createAsyncThunk(
-  "user/saveUserData",
-  async (userData: UserDataState, { rejectWithValue }) => {
-    try {
-      const { uid, email, name, surname } = userData;
-      await set(ref(database, `users/${uid}`), { uid, email, name, surname });
-      return userData;
     } catch (error: any) {
-      return rejectWithValue(error.message || "Saving user data failed");
+      return rejectWithValue(error.message || "Failed to update user data");
     }
   }
 );
@@ -132,6 +131,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Register User
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -144,6 +144,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
       })
+      // Login User
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -156,6 +157,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
       })
+      // Sign Out User
       .addCase(signOutUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -168,21 +170,7 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
       })
-      .addCase(saveUserData.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(saveUserData.fulfilled, (state, action) => {
-        if (state.user) {
-          state.user.name = action.payload.name;
-          state.user.surname = action.payload.surname;
-        }
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(saveUserData.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload as string;
-      })
+      // Update User Data
       .addCase(updateUserData.pending, (state) => {
         state.isLoading = true;
       })
