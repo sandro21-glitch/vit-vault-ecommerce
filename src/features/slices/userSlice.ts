@@ -35,13 +35,14 @@ export const registerUser = createAsyncThunk(
       if (!email) {
         throw new Error("Email cannot be null");
       }
-      await set(ref(database, `users/${uid}`), {
+      const userProfile = {
         uid,
         email,
-        name: "",
-        surname: "",
-      });
-      return { uid, email };
+        name: userData.name ? userData.name : "",
+        surname: userData.surname ? userData.surname : "",
+      };
+      await set(ref(database, `users/${uid}`), userProfile);
+      return userProfile;
     } catch (error: any) {
       return rejectWithValue(error.message || "Registration failed");
     }
@@ -62,7 +63,7 @@ export const loginUser = createAsyncThunk(
       if (!email) {
         throw new Error("Email cannot be null");
       }
-      
+
       // Fetch the user's profile data
       const userRef = ref(database, `users/${uid}`);
       const userSnapshot = await get(userRef);
