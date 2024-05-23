@@ -14,6 +14,7 @@ const RegisterForm = () => {
   const { error } = useAppSelector((store) => store.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserData>({
     email: "",
     password: "",
@@ -37,6 +38,12 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!userData.email || !userData.password || !isChecked) {
+      toast.error("გთხოვთ შეავსოთ ყველა ველი და დაეთანხმოთ პირობებს");
+      return;
+    }
+
     try {
       await dispatch(registerUser(userData));
       navigate("/profile");
@@ -63,7 +70,7 @@ const RegisterForm = () => {
           passwordValue={userData.password}
           handlePasswordChange={handlePasswordChange}
         />
-        <TermsCheckbox />
+        <TermsCheckbox isChecked={isChecked} setIsChecked={setIsChecked} />
         <SubmitRegisterBtn />
       </div>
     </form>
