@@ -2,7 +2,7 @@ import OrderListHeader from "./OrderListHeader";
 
 const Orders = () => {
   return (
-    <div>
+    <div className="w-full">
       <OrderListHeader />
     </div>
   );
