@@ -3,7 +3,7 @@ import CouponCode from "./CouponCode";
 
 const CartActions = () => {
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col items-start lg:items-end">
       <CouponCode />
       <ClearCart />
     </div>
