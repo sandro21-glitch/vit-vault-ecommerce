@@ -8,8 +8,8 @@ type UserSectionProps = {
 
 const UserNameSection = ({ accountInfo, setAccountInfo }: UserSectionProps) => {
   return (
-    <div className="flex items-center gap-10 mb-7">
-      <div className="w-full text-end">
+    <div className="flex items-center flex-col lg:flex-row lg:gap-10 mb-7">
+      <div className="w-full text-end mb-7 lg:mb-0">
         <label htmlFor="userName">სახელი</label>
         <Input
           type="text"
