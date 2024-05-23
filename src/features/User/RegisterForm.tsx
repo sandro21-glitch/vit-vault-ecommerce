@@ -8,6 +8,7 @@ import SubmitRegisterBtn from "./registerFormLabels/SubmitRegisterBtn";
 import FormHeader from "./registerFormLabels/FormHeader";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import NameAndSurname from "./registerFormLabels/NameAndSurname";
 
 const RegisterForm = () => {
   const { error } = useAppSelector((store) => store.user);
@@ -16,6 +17,8 @@ const RegisterForm = () => {
   const [userData, setUserData] = useState<UserData>({
     email: "",
     password: "",
+    name: "",
+    surname: "",
   });
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +54,7 @@ const RegisterForm = () => {
     <form onSubmit={handleSubmit} className="mb-[40px] font-poppins">
       <div className="flex items-center justify-center flex-col max-w-[600px] mx-auto  p-10">
         <FormHeader />
+        <NameAndSurname userData={userData} setUserData={setUserData} />
         <EmailInput
           emailValue={userData.email}
           handleEmailChange={handleEmailChange}
