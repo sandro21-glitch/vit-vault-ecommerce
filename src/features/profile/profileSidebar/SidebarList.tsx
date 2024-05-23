@@ -29,14 +29,6 @@ const SidebarList = ({ setSelectedTab, selectedTab }: SidebarListProps) => {
     <ul className="mt-2">
       <li
         className={`p-2 cursor-pointer transition-all ease-in duration-150 font-semibold ${
-          selectedTab === "orders" ? "bg-gray-200" : "hover:bg-veryLightGray"
-        }`}
-        onClick={() => handleTabClick("orders")}
-      >
-        შეკვეთები
-      </li>
-      <li
-        className={`p-2 cursor-pointer transition-all ease-in duration-150 font-semibold ${
           selectedTab === "accountDetails"
             ? "bg-gray-200"
             : "hover:bg-veryLightGray"
@@ -44,6 +36,14 @@ const SidebarList = ({ setSelectedTab, selectedTab }: SidebarListProps) => {
         onClick={() => handleTabClick("accountDetails")}
       >
         ანგარიშის დეტალები
+      </li>
+      <li
+        className={`p-2 cursor-pointer transition-all ease-in duration-150 font-semibold ${
+          selectedTab === "orders" ? "bg-gray-200" : "hover:bg-veryLightGray"
+        }`}
+        onClick={() => handleTabClick("orders")}
+      >
+        შეკვეთები
       </li>
       <li
         className={`p-2 cursor-pointer transition-all ease-in duration-150 font-semibold ${
