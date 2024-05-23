@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AccountSidebar from "./profileSidebar/AccountSidebar";
 import Orders from "./content/orders/Orders";
-import Address from "./content/address/Address";
 import AccountDetails from "./content/accountDetails/AccountDetails";
 
 const ProfileLayout = () => {
@@ -15,7 +14,6 @@ const ProfileLayout = () => {
       />
       <div className="lg:w-[75%] w-full">
         {selectedTab === "orders" && <Orders />}
-        {selectedTab === "addresses" && <Address />}
         {selectedTab === "accountDetails" && <AccountDetails />}
       </div>
     </div>
