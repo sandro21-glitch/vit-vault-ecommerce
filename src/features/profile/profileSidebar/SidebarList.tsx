@@ -32,14 +32,6 @@ const SidebarList = ({ setSelectedTab, selectedTab }: SidebarListProps) => {
         შეკვეთები
       </li>
       <li
-        className={`p-2 cursor-pointer  transition-all ease-in duration-150 font-semibold ${
-          selectedTab === "addresses" ? "bg-gray-200" : "hover:bg-veryLightGray"
-        }`}
-        onClick={() => handleTabClick("addresses")}
-      >
-        მისამართები
-      </li>
-      <li
         className={`p-2 cursor-pointer transition-all ease-in duration-150 font-semibold ${
           selectedTab === "accountDetails"
             ? "bg-gray-200"
