@@ -10,8 +10,10 @@ const AccountSidebar = ({ setSelectedTab, selectedTab }: SidebarListProps) => {
   const { user } = useAppSelector((store) => store.user);
 
   return (
-    <div className="min-w-[25%] max-w-[25%] pr-5 border-r h-full">
-      <h4 className="border-b pb-3 pl-2 uppercase font-semibold text-[18px]">{user?.email}</h4>
+    <div className="lg:min-w-[25%] lg:max-w-[25%] w-full pr-5 lg:border-r h-full">
+      <h4 className="border-b pb-3 pl-2 uppercase font-semibold text-[18px]">
+        {user?.email}
+      </h4>
       <SidebarList setSelectedTab={setSelectedTab} selectedTab={selectedTab} />
     </div>
   );
