@@ -4,7 +4,7 @@ import Orders from "./content/orders/Orders";
 import AccountDetails from "./content/accountDetails/AccountDetails";
 
 const ProfileLayout = () => {
-  const [selectedTab, setSelectedTab] = useState("orders");
+  const [selectedTab, setSelectedTab] = useState("accountDetails");
 
   return (
     <div className="py-20 flex gap-5 flex-col lg:flex-row">
