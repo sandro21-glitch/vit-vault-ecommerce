@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/hooks";
 import { signOutUser } from "../../slices/userSlice";
+import toast from "react-hot-toast";
 
 type SidebarListProps = {
   selectedTab: string;
@@ -18,6 +19,9 @@ const SidebarList = ({ setSelectedTab, selectedTab }: SidebarListProps) => {
       await dispatch(signOutUser());
       navigate("/");
     } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      toast.error(errorMessage);
       console.log(error);
     }
   };
