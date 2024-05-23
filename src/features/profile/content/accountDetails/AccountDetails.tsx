@@ -18,17 +18,24 @@ const AccountDetails = () => {
   });
   const dispatch = useAppDispatch();
 
-  const handleSubmitUserData = (e: React.FormEvent) => {
+  const handleSubmitUserData = async (e: React.FormEvent) => {
     e.preventDefault();
     if (user) {
-      dispatch(
-        updateUserData({
-          uid: user.uid,
-          name: accountInfo.userName,
-          surname: accountInfo.userSurname,
-        })
-      );
-      toast.success("მომხმარებლის მონაცემები წარმატებით განახლდა!");
+      try {
+        await dispatch(
+          updateUserData({
+            uid: user.uid,
+            name: accountInfo.userName,
+            surname: accountInfo.userSurname,
+          })
+        );
+        toast.success("მომხმარებლის მონაცემები წარმატებით განახლდა!");
+      } catch (error) {
+        console.log(error);
+        toast.error("მომხმარებლის მონაცემების განახლება ვერ მოხერხდა!");
+      }
+    } else {
+      toast.error("მომხმარებელი ვერ მოიძებნა.");
     }
   };
 
