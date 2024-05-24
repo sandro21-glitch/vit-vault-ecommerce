@@ -74,7 +74,7 @@ const App = () => {
       <Toaster
         position="top-center"
         gutter={12}
-        containerStyle={{ margin: "8px",zIndex:'9999999' }}
+        containerStyle={{ margin: "8px", zIndex: "9999999" }}
         toastOptions={{
           success: {
             duration: 3000,
