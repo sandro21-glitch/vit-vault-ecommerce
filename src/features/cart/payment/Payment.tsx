@@ -7,14 +7,18 @@ const Payment = () => {
   const [formData, setFormData] = useState<PaymentFormData>({
     firstName: "",
     lastName: "",
-    country: "",
+    country: "საქართველო",
     street: "",
     city: "",
     email: "",
     mobile: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
