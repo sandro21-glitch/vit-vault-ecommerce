@@ -5,7 +5,11 @@ import NameInputs from "./formInputs/NameInputs";
 
 type BillingAndDeliveryTypes = {
   formData: PaymentFormData;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => void;
 };
 
 const BillingAndDelivery = ({
