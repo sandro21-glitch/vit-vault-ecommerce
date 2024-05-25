@@ -3,8 +3,6 @@ import BillingAndDelivery from "./billingAndDelivery/BillingAndDelivery";
 import Order from "./order/Order";
 import { PaymentFormData } from "../../../types/formTypes";
 
-
-
 const Payment = () => {
   const [formData, setFormData] = useState<PaymentFormData>({
     firstName: "",
@@ -15,7 +13,6 @@ const Payment = () => {
     email: "",
     mobile: "",
   });
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
