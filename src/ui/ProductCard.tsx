@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ categoryItem }) => {
     <li
       key={id}
       className="group pt-2 pb-5 flex flex-col justify-between items-center relative w-full h-[350px] bg-white hover:shadow-mainShadow
-       hover:scale-105 hover:z-[99999] transition-all ease-in duration-300 cursor-pointer"
+       hover:scale-105 hover:transform hover:translate-y-[-5%] hover:z-[99999] transition-all ease-in duration-300 cursor-pointer"
     >
       <Link
         to={`/product/${formatPath(name)}`}
