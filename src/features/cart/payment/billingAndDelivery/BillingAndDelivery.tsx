@@ -14,9 +14,12 @@ const BillingAndDelivery = ({
 }: BillingAndDeliveryTypes) => {
   return (
     <div className="w-1/2">
+      <h3 className="text-[22px] text-center font-semibold mb-10">
+        ანგარიშსწორება და მიწოდება
+      </h3>
       <NameInputs formData={formData} handleChange={handleChange} />
       <AddressInputs formData={formData} handleChange={handleChange} />
-      <ContactInputs />
+      <ContactInputs formData={formData} handleChange={handleChange} />
     </div>
   );
 };
