@@ -7,7 +7,7 @@ const TermsAndConditionsCheckbox = () => {
         id="check"
         className="cursor-pointer"
       />
-      <label htmlFor="check" className="cursor-pointer">
+      <label htmlFor="check" className="cursor-pointer text-[18px] text-[#464646]">
         ვეთანხმები{" "}
         <span className="text-secondaryGreen">წესებს და პირობებს</span>
       </label>
