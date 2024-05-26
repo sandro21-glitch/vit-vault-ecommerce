@@ -10,7 +10,7 @@ const ContactInputs = ({ formData, handleChange }: ContactInputs) => {
   return (
     <div>
       <div className="flex flex-col mb-5">
-        <label htmlFor="email" className="text-end">ელფოსტის მისამართი</label>
+        <label htmlFor="email" className="text-end text-[18px] text-[#464646] mb-1">ელფოსტის მისამართი</label>
         <Input
           id="email"
           name="email"
@@ -19,7 +19,7 @@ const ContactInputs = ({ formData, handleChange }: ContactInputs) => {
         />
       </div>
       <div className="flex flex-col mb-5">
-        <label htmlFor="mobile" className="text-end">ტელეფონი</label>
+        <label htmlFor="mobile" className="text-end text-[18px] text-[#464646] mb-1">ტელეფონი</label>
         <Input
           id="mobile"
           name="mobile"
