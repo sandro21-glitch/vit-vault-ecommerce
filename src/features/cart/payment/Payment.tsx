@@ -27,7 +27,7 @@ const Payment = () => {
   };
 
   return (
-    <form className="w-full lg:max-w-[75%] flex flex-col lg:flex-row gap-7 mb-10 md:mb-0 font-poppins">
+    <form className="w-full lg:max-w-[75%] flex flex-col lg:flex-row gap-7 mb-10 md:mb-0 ">
       <BillingAndDelivery handleChange={handleChange} formData={formData} />
       <Order />
     </form>
