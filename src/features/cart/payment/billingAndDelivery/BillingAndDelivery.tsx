@@ -2,6 +2,7 @@ import { PaymentFormData } from "../../../../types/formTypes";
 import AddressInputs from "./formInputs/AddressInputs";
 import ContactInputs from "./formInputs/ContactInputs";
 import NameInputs from "./formInputs/NameInputs";
+import TermsAndConditionsCheckbox from "./formInputs/TermsAndConditionsCheckbox";
 
 type BillingAndDeliveryTypes = {
   formData: PaymentFormData;
@@ -24,6 +25,7 @@ const BillingAndDelivery = ({
       <NameInputs formData={formData} handleChange={handleChange} />
       <AddressInputs formData={formData} handleChange={handleChange} />
       <ContactInputs formData={formData} handleChange={handleChange} />
+      <TermsAndConditionsCheckbox />
     </div>
   );
 };
