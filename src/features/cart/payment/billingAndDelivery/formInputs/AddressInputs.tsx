@@ -14,7 +14,7 @@ const AddressInputs = ({ formData, handleChange }: AddressInputTypes) => {
   return (
     <div>
       <div className="flex flex-col mb-5">
-        <label htmlFor="country" className="text-end">
+        <label htmlFor="country" className="text-end text-[18px] text-[#464646] mb-1">
           ქვეყანა
         </label>
         <select
@@ -28,7 +28,7 @@ const AddressInputs = ({ formData, handleChange }: AddressInputTypes) => {
         </select>
       </div>
       <div className="flex flex-col mb-5">
-        <label htmlFor="street" className="text-end">
+        <label htmlFor="street" className="text-end text-[18px] text-[#464646] mb-1">
           ქუჩის მისამართი
         </label>
         <Input
