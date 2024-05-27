@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../../hooks/hooks";
+import CartSidebarFooter from "./CartSidebarFooter";
 import SingleSidebarListItem from "./SingleSidebarListItem";
 
 const SidebarList = () => {
@@ -10,6 +11,7 @@ const SidebarList = () => {
           return <SingleSidebarListItem key={product.id} product={product} />;
         })}
       </ul>
+      <CartSidebarFooter />
     </div>
   );
 };
