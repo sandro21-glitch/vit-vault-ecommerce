@@ -1,3 +1,4 @@
+import OrderCheckout from "./orderContent/OrderCheckout";
 import OrderTable from "./orderContent/OrderTable";
 
 const Order = () => {
@@ -7,6 +8,7 @@ const Order = () => {
         თქვენი შეკვეთა
       </h3>
       <OrderTable />
+      <OrderCheckout />
     </div>
   );
 };
