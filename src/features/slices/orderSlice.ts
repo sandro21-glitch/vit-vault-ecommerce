@@ -4,6 +4,7 @@ interface OrderedProducts {
   name: string;
   price: number;
   amount: number;
+  id: string;
 }
 
 export interface OrderState {
@@ -19,9 +20,13 @@ const initialState: OrderState = {
 export const orderSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {},
+  reducers: {
+    addOrders: (state, action) => {
+      state.orders = state.orders.concat(action.payload);
+    },
+  },
 });
 
-export const {} = orderSlice.actions;
+export const { addOrders } = orderSlice.actions;
 
 export default orderSlice.reducer;
