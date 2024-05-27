@@ -24,7 +24,7 @@ const AddressInputs = ({ formData, handleChange }: AddressInputTypes) => {
           className="w-full border-[3px] outline-none px-2 py-3"
           name="country"
         >
-          <option value="საქართველო" defaultChecked>საქართველო</option>
+          <option value="საქართველო" >საქართველო</option>
         </select>
       </div>
       <div className="flex flex-col mb-5">
