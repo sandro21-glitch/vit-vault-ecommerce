@@ -1,7 +1,11 @@
 import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import { addOrders } from "../../../slices/orderSlice";
 
-const Checkout = () => {
+type CheckoutTypes = {
+  setCartPage: (page: string) => void;
+};
+
+const Checkout = ({ setCartPage }: CheckoutTypes) => {
   const { cartProducts } = useAppSelector((store) => store.cart);
   const { orders } = useAppSelector((store) => store.order);
   const dispatch = useAppDispatch();
@@ -15,6 +19,7 @@ const Checkout = () => {
   }));
 
   const handleAddOrder = () => {
+    setCartPage('payment')
     dispatch(addOrders(orderedProduct));
   };
 
