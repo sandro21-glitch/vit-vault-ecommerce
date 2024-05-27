@@ -2,7 +2,11 @@
 import CartTotalList from "./CartTotalList";
 import Checkout from "./Checkout";
 
-const CartTotal = () => {
+type CartTotalTypes = {
+  setCartPage: (page: string) => void;
+};
+
+const CartTotal = ({setCartPage}:CartTotalTypes) => {
 
   return (
     <div className="w-full lg:max-w-[40%]">
@@ -11,7 +15,7 @@ const CartTotal = () => {
           მთლიანი ღირებულება
         </h3>
         <CartTotalList />
-        <Checkout />
+        <Checkout setCartPage={setCartPage} />
       </div>
     </div>
   );
