@@ -11,11 +11,15 @@ type BillingAndDeliveryTypes = {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => void;
+  terms: boolean;
+  setTerms: (isChecked: boolean) => void;
 };
 
 const BillingAndDelivery = ({
   formData,
   handleChange,
+  terms,
+  setTerms,
 }: BillingAndDeliveryTypes) => {
   return (
     <div className="w-1/2 font-poppins">
@@ -25,7 +29,7 @@ const BillingAndDelivery = ({
       <NameInputs formData={formData} handleChange={handleChange} />
       <AddressInputs formData={formData} handleChange={handleChange} />
       <ContactInputs formData={formData} handleChange={handleChange} />
-      <TermsAndConditionsCheckbox />
+      <TermsAndConditionsCheckbox terms={terms} setTerms={setTerms} />
     </div>
   );
 };
