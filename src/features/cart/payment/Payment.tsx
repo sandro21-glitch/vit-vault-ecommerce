@@ -2,15 +2,17 @@ import { useState } from "react";
 import BillingAndDelivery from "./billingAndDelivery/BillingAndDelivery";
 import Order from "./order/Order";
 import { PaymentFormData } from "../../../types/formTypes";
+import { useAppSelector } from "../../../hooks/hooks";
 
 const Payment = () => {
+  const { user } = useAppSelector((state) => state.user);
   const [formData, setFormData] = useState<PaymentFormData>({
-    firstName: "",
-    lastName: "",
+    firstName: user?.name ? user.name : "",
+    lastName: user?.surname ? user.surname : "",
     country: "საქართველო",
     street: "",
     city: "",
-    email: "",
+    email: user?.email ? user.email :  "",
     mobile: "",
   });
 
