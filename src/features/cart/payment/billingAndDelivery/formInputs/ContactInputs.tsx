@@ -1,3 +1,4 @@
+import { TbCodeAsterix } from "react-icons/tb";
 import { PaymentFormData } from "../../../../../types/formTypes";
 import Input from "../../../../../ui/Input";
 
@@ -9,7 +10,7 @@ interface ContactInputs {
 const ContactInputs = ({ formData, handleChange }: ContactInputs) => {
   return (
     <div>
-      <div className="flex flex-col mb-5">
+      <div className="flex flex-col mb-5 relative">
         <label htmlFor="email" className="text-end text-[18px] text-[#464646] mb-1">ელფოსტის მისამართი</label>
         <Input
           id="email"
@@ -17,14 +18,22 @@ const ContactInputs = ({ formData, handleChange }: ContactInputs) => {
           value={formData.email}
           onChange={handleChange}
         />
+         <TbCodeAsterix
+          className="absolute right-[-15px] text-red-600 cursor-help"
+          title="სავალდებულო ველი"
+        />
       </div>
-      <div className="flex flex-col mb-5">
+      <div className="flex flex-col mb-5 relative ">
         <label htmlFor="mobile" className="text-end text-[18px] text-[#464646] mb-1">ტელეფონი</label>
         <Input
           id="mobile"
           name="mobile"
           value={formData.mobile}
           onChange={handleChange}
+        />
+         <TbCodeAsterix
+          className="absolute right-[-15px] text-red-600 cursor-help"
+          title="სავალდებულო ველი"
         />
       </div>
     </div>
