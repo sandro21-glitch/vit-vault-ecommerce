@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import { addOrders } from "../../../slices/orderSlice";
 
@@ -19,7 +20,13 @@ const Checkout = ({ setCartPage }: CheckoutTypes) => {
   }));
 
   const handleAddOrder = () => {
-    setCartPage('payment')
+    if (cartProducts.length < 1) {
+      toast.error(
+        "თქვენი კალათა ცარიელია. გაგრძელებამდე გთხოვთ, დაამატოთ პროდუქტები კალათაში."
+      );
+      return;
+    }
+    setCartPage("payment");
     dispatch(addOrders(orderedProduct));
   };
 
