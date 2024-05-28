@@ -1,7 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { OrderedProducts } from "../../types/orderTypes";
-
-
 
 export interface OrderState {
   orders: OrderedProducts[];
@@ -17,12 +15,15 @@ export const orderSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    addOrders: (state, action) => {
+    addOrders: (state, action: PayloadAction<OrderedProducts>) => {
       state.orders = state.orders.concat(action.payload);
+    },
+    clearOrders: (state) => {
+      state.orders = [];
     },
   },
 });
 
-export const { addOrders } = orderSlice.actions;
+export const { addOrders, clearOrders } = orderSlice.actions;
 
 export default orderSlice.reducer;
