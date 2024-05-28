@@ -14,7 +14,10 @@ const AddressInputs = ({ formData, handleChange }: AddressInputTypes) => {
   return (
     <div>
       <div className="flex flex-col mb-5">
-        <label htmlFor="country" className="text-end text-[18px] text-[#464646] mb-1">
+        <label
+          htmlFor="country"
+          className="text-end text-[18px] text-[#464646] mb-1"
+        >
           ქვეყანა
         </label>
         <select
@@ -24,11 +27,16 @@ const AddressInputs = ({ formData, handleChange }: AddressInputTypes) => {
           className="w-full border-[3px] outline-none px-2 py-3"
           name="country"
         >
-          <option value="საქართველო" >საქართველო</option>
+          <option value="საქართველო" defaultChecked>
+            საქართველო
+          </option>
         </select>
       </div>
       <div className="flex flex-col mb-5">
-        <label htmlFor="street" className="text-end text-[18px] text-[#464646] mb-1">
+        <label
+          htmlFor="street"
+          className="text-end text-[18px] text-[#464646] mb-1"
+        >
           ქუჩის მისამართი
         </label>
         <Input
