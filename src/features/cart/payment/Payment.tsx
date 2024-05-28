@@ -3,6 +3,7 @@ import BillingAndDelivery from "./billingAndDelivery/BillingAndDelivery";
 import Order from "./order/Order";
 import { PaymentFormData } from "../../../types/formTypes";
 import { useAppSelector } from "../../../hooks/hooks";
+import toast from "react-hot-toast";
 
 const Payment = () => {
   const { user } = useAppSelector((state) => state.user);
@@ -13,7 +14,6 @@ const Payment = () => {
     lastName: user?.surname ? user.surname : "",
     country: "საქართველო",
     street: "",
-    city: "",
     email: user?.email ? user.email : "",
     mobile: "",
   });
@@ -30,8 +30,29 @@ const Payment = () => {
     });
   };
 
+  const handleSubmitOrder = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!terms) {
+      toast.error("check");
+      return;
+    }
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.country ||
+      !formData.street ||
+      !formData.mobile
+    ) {
+      toast.error("fill all input");
+      return;
+    }
+  };
+
   return (
-    <form className="w-full lg:max-w-[75%] flex flex-col lg:flex-row gap-7 mb-10 md:mb-0 ">
+    <form
+      onSubmit={handleSubmitOrder}
+      className="w-full lg:max-w-[75%] flex flex-col lg:flex-row gap-7 mb-10 md:mb-0 "
+    >
       <BillingAndDelivery
         handleChange={handleChange}
         formData={formData}
