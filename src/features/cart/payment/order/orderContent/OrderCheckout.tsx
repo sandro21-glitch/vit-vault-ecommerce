@@ -1,6 +1,6 @@
 const OrderCheckout = () => {
   return (
-    <div>
+    <div className="mt-5">
       <div className="flex items-center gap-1 mb-5">
         <input type="radio" name="" id="" defaultChecked />
         <label htmlFor="" className="cursor-pointer">
