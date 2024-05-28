@@ -5,8 +5,8 @@ const CartModal = () => {
   const { cartProducts } = useAppSelector((store) => store.cart);
   return (
     <div
-      className="absolute top-[100%] py-5 right-0 w-[330px] z-[9999] hidden group-hover:block opacity-0
-     group-hover:opacity-100 transition-all ease-in duration-300"
+      className="absolute top-[100%] py-5 right-0 w-[330px] z-[9999] group-hover:block opacity-0
+     group-hover:opacity-100 transition-all ease-in duration-300 md:hidden"
     >
       <div className="pt-[15px] bg-white shadow-mainShadow p-[20px]">
         {cartProducts.length < 1 ? (
