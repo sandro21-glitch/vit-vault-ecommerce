@@ -9,7 +9,7 @@ interface NameInputTypes {
 const NameInputs = ({ formData, handleChange }: NameInputTypes) => {
   return (
     <div className="flex gap-5">
-      <div className="flex flex-col mb-5">
+      <div className="flex flex-col mb-5 w-full">
         <label htmlFor="name" className="text-end text-[18px] text-[#464646] mb-1">
           სახელი
         </label>
@@ -21,7 +21,7 @@ const NameInputs = ({ formData, handleChange }: NameInputTypes) => {
           className="w-full"
         />
       </div>
-      <div className="flex flex-col mb-5">
+      <div className="flex flex-col mb-5 w-full">
         <label htmlFor="surname" className="text-end text-[18px] text-[#464646] mb-1">
           გვარი
         </label>
