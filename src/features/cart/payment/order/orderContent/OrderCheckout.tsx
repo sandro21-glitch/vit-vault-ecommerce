@@ -2,7 +2,7 @@ const OrderCheckout = () => {
   return (
     <div>
       <div className="flex items-center gap-1 mb-5">
-        <input type="radio" name="" id="" checked />
+        <input type="radio" name="" id="" defaultChecked />
         <label htmlFor="" className="cursor-pointer">
           ადგილზე გადახდა კურიერთან
         </label>
