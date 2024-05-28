@@ -33,7 +33,7 @@ const Payment = () => {
   const handleSubmitOrder = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!terms) {
-      toast.error("check");
+      toast.error("გთხოვთ დაეთანხმოთ პირობებს გასაგრძელებლად.");
       return;
     }
     if (
@@ -43,9 +43,10 @@ const Payment = () => {
       !formData.street ||
       !formData.mobile
     ) {
-      toast.error("fill all input");
+      toast.error("გთხოვთ შეავსოთ ყველა საჭირო ველი.");
       return;
     }
+    console.log(formData);
   };
 
   return (
