@@ -3,7 +3,6 @@ export interface PaymentFormData {
   lastName: string;
   country: string;
   street: string;
-  city: string;
   email: string;
   mobile: string;
 }
