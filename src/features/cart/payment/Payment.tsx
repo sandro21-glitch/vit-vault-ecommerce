@@ -7,6 +7,7 @@ import { useAppSelector } from "../../../hooks/hooks";
 const Payment = () => {
   const { user } = useAppSelector((state) => state.user);
   const [terms, setTerms] = useState<boolean>(false);
+
   const [formData, setFormData] = useState<PaymentFormData>({
     firstName: user?.name ? user.name : "",
     lastName: user?.surname ? user.surname : "",
