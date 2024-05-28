@@ -22,7 +22,7 @@ const BillingAndDelivery = ({
   setTerms,
 }: BillingAndDeliveryTypes) => {
   return (
-    <div className="w-1/2 font-poppins">
+    <div className="w-full lg:w-1/2 font-poppins">
       <h3 className="text-[22px] text-center font-semibold mb-10 pt-10">
         ანგარიშსწორება და მიწოდება
       </h3>
