@@ -8,15 +8,14 @@ type CheckoutTypes = {
 
 const Checkout = ({ setCartPage }: CheckoutTypes) => {
   const { cartProducts } = useAppSelector((store) => store.cart);
-  const { orders } = useAppSelector((store) => store.order);
   const dispatch = useAppDispatch();
-  console.log(orders);
 
   const orderedProduct = cartProducts.map((product) => ({
     name: product.name,
     price: product.price,
     amount: product.quantity,
     id: product.id,
+    discount: product.discount,
   }));
 
   const handleAddOrder = () => {
