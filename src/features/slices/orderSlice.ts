@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { OrderedProducts } from "../../types/orderTypes";
 
-interface OrderedProducts {
-  name: string;
-  price: number;
-  amount: number;
-  id: string;
-}
+
 
 export interface OrderState {
   orders: OrderedProducts[];
