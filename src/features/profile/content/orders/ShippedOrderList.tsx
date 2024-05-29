@@ -5,10 +5,9 @@ const ShippedOrderList = () => {
   const { shippedOrders } = useAppSelector((store) => store.order);
   return (
     <div className="mt-5">
-        {shippedOrders.map((order) => {
-            return <SingleShippedOrder key={order.orderId} order={order} />
-        })}
-
+      {shippedOrders.map((order) => {
+        return <SingleShippedOrder key={order.orderId} order={order} />;
+      })}
     </div>
   );
 };
