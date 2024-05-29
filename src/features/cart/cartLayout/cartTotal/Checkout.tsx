@@ -10,7 +10,7 @@ const Checkout = ({ setCartPage }: CheckoutTypes) => {
   const { cartProducts } = useAppSelector((store) => store.cart);
   const dispatch = useAppDispatch();
 
-  const orderedProduct = cartProducts.map((product) => ({
+  const order = cartProducts.map((product) => ({
     name: product.name,
     price: product.price,
     amount: product.quantity,
@@ -26,7 +26,7 @@ const Checkout = ({ setCartPage }: CheckoutTypes) => {
       return;
     }
     setCartPage("payment");
-    dispatch(addOrders(orderedProduct));
+    dispatch(addOrders(order));
   };
 
   return (
