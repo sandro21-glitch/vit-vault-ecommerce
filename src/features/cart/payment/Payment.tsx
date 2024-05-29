@@ -26,7 +26,7 @@ const Payment = () => {
   });
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (
     e:
@@ -42,14 +42,27 @@ const Payment = () => {
 
   const handleSubmitOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+    if (!user) {
+      toast.error(
+        "თქვენ არ ხართ ავტორიზებული. შესაკვეთად გთხოვთ გაიაროთ ავტორიზაცია"
+      );
+      return;
+    }
     if (!terms) {
       toast.error("გთხოვთ დაეთანხმოთ პირობებს გასაგრძელებლად.");
       return;
     }
-    
-    const requiredFields = ['firstName', 'lastName', 'country', 'street', 'mobile'];
-    const missingFields = requiredFields.filter(field => !formData[field as keyof PaymentFormData]);
+
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "country",
+      "street",
+      "mobile",
+    ];
+    const missingFields = requiredFields.filter(
+      (field) => !formData[field as keyof PaymentFormData]
+    );
 
     if (missingFields.length > 0) {
       toast.error("გთხოვთ შეავსოთ ყველა საჭირო ველი.");
@@ -68,8 +81,8 @@ const Payment = () => {
     try {
       dispatch(addShippedOrders(combinedData));
       dispatch(clearOrders());
-      toast.success("შეკვეთა წარმატებით გაიგზავნა");
-      navigate('/profile')
+      toast.success("შეკვეთა წარმატებით განთავსდა");
+      navigate("/profile");
     } catch (error) {
       toast.error((error as string) || "Error");
     }
