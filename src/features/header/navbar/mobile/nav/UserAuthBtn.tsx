@@ -1,6 +1,8 @@
 import { FaRegUser } from "react-icons/fa";
-import { useAppDispatch } from "../../../../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../hooks/hooks";
 import { openLoginSidebar } from "../../../../slices/modalSlice";
+import Skeleton from "react-loading-skeleton";
+import LoggedInUser from "../../../general/LoggedInUser";
 type UserAuthBtnTypes = {
   setOpen: (open: boolean) => void;
 };
@@ -11,7 +13,18 @@ const UserAuthBtn = ({ setOpen }: UserAuthBtnTypes) => {
     setOpen(false);
     dispatch(openLoginSidebar());
   };
+  const { error, isLoading, user } = useAppSelector((store) => store.user);
+  if (isLoading) {
+    return <Skeleton highlightColor="red" width={100} />;
+  }
 
+  if (error) {
+    alert(error);
+  }
+
+  if (user) {
+    return <LoggedInUser setOpen={setOpen} />;
+  }
   return (
     <li
       onClick={handleOpenAuthSidebar}
