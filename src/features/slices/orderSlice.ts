@@ -17,7 +17,7 @@ export const orderSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    addOrders: (state, action: PayloadAction<OrderedProducts>) => {
+    addOrders: (state, action: PayloadAction<OrderedProducts[]>) => {
       state.orders = state.orders.concat(action.payload);
     },
     clearOrders: (state) => {
