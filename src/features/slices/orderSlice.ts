@@ -20,11 +20,11 @@ export const orderSlice = createSlice({
     addOrders: (state, action: PayloadAction<OrderedProducts[]>) => {
       state.orders = state.orders.concat(action.payload);
     },
-    clearOrders: (state) => {
-      state.orders = [];
-    },
     addShippedOrders: (state, action: PayloadAction<ShippingData>) => {
       state.shippedOrders = state.shippedOrders.concat(action.payload);
+    },
+    clearOrders: (state) => {
+      state.orders = [];
     },
   },
 });
