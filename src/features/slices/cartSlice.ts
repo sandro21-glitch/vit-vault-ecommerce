@@ -198,6 +198,8 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cartProducts = [];
+      state.totalSum = 0
+      state.totalDiscount = 0
       localStorage.setItem("products", JSON.stringify([]));
     },
   },
