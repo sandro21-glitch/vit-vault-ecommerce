@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <li
       onClick={() => navigate("/cart")}
-      className="cursor-pointer relative font-sans group"
+      className="cursor-pointer relative font-sans group/modal"
     >
       <div className="flex items-center">
         <MdOutlineShoppingBag size={30} />
