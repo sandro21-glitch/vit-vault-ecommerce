@@ -15,7 +15,7 @@ const GeneralHeader = ({ isMobileNav, isOpen, setOpen }: GenHeaderTypes) => {
     setOpen(!isOpen);
   };
   return (
-    <div className="bg-white border border-b-gray-200 font-mono">
+    <div className="bg-white border border-b-gray-200 font-poppins">
       <div className="section-center section-x">
         <ul className="h-[105px] flex items-center justify-between gap-5">
           {isMobileNav ? (
