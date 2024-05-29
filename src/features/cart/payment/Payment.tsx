@@ -4,8 +4,9 @@ import Order from "./order/Order";
 import { PaymentFormData } from "../../../types/formTypes";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import toast from "react-hot-toast";
-import { addShippedOrders } from "../../slices/orderSlice";
-import {v4 as uuidv4} from 'uuid';
+import { addShippedOrders, clearOrders } from "../../slices/orderSlice";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 const Payment = () => {
   const { user } = useAppSelector((state) => state.user);
   const { orders } = useAppSelector((store) => store.order);
@@ -25,6 +26,8 @@ const Payment = () => {
   });
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
+
   const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -37,19 +40,18 @@ const Payment = () => {
     });
   };
 
-  const handleSubmitOrder = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitOrder = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     if (!terms) {
       toast.error("გთხოვთ დაეთანხმოთ პირობებს გასაგრძელებლად.");
       return;
     }
-    if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.country ||
-      !formData.street ||
-      !formData.mobile
-    ) {
+    
+    const requiredFields = ['firstName', 'lastName', 'country', 'street', 'mobile'];
+    const missingFields = requiredFields.filter(field => !formData[field as keyof PaymentFormData]);
+
+    if (missingFields.length > 0) {
       toast.error("გთხოვთ შეავსოთ ყველა საჭირო ველი.");
       return;
     }
@@ -63,8 +65,14 @@ const Payment = () => {
       shippingDate,
       orderId: uuidv4(),
     };
-    dispatch(addShippedOrders(combinedData));
-    console.log(combinedData);
+    try {
+      dispatch(addShippedOrders(combinedData));
+      dispatch(clearOrders());
+      toast.success("შეკვეთა წარმატებით გაიგზავნა");
+      navigate('/profile')
+    } catch (error) {
+      toast.error((error as string) || "Error");
+    }
   };
 
   return (
