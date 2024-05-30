@@ -25,6 +25,7 @@ import {
   Register,
 } from "./pages";
 import { Toaster } from "react-hot-toast";
+import OrderDetails from "./pages/OrderDetails";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -66,6 +67,7 @@ const App = () => {
         <Route path="/discount" element={<Discounted />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/order/details" element={<OrderDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Sidebars />
