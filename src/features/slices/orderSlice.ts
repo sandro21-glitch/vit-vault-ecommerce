@@ -45,6 +45,7 @@ export interface OrderState {
   shippedOrders: ShippingData[];
   totalSum: number;
   status: Status;
+  error?: string;
 }
 
 const initialState: OrderState = {
@@ -52,6 +53,7 @@ const initialState: OrderState = {
   shippedOrders: [],
   totalSum: 0,
   status: Status.Idle,
+  error: "",
 };
 
 export const orderSlice = createSlice({
@@ -69,12 +71,18 @@ export const orderSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      pushShippedOrdersToFirebase.fulfilled,
-      (state, action: PayloadAction<ShippingData>) => {
-        state.shippedOrders.push(action.payload);
-      }
-    );
+    builder
+      .addCase(
+        pushShippedOrdersToFirebase.fulfilled,
+        (state, action: PayloadAction<ShippingData>) => {
+          state.shippedOrders.push(action.payload);
+        }
+      )
+      .addCase(pushShippedOrdersToFirebase.rejected, (state, action) => {
+        state.status = Status.Failed;
+        state.error =
+          action.error.message || "Failed to push shipped orders to Firebase";
+      });
     builder
       .addCase(
         fetchShippedOrdersFromFirebase.fulfilled,
