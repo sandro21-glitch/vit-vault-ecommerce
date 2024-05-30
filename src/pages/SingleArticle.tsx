@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import SingleArticlePageItem from "../features/articles/singleArticlePage/SingleArticlePageItem";
-import SectionHeader from "../ui/SectionHeader";
 import { useAppSelector } from "../hooks/hooks";
 import { useEffect } from "react";
+import PageLayout from "../ui/PageLayout";
 
 const SingleArticle = () => {
   const { state } = useLocation();
@@ -12,12 +12,9 @@ const SingleArticle = () => {
 
   if (selectedArticle) {
     return (
-      <section>
-        <SectionHeader path={`${selectedArticle?.title}`} />
-        <article className="section-center section-x">
-          <SingleArticlePageItem selectedArticle={selectedArticle} />
-        </article>
-      </section>
+      <PageLayout title={`${selectedArticle?.title}`}>
+        <SingleArticlePageItem selectedArticle={selectedArticle} />
+      </PageLayout>
     );
   } else {
     useEffect(() => {
