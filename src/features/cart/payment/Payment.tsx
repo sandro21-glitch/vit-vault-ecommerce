@@ -52,11 +52,6 @@ const Payment = () => {
       );
       return;
     }
-    if (!terms) {
-      toast.error("გთხოვთ დაეთანხმოთ პირობებს გასაგრძელებლად.");
-      return;
-    }
-
     const requiredFields = [
       "firstName",
       "lastName",
@@ -72,6 +67,11 @@ const Payment = () => {
       toast.error("გთხოვთ შეავსოთ ყველა საჭირო ველი.");
       return;
     }
+    if (!terms) {
+      toast.error("გთხოვთ დაეთანხმოთ პირობებს გასაგრძელებლად.");
+      return;
+    }
+
     const now = new Date();
     const formattedDate = now.toISOString().slice(0, 10).replace(/-/g, "/");
     const formattedTime = now.toTimeString().split(" ")[0];
