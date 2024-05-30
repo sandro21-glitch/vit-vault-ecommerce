@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import ProfileLayout from "../features/profile/ProfileLayout";
 import { useAppSelector } from "../hooks/hooks";
-import SectionHeader from "../ui/SectionHeader";
 import { useEffect } from "react";
+import PageLayout from "../ui/PageLayout";
 
 const Profile = () => {
   const { user } = useAppSelector((store) => store.user);
@@ -13,12 +13,9 @@ const Profile = () => {
     }
   }, [user, navigate]);
   return (
-    <section>
-      <SectionHeader path="ჩემი ანგარიში" />
-      <article className="section-center section-x">
-        <ProfileLayout />
-      </article>
-    </section>
+    <PageLayout title="ჩემი ანგარიში">
+      <ProfileLayout />
+    </PageLayout>
   );
 };
 
