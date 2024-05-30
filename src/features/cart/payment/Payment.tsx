@@ -10,6 +10,7 @@ import {
 } from "../../slices/orderSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { clearCart } from "../../slices/cartSlice";
 const Payment = () => {
   const { user } = useAppSelector((state) => state.user);
   const { orders } = useAppSelector((store) => store.order);
@@ -82,13 +83,14 @@ const Payment = () => {
       orderId: uuidv4(),
     };
     try {
-      dispatch(
+      await dispatch(
         pushShippedOrdersToFirebase({
           userId: user.uid,
           shippingData: combinedData,
         })
       );
       dispatch(clearOrders());
+      dispatch(clearCart());
       toast.success("შეკვეთა წარმატებით განთავსდა");
       navigate("/profile");
     } catch (error) {
