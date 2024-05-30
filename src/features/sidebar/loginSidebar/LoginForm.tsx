@@ -7,7 +7,7 @@ import SaveCheckbox from "./loginFormContent/SaveCheckbox";
 import { UserData, clearError, loginUser } from "../../slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { closeLoginSidebar } from "../../slices/modalSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const LoginForm = () => {
@@ -22,13 +22,15 @@ const LoginForm = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await dispatch(loginUser(userData)).unwrap();
       dispatch(closeLoginSidebar());
-      navigate("/profile");
+      if (location.pathname !== "/cart") {
+        navigate("/profile");
+      }
       if (isChecked) {
         localStorage.setItem("userEmail", JSON.stringify(userData.email));
       }
