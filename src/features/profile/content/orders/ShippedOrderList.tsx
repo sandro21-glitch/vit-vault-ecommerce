@@ -5,7 +5,7 @@ import { fetchShippedOrdersFromFirebase } from "../../../slices/orderSlice";
 import SmallSpinner from "../../../../ui/SmallSpinner";
 
 const ShippedOrderList = () => {
-  const { shippedOrders, status } = useAppSelector((store) => store.order);
+  const { shippedOrders, status, error } = useAppSelector((store) => store.order);
   const { user } = useAppSelector((store) => store.user);
   const dispatch = useAppDispatch();
 
@@ -16,7 +16,7 @@ const ShippedOrderList = () => {
   }, [dispatch, user?.uid]);
 
   if (status === "loading") return <SmallSpinner />;
-  if (status === "failed") return <p className="text-center">Error</p>;
+  if (status === "failed") return <p className="text-center">{error && error}</p>;
 
   return (
     <div className="mt-5">
