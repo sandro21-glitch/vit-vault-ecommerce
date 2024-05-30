@@ -4,7 +4,10 @@ import Order from "./order/Order";
 import { PaymentFormData } from "../../../types/formTypes";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import toast from "react-hot-toast";
-import { addShippedOrders, clearOrders } from "../../slices/orderSlice";
+import {
+  clearOrders,
+  pushShippedOrdersToFirebase,
+} from "../../slices/orderSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 const Payment = () => {
@@ -79,7 +82,12 @@ const Payment = () => {
       orderId: uuidv4(),
     };
     try {
-      dispatch(addShippedOrders(combinedData));
+      dispatch(
+        pushShippedOrdersToFirebase({
+          userId: user.uid,
+          shippingData: combinedData,
+        })
+      );
       dispatch(clearOrders());
       toast.success("შეკვეთა წარმატებით განთავსდა");
       navigate("/profile");
@@ -87,7 +95,6 @@ const Payment = () => {
       toast.error((error as string) || "Error");
     }
   };
-
   return (
     <form
       onSubmit={handleSubmitOrder}
