@@ -24,7 +24,7 @@ const SingleShippedOrder = ({
       <OrderDate shippingDate={shippingDate} />
       <PendingPayment />
       <OrderTotalSum orderSum={orderSum} />
-      <OrderActions />
+      <OrderActions orderId={orderId} />
     </ul>
   );
 };
