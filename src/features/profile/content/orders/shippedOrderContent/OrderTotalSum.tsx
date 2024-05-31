@@ -6,7 +6,7 @@ type OrderTotalSumProps = {
 
 const OrderTotalSum = ({ orderSum }: OrderTotalSumProps) => {
   return (
-    <li className="text-primaryGray font-medium">
+    <li className="text-primaryGray font-medium hidden md:block ">
       სულ{" "}
       <span className="font-semibold text-secondaryGreen">
         {formatToGeorgianLari(orderSum)}
