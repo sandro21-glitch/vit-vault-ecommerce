@@ -67,7 +67,7 @@ const App = () => {
         <Route path="/discount" element={<Discounted />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/order/details" element={<OrderDetails />} />
+        <Route path="/order/:orderId" element={<OrderDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Sidebars />
