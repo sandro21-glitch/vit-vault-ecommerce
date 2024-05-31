@@ -19,7 +19,7 @@ const SingleShippedOrder = ({
   }, 0);
 
   return (
-    <ul className="grid grid-cols-5 font-poppins mb-5 py-5 border-b border-dotted">
+    <ul className="grid grid-cols-4 md:grid-cols-5 font-poppins mb-5 py-5 border-b border-dotted">
       <OrderId orderId={orderId} />
       <OrderDate shippingDate={shippingDate} />
       <PendingPayment />
