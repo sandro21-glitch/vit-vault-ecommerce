@@ -15,8 +15,9 @@ const OrderActions = ({ orderId }: OrderTypes) => {
       <CloseButton onClick={handleRemoveOrder} />
       <Link
         to={`/order/${orderId}`}
-        className="bg-secondaryGreen text-white px-4 py-2 font-semibold
-        text-[14px] hover:bg-primaryGreen transition-colors ease-in duration-150 ml-2"
+        className="bg-secondaryGreen text-white px-2 md:px-4 py-1 md:py-2 font-semibold
+        md:text-[14px] text-[13px] hover:bg-primaryGreen transition-colors ease-in duration-150
+         md:ml-2"
       >
         ნახვა
       </Link>
