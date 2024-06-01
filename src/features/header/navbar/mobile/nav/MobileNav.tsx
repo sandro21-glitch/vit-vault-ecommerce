@@ -19,7 +19,7 @@ const MobileNav = ({ isOpen, setOpen }: MobileNavTypes) => {
       } overflow-y-scroll bg-white top-0 left-0 w-[300px] md:w-[350px] right-0 bottom-0 z-[9999] transition-all ease-in duration-300 delay-100`}
     >
       <div className="overflow-hidden">
-        <SearchProduct />
+        <SearchProduct setOpen={setOpen} />
         <NavTabs setActiveTab={setActiveTab} activeTab={activeTab} />
         {activeTab === "menu" ? (
           <MobileNavList setOpen={setOpen} />
