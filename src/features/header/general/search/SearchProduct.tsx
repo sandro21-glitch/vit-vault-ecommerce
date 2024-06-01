@@ -8,7 +8,11 @@ import {
 import SearchResult from "./SearchResult";
 import { useNavigate } from "react-router-dom";
 
-const SearchProduct = () => {
+type SearchProductTypes = {
+  setOpen: (open: boolean) => void;
+};
+
+const SearchProduct = ({ setOpen }: SearchProductTypes) => {
   const dispatch = useAppDispatch();
   const { productData } = useAppSelector((store) => store.product);
   const navigate = useNavigate();
@@ -25,6 +29,7 @@ const SearchProduct = () => {
       );
       setIsTyping(false);
       setSearch("");
+      setOpen(false)
     }
   };
 
