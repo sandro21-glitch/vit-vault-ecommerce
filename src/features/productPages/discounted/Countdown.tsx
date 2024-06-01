@@ -29,25 +29,25 @@ const Countdown = () => {
         <div className="border px-4 py-2 rounded-md flex items-center gap-10">
           <div className="flex flex-col items-center">
             <p className="text-[.8rem] uppercase">days</p>
-            <p className="text-[3rem] font-bold text-secondaryGreen">
+            <p className="text-[2rem] md:text-[3rem] font-bold text-secondaryGreen">
               {`${days}`.padStart(2, "0")}
             </p>
           </div>
           <div className="flex flex-col items-center">
             <p className="text-[.8rem] uppercase">hours</p>
-            <p className="text-[3rem] font-bold text-secondaryGreen">
+            <p className="text-[2rem] md:text-[3rem] font-bold text-secondaryGreen">
               {`${hours}`.padStart(2, "0")}
             </p>
           </div>
           <div className="flex flex-col items-center">
             <p className="text-[.8rem] uppercase">min</p>
-            <p className="text-[3rem] font-bold text-secondaryGreen">
+            <p className="text-[2rem] md:text-[3rem] font-bold text-secondaryGreen">
               {`${minutes}`.padStart(2, "0")}
             </p>
           </div>
           <div className="flex flex-col items-center">
             <p className="text-[.8rem] uppercase">sec</p>
-            <p className="text-[3rem] font-bold text-secondaryGreen">
+            <p className="text-[2rem] md:text-[3rem] font-bold text-secondaryGreen">
               {`${seconds}`.padStart(2, "0")}
             </p>
           </div>
