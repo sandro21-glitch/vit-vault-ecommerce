@@ -24,7 +24,8 @@ const OrderDetailsContent = () => {
 
   const totalOrderPrice =
     orderInfo?.newProduct.reduce((acc, cur) => {
-      const discountedPrice = cur.price - (cur.price * cur.discount) / 100;
+      const discountedPrice =
+        cur.price * cur.amount - (cur.price * cur.discount) / 100;
       return acc + discountedPrice;
     }, 0) ?? 0;
 
