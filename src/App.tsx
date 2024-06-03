@@ -31,6 +31,7 @@ import {
 } from "./pages";
 import { Toaster } from "react-hot-toast";
 import OrderDetails from "./pages/OrderDetails";
+import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -71,6 +72,7 @@ const App = () => {
         <Route path="/:article" element={<SingleArticle />} />
         <Route path="/discount" element={<Discounted />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/password-recovery" element={<ResetPassword />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/order/:orderId" element={<OrderDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
