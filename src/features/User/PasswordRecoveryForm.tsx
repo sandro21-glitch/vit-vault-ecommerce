@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useAppDispatch } from "../../hooks/hooks";
+import { resetPassword } from "../slices/userSlice";
 
 const PasswordRecoveryForm = () => {
   const [email, setEmail] = useState<string>("");
 
+  const dispatch = useAppDispatch();
+
   const handleResetPasswrd = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("working");
+
+    dispatch(resetPassword(email));
   };
 
   return (
