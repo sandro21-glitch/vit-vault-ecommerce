@@ -59,7 +59,7 @@ const RegisterForm = () => {
   }, [error, dispatch]);
   return (
     <form onSubmit={handleSubmit} className="mb-[40px] font-poppins">
-      <div className="flex items-center justify-center flex-col max-w-[600px] mx-auto  p-10">
+      <div className="flex items-center justify-center flex-col max-w-[600px] mx-auto p-10">
         <FormHeader />
         <NameAndSurname userData={userData} setUserData={setUserData} />
         <EmailInput
