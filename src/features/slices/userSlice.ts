@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, database } from "../../config/firebase";
@@ -110,16 +111,30 @@ export const updateUserData = createAsyncThunk(
   }
 );
 
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async (email: string, { rejectWithValue }) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      return "Password reset email sent! Check your inbox.";
+    } catch (error: any) {
+      return rejectWithValue(error.message || "error");
+    }
+  }
+);
+
 export interface UserState {
   user: UserDataState | null;
   isLoading: boolean;
   error: string | null;
+  message: string;
 }
 
 const initialState: UserState = {
   user: null,
   isLoading: false,
   error: null,
+  message: "",
 };
 
 const userSlice = createSlice({
@@ -128,6 +143,9 @@ const userSlice = createSlice({
   reducers: {
     clearError(state) {
       state.error = null;
+    },
+    clearMessage(state) {
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -186,10 +204,23 @@ const userSlice = createSlice({
       .addCase(updateUserData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
+      })
+      // Reset user password
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.message = action.payload;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
       });
   },
 });
 
-export const { clearError } = userSlice.actions;
+export const { clearError, clearMessage } = userSlice.actions;
 
 export default userSlice.reducer;
