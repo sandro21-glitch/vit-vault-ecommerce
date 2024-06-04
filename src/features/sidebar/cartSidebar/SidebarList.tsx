@@ -4,9 +4,10 @@ import SingleSidebarListItem from "./SingleSidebarListItem";
 
 const SidebarList = () => {
   const { cartProducts } = useAppSelector((store) => store.cart);
+
   return (
     <div>
-      <ul>
+      <ul className="overflow-y-auto">
         {cartProducts.map((product) => {
           return <SingleSidebarListItem key={product.id} product={product} />;
         })}
