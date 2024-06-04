@@ -48,7 +48,7 @@ const SingleSidebarListItem = ({ product }: SingleSidebarItemTypes) => {
           </div>
         </div>
       </Link>
-      <div className="absolute right-0 top-2">
+      <div className="absolute -right-2 top-2">
         <CloseButton onClick={handleRemoveItem} />
       </div>
     </li>
