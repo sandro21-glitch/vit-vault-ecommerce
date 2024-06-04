@@ -39,6 +39,7 @@ const ContactInputs = ({ formData, handleChange }: ContactInputs) => {
         <Input
           id="mobile"
           name="mobile"
+          type="number"
           value={formData.mobile}
           onChange={handleChange}
         />
