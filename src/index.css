@@ -139,3 +139,9 @@ table th {
   font-family: "Poppins", sans-serif;
   font-style: normal;
 }
+
+/* For Firefox */
+.small-scrollbar {
+  scrollbar-width: thin; /* Make the scrollbar thin */
+  scrollbar-color: #2e854b; /* Thumb and track color */
+}
