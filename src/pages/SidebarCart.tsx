@@ -41,7 +41,7 @@ const SidebarCart = () => {
         ref={asideRef}
         className={`w-[300px] lg:w-[350px] bg-white float-end h-screen
           ${isVisible ? "translate-x-0" : "translate-x-[200%]"}
-          transition-all ease-in duration-200
+          transition-all ease-in duration-200 
         `}
       >
         <SidebarHeader title="საყიდლების კალათა" />
