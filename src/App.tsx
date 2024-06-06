@@ -28,10 +28,10 @@ import {
   Profile,
   Sidebars,
   Register,
+  ResetPassword,
+  OrderDetails,
 } from "./pages";
 import { Toaster } from "react-hot-toast";
-import OrderDetails from "./pages/OrderDetails";
-import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -53,7 +53,7 @@ const App = () => {
     }
   }, [searchQuery, productData, dispatch]);
 
-  if (error) return <p>Error</p>;
+  if (error) return <p className="text-center min-h-full">Error...</p>;
   if (status === "loading") return <Spinner />;
 
   return (
