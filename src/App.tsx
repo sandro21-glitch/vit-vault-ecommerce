@@ -53,7 +53,7 @@ const App = () => {
     }
   }, [searchQuery, productData, dispatch]);
 
-  if (error)
+  if (error || status === "failed")
     return <p className="text-center min-h-full">Something went wrong...</p>;
   if (status === "loading") return <Spinner />;
 
