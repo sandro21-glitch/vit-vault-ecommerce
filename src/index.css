@@ -142,6 +142,6 @@ table th {
 
 /* For Firefox */
 .small-scrollbar {
-  scrollbar-width: thin; /* Make the scrollbar thin */
-  scrollbar-color: #2e854b; /* Thumb and track color */
+  scrollbar-width: thin;
+  scrollbar-color: #2e854b; 
 }
