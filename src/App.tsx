@@ -38,9 +38,13 @@ const App = () => {
   const { status, error, productData } = useAppSelector(
     (store) => store.product
   );
+
+  // Get the "search" parameter from the URL query string
   const queryString = window.location.search;
   const searchParams = new URLSearchParams(queryString);
   const searchQuery = searchParams.get("search");
+
+  //fetch data
   useEffect(() => {
     dispatch(fetchDataFromFirebase());
     dispatch(fetchArticlesData());
