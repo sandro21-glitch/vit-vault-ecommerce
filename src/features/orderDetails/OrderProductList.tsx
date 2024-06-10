@@ -9,9 +9,7 @@ const OrderProductList = ({ orderInfo }: OrderProductListProps) => {
   return (
     <ul>
       {orderInfo?.newProduct.map((product) => {
-        return (
-          <SingleOrderProduct key={product.id} product={product} />
-        );
+        return <SingleOrderProduct key={product.id} product={product} />;
       })}
     </ul>
   );
