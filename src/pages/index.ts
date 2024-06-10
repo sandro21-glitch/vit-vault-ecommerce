@@ -12,4 +12,3 @@ export { default as Sidebars } from "./Sidebars";
 export { default as Register } from "./Register";
 export { default as OrderDetails } from "./OrderDetails";
 export { default as ResetPassword } from "./ResetPassword";
-
