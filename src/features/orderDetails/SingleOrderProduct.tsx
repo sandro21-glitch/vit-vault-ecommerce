@@ -24,7 +24,11 @@ const SingleOrderProduct = ({
           <span>✖</span>
           <p className="font-semibold text-black">{amount}</p>
         </div>
-        <CheckDiscount discount={discount} price={price * amount} onlyDiscounted />
+        <CheckDiscount
+          discount={discount}
+          price={price * amount}
+          onlyDiscounted
+        />
       </Link>
     </li>
   );
