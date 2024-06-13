@@ -26,7 +26,9 @@ const SinglePopularCategory = ({ item }: SinglePopCategoryTypes) => {
           <img
             src={item.image}
             alt={item.name}
-            className="w-full p-5 object-center h-auto group-hover:scale-105 transition-all ease-in duration-300 rounded-full"
+            className="w-full p-5 object-center h-auto group-hover:scale-105 transition-all
+             ease-in duration-300 rounded-full"
+            loading="lazy"
           />
         </div>
         <div className="text-center mt-2">
